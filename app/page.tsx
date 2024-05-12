@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ImageModal from "./components/ImageModal";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
         commodi nam iusto, accusantium illum sunt rerum, est saepe omnis debitis
         suscipit optio explicabo accusamus nostrum nulla facilis, facere cum!
       </p>
+      <div>test</div>
     </main>
   );
 }
