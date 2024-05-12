@@ -8,7 +8,10 @@ export default function page() {
     <>
       <div className="flex w-full h-full ">
         {photos.map((photo) => (
-          <div className="flex flex-col px-5 hover:scale-110 transition duration-500 cursor-pointer">
+          <div
+            className="flex flex-col px-5 hover:scale-110 transition duration-500 cursor-pointer"
+            key={photo.imageUrl}
+          >
             <ImageModal
               imageUrl={photo.imageUrl}
               flickrUrl={photo.flickrUrl}
