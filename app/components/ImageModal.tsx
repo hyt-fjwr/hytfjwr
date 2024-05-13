@@ -37,7 +37,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
             objectFit: "cover",
             borderRadius: "10px", //👈 and here you can select border radius
           }}
-          className="flex-1 w-full h-auto object-cover"
+          className="flex md:w-60 md:h-60 w-28 h-28 object-cover "
           alt={place}
           quality={100}
         />
