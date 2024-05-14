@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import Image from "next/image";
+import Loading from "./Loading";
 
 interface ImageModalProps {
   imageUrl: any;
@@ -18,6 +19,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
   date,
 }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const openModal = () => {
     setModalIsOpen(true);
@@ -52,7 +54,9 @@ const ImageModal: React.FC<ImageModalProps> = ({
           className="flex md:w-60 md:h-60 w-28 h-28 object-cover cursor-zoom-in hover:scale-110 transition duration-500"
           alt={place}
           quality={70}
+          onLoadingComplete={() => setIsLoading(false)}
         />
+        {isLoading ?? <Loading />}
       </button>
       <Modal
         isOpen={modalIsOpen}
@@ -74,7 +78,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
             alt={place}
             className="md:h-full md:object-contain"
           />
-          <p className=" text-[12px] md:text-sm font-mono py-1 opacity-60">
+          <p className=" text-[12px] md:text-sm font-mono py-1 opacity-60 text-white">
             Location: {place} <br /> Photo taken on {date}
           </p>
         </button>

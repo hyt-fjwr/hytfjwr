@@ -1,6 +1,7 @@
 import Image from "next/image";
 import ImageModal from "./components/ImageModal";
 import { ThemeToggle } from "./components/Theme-Toggle";
+import Loading from "./components/Loading";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       </p>
       <div>test</div>
       <ThemeToggle />
+      <Loading />
     </main>
   );
 }
