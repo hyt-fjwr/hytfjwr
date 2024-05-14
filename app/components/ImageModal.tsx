@@ -62,11 +62,17 @@ const ImageModal: React.FC<ImageModalProps> = ({
       >
         <button
           onClick={closeModal}
-          className="font-bold hover:scale-110 m-2 duration-200"
+          className="p-5 md:scale-95 absolute inset-0 flex flex-col md:h-full items-center justify-center"
         >
-          CLOSE
+          <p className="font-bold hover:scale-110 m-2 duration-200 drop-shadow-md">
+            CLOSE
+          </p>
+          <img
+            src={flickrUrl}
+            alt={place}
+            className="md:h-full md:object-contain"
+          />
         </button>
-        <img src={flickrUrl} alt={place} />
       </Modal>
     </div>
   );
