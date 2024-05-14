@@ -8,7 +8,7 @@ import { motion, Variants } from "framer-motion";
 export default function page() {
   const photoVariants: Variants = {
     offscreen: {
-      y: 150,
+      y: 200,
       rotate: -15,
     },
     onscreen: {
