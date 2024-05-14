@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import profilePic from "/public/photo/DSC04541.jpg";
 import ImageModal from "../components/ImageModal";

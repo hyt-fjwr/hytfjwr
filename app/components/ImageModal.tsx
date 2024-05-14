@@ -19,7 +19,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
   date,
 }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const openModal = () => {
     setModalIsOpen(true);
@@ -42,21 +42,26 @@ const ImageModal: React.FC<ImageModalProps> = ({
   return (
     <div>
       <button onClick={openModal}>
-        <Image
-          src={imageUrl}
-          sizes="(max-width: 768px) 100vw, 50vw"
-          width={500}
-          height={500}
-          style={{
-            objectFit: "cover",
-            borderRadius: "10px",
-          }}
-          className="flex md:w-60 md:h-60 w-28 h-28 object-cover cursor-zoom-in hover:scale-110 transition duration-500"
-          alt={place}
-          quality={70}
-          onLoadingComplete={() => setIsLoading(false)}
-        />
-        {isLoading ?? <Loading />}
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <Image
+            src={imageUrl}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            width={500}
+            height={500}
+            style={{
+              objectFit: "cover",
+              borderRadius: "10px",
+            }}
+            className="flex md:w-60 md:h-60 w-28 h-28 object-cover cursor-zoom-in hover:scale-110 transition duration-500"
+            alt={place}
+            quality={70}
+            onLoad={() => setIsLoading(true)}
+            onLoadingComplete={() => setIsLoading(false)}
+            loading="lazy"
+          />
+        )}
       </button>
       <Modal
         isOpen={modalIsOpen}
