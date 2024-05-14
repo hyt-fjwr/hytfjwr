@@ -25,6 +25,16 @@ const ImageModal: React.FC<ImageModalProps> = ({
     setModalIsOpen(false);
   };
 
+  const customStyles = {
+    content: {
+      padding: "15px",
+      borderRadius: "10px",
+    },
+    overlay: {
+      transition: "opacity 200ms ease-in-out",
+    },
+  };
+
   return (
     <div>
       <button onClick={openModal}>
@@ -35,9 +45,9 @@ const ImageModal: React.FC<ImageModalProps> = ({
           height={500}
           style={{
             objectFit: "cover",
-            borderRadius: "10px", //👈 and here you can select border radius
+            borderRadius: "10px",
           }}
-          className="flex md:w-60 md:h-60 w-28 h-28 object-cover "
+          className="flex md:w-60 md:h-60 w-28 h-28 object-cover cursor-zoom-in"
           alt={place}
           quality={100}
         />
@@ -46,8 +56,14 @@ const ImageModal: React.FC<ImageModalProps> = ({
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Original Image Modal"
+        closeTimeoutMS={200}
+        style={customStyles}
+        className="w-full h-full overflow-scroll flex flex-col items-center"
       >
-        <button onClick={closeModal} className="font-bold">
+        <button
+          onClick={closeModal}
+          className="font-bold hover:scale-110 m-2 duration-200"
+        >
           CLOSE
         </button>
         <img src={flickrUrl} alt={place} />
