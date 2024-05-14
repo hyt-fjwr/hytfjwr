@@ -9,13 +9,14 @@ export default function page() {
       <div className="w-full h-full grid md:grid-cols-4 grid-cols-2 md:gap-3">
         {photos.map((photo) => (
           <div
-            className="flex flex-col py-3 px-4 object-cover hover:scale-110 transition duration-500 overflow-hidden items-center"
+            className="flex flex-col py-3 px-4 object-cover overflow-hidden items-center"
             key={photo.imageUrl}
           >
             <ImageModal
               imageUrl={photo.imageUrl}
               flickrUrl={photo.flickrUrl}
               place={photo.place}
+              date={photo.date}
             />
             <p className="text-center text-xs md:text-base">
               Location : {photo.place}
