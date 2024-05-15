@@ -1,6 +1,4 @@
 "use client";
-import React from "react";
-import profilePic from "/public/photo/DSC04541.jpg";
 import ImageModal from "../components/ImageModal";
 import { photos } from "../data/photo";
 import { motion, Variants } from "framer-motion";
@@ -9,10 +7,12 @@ export default function page() {
   const photoVariants: Variants = {
     offscreen: {
       y: 200,
+      opacity: 0,
       rotate: -15,
     },
     onscreen: {
       y: 0,
+      opacity: 100,
       rotate: 0,
       transition: {
         type: "spring",

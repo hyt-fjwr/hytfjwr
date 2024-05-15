@@ -23,10 +23,14 @@ const ImageModal: React.FC<ImageModalProps> = ({
 
   const openModal = () => {
     setModalIsOpen(true);
+    /* 背景スクロール制限 */
+    document.body.classList.add("modal-open");
   };
 
   const closeModal = () => {
     setModalIsOpen(false);
+    /* 背景スクロール制限 */
+    document.body.classList.remove("modal-open");
   };
 
   const customStyles = {
@@ -69,11 +73,11 @@ const ImageModal: React.FC<ImageModalProps> = ({
         contentLabel="Original Image Modal"
         closeTimeoutMS={200}
         style={customStyles}
-        className="w-full h-full overflow-scroll flex flex-col items-center"
+        className="w-full h-full overflow flex flex-col items-center"
       >
         <button
           onClick={closeModal}
-          className="p-5 md:scale-90 absolute inset-0 flex flex-col md:h-full items-center justify-center"
+          className="p-5 md:scale-90 absolute inset-0 flex flex-col md:h-full items-center justify-center "
         >
           <p className="font-bold hover:scale-110 m-2 duration-200 drop-shadow-md w-20 text-white ">
             CLOSE

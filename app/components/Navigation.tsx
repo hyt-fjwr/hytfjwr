@@ -6,9 +6,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const links = [
-  { href: "/about", label: "about" },
-  { href: "/blog", label: "blog" },
-  { href: "/photo", label: "photo" },
+  { href: "/about", label: "About" },
+  { href: "/blog", label: "Blog" },
+  { href: "/photo", label: "Photo" },
+  { href: "/gear", label: "Gear" },
 ];
 
 export default function Navigation() {

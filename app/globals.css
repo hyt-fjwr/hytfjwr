@@ -32,6 +32,8 @@
     --input: 240 5.9% 90%;
     --ring: 240 10% 3.9%;
 
+    --scrollbar-foreground: rgba(37, 37, 37, 0.425);
+
     --radius: 0.5rem;
   }
 
@@ -60,6 +62,8 @@
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
+    --scrollbar-foreground: rgba(81, 80, 90, 0.459);
+
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
@@ -75,15 +79,16 @@
   }
 }
 
-@layer utilities {
-  .hidden-scrollbar {
-    -ms-overflow-style: none; /* IE, Edge 対応 */
-    scrollbar-width: none; /* Firefox 対応 */
-  }
-  .hidden-scrollbar::-webkit-scrollbar {
-    /* Chrome, Safari 対応 */
-    display: none;
-  }
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-foreground);
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background)); /* 背景色 */
 }
 
 .ReactModal__Overlay {
@@ -93,6 +98,11 @@
 .ReactModal__Overlay--after-open {
   opacity: 1;
   animation: fadeIn 0.5s ease 0s 1 normal backwards;
+}
+
+/* スクロール制限 */
+body.modal-open {
+  overflow: hidden;
 }
 
 .ReactModal__Overlay--before-close {
