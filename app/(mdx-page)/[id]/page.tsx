@@ -10,9 +10,10 @@ export default async function page({
 
   return (
     <div>
-      <h1></h1>
-      <div className="prose dark:prose-invert">
-        <post.content />
+      <div className="prose dark:prose-invert w-[45rem] flex flex-col">
+        <div className="mt-8">
+          <post.content />
+        </div>
       </div>
     </div>
   );

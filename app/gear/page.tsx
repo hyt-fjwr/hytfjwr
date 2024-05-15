@@ -1,5 +1,16 @@
 import React from "react";
 
 export default function page() {
-  return <div>My gear</div>;
+  return (
+    <>
+      <div className="w-[45rem] flex flex-col">
+        <div className="mt-8">
+          <h1 className="text-black dark:text-white text-4xl font-bold">
+            Gear
+          </h1>
+          <h2>From daily necessities to hobbies.</h2>
+        </div>
+      </div>
+    </>
+  );
 }

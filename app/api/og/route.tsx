@@ -1,4 +1,3 @@
-import { url } from "inspector";
 import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
 
@@ -16,6 +15,8 @@ export async function GET(req: NextRequest) {
           flexDirection: "column",
           alignItems: "flex-start",
           justifyContent: "center",
+          backgroundImage:
+            "url(https://raw.githubusercontent.com/hyt-fjwr/hytfjwr/master/public/og/og.png)",
         }}
       >
         <h1
@@ -23,14 +24,16 @@ export async function GET(req: NextRequest) {
             marginLeft: 205,
             marginRight: 205,
             display: "flex",
-            fontSize: 105,
+            fontSize: 120,
             letterSpacing: "-0.025em",
             fontStyle: "normal",
             fontWeight: "bold",
             color: "white",
             whiteSpace: "pre-wrap",
-            backgroundImage:
-              "url(https://raw.githubusercontent.com/hyt-fjwr/hytfjwr/master/public/og/og.png)",
+            backgroundColor: "rgba(15, 15,19, .5)",
+            paddingLeft: "25px",
+            paddingRight: "25px",
+            borderRadius: "25px",
           }}
         >
           {Title}
@@ -46,10 +49,13 @@ export async function GET(req: NextRequest) {
             fontWeight: "bold",
             color: "white",
             whiteSpace: "pre-wrap",
-            backgroundColor: "black",
+            backgroundColor: "rgba(15, 15,19, .5)",
+            paddingLeft: "25px",
+            paddingRight: "25px",
+            borderRadius: "25px",
           }}
         >
-          HAYATO FUJIWARA
+          Hayato Fujiwara
         </h2>
       </div>
     ),

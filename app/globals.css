@@ -109,6 +109,14 @@ body.modal-open {
   opacity: 0;
 }
 
+pre {
+  overflow-x: auto;
+}
+
+pre [data-line] {
+  padding: 0 1rem;
+}
+
 @keyframes fadeIn {
   from {
     transform: translateY(-20px);
