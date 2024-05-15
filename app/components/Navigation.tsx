@@ -27,23 +27,25 @@ export default function Navigation() {
 
   return (
     <nav>
-      {/* {links.map((link) => (
-        <Button
-          className={cn(
-            pathname === link.href && "bg-accent text-accent-foreground"
-          )}
-          variant="ghost"
-          key={link.href}
-          asChild
-        >
-          <Link href={link.href}>{link.label}</Link>
-        </Button>
-      ))} */}
+      <div className="sm:flex hidden">
+        {links.map((link) => (
+          <Button
+            className={cn(
+              pathname === link.href && "bg-accent text-accent-foreground"
+            )}
+            variant="ghost"
+            key={link.href}
+            asChild
+          >
+            <Link href={link.href}>{link.label}</Link>
+          </Button>
+        ))}
+      </div>
       <motion.button
         initial="hide"
         animate={mobileNav ? "show" : "hide"}
         onClick={toggleMobileNav}
-        className="flex flex-col space-y-1 relative z-10"
+        className="flex flex-col space-y-1 relative z-10 sm:hidden"
       >
         <motion.span
           variants={{
@@ -55,7 +57,7 @@ export default function Navigation() {
               y: 5,
             },
           }}
-          className="w-6 bg-white h-px block"
+          className="w-6 bg-black dark:bg-white h-px block"
         ></motion.span>
         <motion.span
           variants={{
@@ -66,7 +68,7 @@ export default function Navigation() {
               opacity: 0,
             },
           }}
-          className="w-6 bg-white h-px block"
+          className="w-6 bg-black dark:bg-white h-px block"
         ></motion.span>
         <motion.span
           variants={{
@@ -78,7 +80,7 @@ export default function Navigation() {
               y: -5,
             },
           }}
-          className="w-6 bg-white h-px block"
+          className="w-6 bg-black dark:bg-white h-px block"
         ></motion.span>
       </motion.button>
       <AnimatePresence>
@@ -86,7 +88,7 @@ export default function Navigation() {
           <MotionConfig
             transition={{
               type: "spring",
-              bounce: 0.1,
+              duration: 0.5,
             }}
           >
             <motion.div
@@ -98,7 +100,7 @@ export default function Navigation() {
                     type: "spring",
                     bounce: 0.1,
                     when: "afterChildren",
-                    staggerChildren: 0.25,
+                    duration: 0.8,
                   },
                 },
                 show: {
@@ -108,13 +110,14 @@ export default function Navigation() {
                     bounce: 0.1,
                     when: "beforeChildren",
                     staggerChildren: 0.25,
+                    duration: 0.4,
                   },
                 },
               }}
               initial="hide"
               animate="show"
               exit="hide"
-              className="fixed inset-0 bg-zinc-800 p-6 flex flex-col justify-center space-y-10 lg:hidden"
+              className="fixed inset-0 bg-zinc-100  dark:bg-zinc-800 p-6 flex flex-col justify-center space-y-10 lg:hidden"
             >
               <motion.ul
                 variants={{
@@ -127,18 +130,18 @@ export default function Navigation() {
                     opacity: 1,
                   },
                 }}
-                className="list-none space-y-6"
+                className="list-none space-y-5"
               >
                 {links.map((link) => (
                   <li
                     key={link.href}
                     className={cn(
-                      pathname === link.href && " bg-zinc-500 p-4 "
+                      pathname === link.href && "bg-white dark:bg-zinc-500 p-4 "
                     )}
                   >
                     <a
                       href={link.href}
-                      className="text-5xl font-semibold text-white "
+                      className="text-5xl font-semibold text-zinc-900 dark:text-white"
                     >
                       {link.label}
                     </a>
@@ -156,7 +159,7 @@ export default function Navigation() {
                     opacity: 1,
                   },
                 }}
-                className="w-full h-px bg-white/30"
+                className="w-full h-px dark:bg-white/30 bg-black"
               ></motion.div>
               <motion.ul
                 variants={{
