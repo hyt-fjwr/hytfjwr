@@ -8,6 +8,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { FC } from "react";
 
 interface ThemeToggleProps {
   className?: string;
