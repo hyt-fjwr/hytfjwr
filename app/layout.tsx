@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import { ThemeProvider } from "./components/Theme-Provider";
 import Footer from "./components/Footer";
+import { Hachi_Maru_Pop } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={`${inter.className}`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
