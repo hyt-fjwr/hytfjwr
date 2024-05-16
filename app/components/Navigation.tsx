@@ -6,6 +6,7 @@ import { AnimatePresence, MotionConfig, motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { useLocalStorageState } from "../hooks/useLocalStorageState";
 
 const links = [
   { href: "/about", label: "About" },
@@ -16,8 +17,6 @@ const links = [
 
 export default function Navigation() {
   const pathname = usePathname();
-
-  console.log(pathname);
 
   const [mobileNav, setMobileNav] = useState(false);
 
