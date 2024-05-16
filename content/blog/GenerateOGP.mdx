@@ -1,4 +1,4 @@
-# Next.js 14 の ImageResponse を使用して OGP 画像を自動生成する
+# Next.js 14 の ImageResponse を使用して OGP 画像を動的生成する
 
 [Next.js](https://nextjs.org/)の標準機能である[ImageResponse](https://nextjs.org/docs/app/api-reference/functions/image-response)を使用して
 X や Facebook 等のポストで表示される[OGP](https://mieru-ca.com/blog/ogp/)画像を動的生成する方法を紹介します。
@@ -77,6 +77,44 @@ export async function GET(req: NextRequest) {
 }
 ```
 
-{" "}
+上記のように ImageResponse では div タグ内でスタイリングをします。
 
-<div className="font-bold text-xl">太文字だよ(divタグ)</div>
+## API の呼び出し
+
+API が完成したので実際に各ページで呼び出してみましょう。
+例として / ページにアクセスした際に呼び出すために./app/layout.tsx 内に記述していきます。
+
+```ts
+//省略...//
+export const metadata: Metadata = {
+  title: "Hayato Fujiwara",
+  description:
+    "My portfolio created with Nextjs, Radix Primitives, Framer Motion, Tailwind",
+  openGraph: {
+    title: "Hayato Fujiwara",
+    description:
+      "My portfolio created with Nextjs, Radix Primitives, Framer Motion, Tailwind",
+    type: "website",
+    url: "https://hytfjwr.com",
+    images: [
+      {
+        url: "https://hytfjwr.com/api/og?title=hytfjwr.com",
+        alt: "hytfjwr.com",
+      },
+    ],
+  },
+};
+//以下省略...//
+```
+
+ページの title や description を設定する Metadata に openGraph という項目を追加し中身の images の中に作成した API の URL を記述します。<br/>
+API では title というパラメータを追加していたの URL へのパラメータ追加も忘れずにしましょう。
+
+## 完成画像
+
+<img src="https://hytfjwr.com/api/og?title=hytfjwr.com" />
+
+サイトのページにアクセスした際に上記のような画像が自動生成され、OGP 画像として設定されます。
+これにより各ページに Metadata を設定することで、ページ別で違った文字を挿入した画像が OPG 画像として設定できます。
+
+全体的な流れとしては以上です。

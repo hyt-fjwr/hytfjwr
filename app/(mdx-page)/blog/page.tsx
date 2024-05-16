@@ -19,7 +19,7 @@ export default function page() {
         </div>
       </div>
       <div className="flex mt-4">
-        <Button variant="ghost">
+        <Button variant="ghost" className="bg-primary/5">
           <Link href="/blog/GenerateOGP">GenerateOGP</Link>
         </Button>
       </div>
