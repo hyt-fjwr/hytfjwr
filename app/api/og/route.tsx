@@ -15,8 +15,7 @@ export async function GET(req: NextRequest) {
           flexDirection: "column",
           alignItems: "flex-start",
           justifyContent: "center",
-          backgroundImage:
-            "url(https://raw.githubusercontent.com/hyt-fjwr/hytfjwr/master/public/og/og.png)",
+          backgroundImage: "url(https://i.imgur.com/4FJSUnJ.png)",
         }}
       >
         <h1
