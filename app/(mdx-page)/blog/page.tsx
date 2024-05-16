@@ -1,19 +1,9 @@
-"use client";
 import { NotebookPen } from "lucide-react";
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
 
 export default function page() {
-  const links = [
-    { href: "/blog/GenerateOGP", label: "GenerateOGP" },
-    { href: "/blog", label: "Blog" },
-  ];
-  const pathname = usePathname();
-
   return (
     <>
       <div className="w-[21rem] flex flex-col md:w-[45rem]">
@@ -29,18 +19,9 @@ export default function page() {
         </div>
       </div>
       <div className="flex mt-4">
-        {links.map((link) => (
-          <Button
-            className={cn(
-              pathname === link.href && "bg-accent text-accent-foreground"
-            )}
-            variant="ghost"
-            key={link.href}
-            asChild
-          >
-            <Link href={link.href}>{link.label}</Link>
-          </Button>
-        ))}
+        <Button variant="ghost">
+          <Link href="/blog/GenerateOGP">GenerateOGP</Link>
+        </Button>
       </div>
     </>
   );
