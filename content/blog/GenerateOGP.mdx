@@ -82,7 +82,7 @@ export async function GET(req: NextRequest) {
 ## API の呼び出し
 
 API が完成したので実際に各ページで呼び出してみましょう。
-例として / ページにアクセスした際に呼び出すために./app/layout.tsx 内に記述していきます。
+例として / ページの OGP を設定するために./app/layout.tsx 内に記述していきます。
 
 ```ts
 //省略...//
@@ -112,9 +112,9 @@ API では title というパラメータを追加していたの URL へのパ�
 
 ## 完成画像
 
-<img src="https://hytfjwr.com/api/og?title=hytfjwr.com" />
+<img src="/images/evidence-ogp.png" />
 
-サイトのページにアクセスした際に上記のような画像が自動生成され、OGP 画像として設定されます。
-これにより各ページに Metadata を設定することで、ページ別で違った文字を挿入した画像が OPG 画像として設定できます。
+Discord での確認ですが上記のような画像が自動生成され、OGP 画像として設定されます。
+これにより各ページ(pages.tsx)に Metadata を設定することで、ページ別で違った文字を挿入した画像が OPG 画像として設定できます。
 
 全体的な流れとしては以上です。
