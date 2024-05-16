@@ -1,4 +1,5 @@
 "use client";
+import { Camera } from "lucide-react";
 import ImageModal from "../components/ImageModal";
 import { photos } from "../data/photo";
 import { motion, Variants } from "framer-motion";
@@ -24,6 +25,15 @@ export default function page() {
 
   return (
     <>
+      <div className="w-[21rem] md:w-[45rem] flex mx-auto">
+        <div className="mt-5">
+          <h1 className="text-black dark:text-white text-4xl font-bold flex items-center">
+            Photos <Camera aria-hidden="true" className="h-8 w-8 ml-2" />
+          </h1>
+          <h2>These are some of my favorite moments from my travels.</h2>
+        </div>
+      </div>
+      <br />
       <div className="w-full h-full grid md:grid-cols-4 grid-cols-2 md:gap-3">
         {photos.map((photo) => (
           <motion.div

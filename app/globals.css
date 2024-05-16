@@ -125,16 +125,3 @@ pre [data-line] {
     transform: translateY(0);
   }
 }
-
-@font-face {
-  font-family: "Hachi Maru Pop";
-  src: url("https://fonts.gstatic.com/s/hachimarupop/v2/P5sUzYqJHfExkcXGKP_AJF0A8VRyPb9l8z_iNj-4kz6V.ttf")
-    format("truetype");
-  font-weight: 400;
-  font-style: normal;
-}
-
-/* 日本語フォントの指定 */
-:lang(ja) {
-  font-family: "Inter", sans-serif;
-}
