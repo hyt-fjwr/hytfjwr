@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import { ThemeProvider } from "./components/Theme-Provider";
 import Footer from "./components/Footer";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -43,6 +44,7 @@ export default function RootLayout({
           <Header />
           <main className="py-6 container flex justify-center">{children}</main>
           <Footer />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
