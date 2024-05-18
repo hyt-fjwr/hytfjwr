@@ -1,4 +1,5 @@
 import { NotebookPen } from "lucide-react";
+import Image from "next/image";
 import React from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -27,6 +28,28 @@ export default async function page() {
               <Link href={`/blog/${post.postId}`}>{post.postId}</Link>
             </Button>
           </div>
+        ))}
+
+        {posts.map((post) => (
+          <button key={post.postId} className=" w-72 h-52">
+            <Link href={`/blog/${post.postId}`}>
+              <div className="w-72 rounded-lg">
+                <Image
+                  width={1280}
+                  height={720}
+                  src={`https://hytfjwr.com/api/og?title=${post.title}`}
+                  alt={post.title}
+                  className="rounded-t-lg border-r border-t border-l border-b border-zinc-700"
+                  quality={70}
+                />
+              </div>
+              <div className=" h-11 rounded-b-lg border-r border-b border-l border-zinc-700">
+                <div className="h-11 text-wrap truncate ... text-sm">
+                  {post.title}
+                </div>
+              </div>
+            </Link>
+          </button>
         ))}
       </div>
     </>

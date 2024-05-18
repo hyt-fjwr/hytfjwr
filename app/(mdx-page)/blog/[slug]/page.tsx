@@ -17,7 +17,6 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const post = await getPost(params.slug);
-
   const { title, publishedAt: publishedTime, postId } = post;
 
   const metadata: Metadata = {
@@ -46,26 +45,6 @@ export default async function page({
   params: { slug: string };
 }) {
   const post = await getPost(slug);
-
-  const metadata: Metadata = {
-    title: post.title,
-    description:
-      "My portfolio created with Nextjs, Radix Primitives, Framer Motion, Tailwind",
-    openGraph: {
-      title: "Hayato Fujiwara",
-      description:
-        "My portfolio created with Nextjs, Radix Primitives, Framer Motion, Tailwind",
-      type: "website",
-      url: "https://hytfjwr.com",
-      images: [
-        {
-          url: "https://hytfjwr.com/api/og?title=hytfjwr.com",
-          alt: "hytfjwr.com",
-        },
-      ],
-    },
-  };
-
   return (
     <div>
       <div className="prose dark:prose-invert w-[21rem] flex flex-col md:w-[45rem]">
