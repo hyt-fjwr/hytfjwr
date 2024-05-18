@@ -3,7 +3,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-export default function page() {
+export default async function page() {
   return (
     <>
       <div className="w-[21rem] flex flex-col md:w-[45rem]">

@@ -2,17 +2,19 @@ import Image from "next/image";
 import ImageModal from "./components/ImageModal";
 import { ThemeToggle } from "./components/Theme-Toggle";
 import Loading from "./components/Loading";
+import SlideTextAnim from "./components/SlideTextAnim";
 
 export default function Home() {
   return (
     <main>
+      <div className="flex flex-col items-center ">
+        <h1 className="text-black dark:text-white text-4xl font-bold">
+          Hayato Fujiwara
+        </h1>
+        <h2 className="mt-2">Hey there👋I'm experienced in :</h2>
+        <SlideTextAnim />
+      </div>
       <div className="w-[21rem] flex flex-col md:w-[45rem]">
-        <div className="mt-5">
-          <h1 className="text-black dark:text-white text-4xl font-bold">
-            TEST SITE
-          </h1>
-          <h2>Get to know me.</h2>
-        </div>
         <div className="mt-20">
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque quasi
@@ -21,7 +23,6 @@ export default function Home() {
             facere cum!
           </p>
           <div>test</div>
-          <Loading />
           <div className="grid grid-rows-3 grid-flow-col gap-4 h-96 ">
             <div className="row-span-3 bg-primary/5 rounded-lg p-4 w-32 md:w-96 h-96 text-ellipsis overflow-hidden">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore

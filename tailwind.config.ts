@@ -67,6 +67,46 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        gradient: {
+          to: { "background-position": "200% center" },
+        },
+        "text-slide-4": {
+          "0%, 20%": {
+            transform: "translateY(0%)",
+          },
+          "25%, 45%": {
+            transform: "translateY(-24%)",
+          },
+          "50%, 70%": {
+            transform: "translateY(-43%)",
+          },
+          "75%, 95%": {
+            transform: "translateY(-61%)",
+          },
+          "100%": {
+            transform: "translateY(-80%)",
+          },
+        },
+        "text-slide-5": {
+          "0%, 16%": {
+            transform: "translateY(0%)",
+          },
+          "20%, 36%": {
+            transform: "translateY(-16.66%)",
+          },
+          "40%, 56%": {
+            transform: "translateY(-33.33%)",
+          },
+          "60%, 76%": {
+            transform: "translateY(-50%)",
+          },
+          "80%, 96%": {
+            transform: "translateY(-66.66%)",
+          },
+          "100%": {
+            transform: "translateY(-83.33%)",
+          },
+        },
         appear: {
           "0%": {
             opacity: "0",
@@ -79,6 +119,11 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "text-slide-4":
+          "text-slide-4 10s cubic-bezier(0.83, 0, 0.17, 1) infinite",
+        "text-slide-5":
+          "text-slide-5 12.5s cubic-bezier(0.83, 0, 0.17, 1) infinite",
+        gradient: "gradient 8s linear infinite",
       },
     },
     fontFamily: {
