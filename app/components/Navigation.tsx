@@ -44,7 +44,7 @@ export default function Navigation() {
         initial="hide"
         animate={mobileNav ? "show" : "hide"}
         onClick={toggleMobileNav}
-        className="flex flex-col space-y-1 relative z-10 sm:hidden"
+        className="flex flex-col space-y-1 relative z-20 sm:hidden"
       >
         <motion.span
           variants={{
@@ -116,7 +116,7 @@ export default function Navigation() {
               initial="hide"
               animate="show"
               exit="hide"
-              className="fixed inset-0 bg-zinc-100  dark:bg-zinc-800 p-6 flex flex-col justify-center space-y-10 lg:hidden"
+              className="fixed inset-0 bg-zinc-100  dark:bg-zinc-800 p-6 flex flex-col justify-center space-y-10 lg:hidden z-10"
             >
               <motion.ul
                 variants={{

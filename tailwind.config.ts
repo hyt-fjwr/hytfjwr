@@ -75,7 +75,7 @@ const config = {
             transform: "translateY(0%)",
           },
           "25%, 45%": {
-            transform: "translateY(-24%)",
+            transform: "translateY(-23%)",
           },
           "50%, 70%": {
             transform: "translateY(-43%)",
