@@ -1,14 +1,70 @@
 import React from "react";
+import { Metadata, ResolvingMetadata } from "next";
 import { getPost } from "../../../data/post";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
+
+type Props = {
+  params: {
+    slug: string;
+  };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const post = await getPost(params.slug);
+
+  const { title, publishedAt: publishedTime, postId } = post;
+
+  const metadata: Metadata = {
+    metadataBase: new URL("https://hytfjwr.com"),
+    title: `${title} | Hayato Fujiwara`,
+    description: "BLOG PAGE",
+    openGraph: {
+      title: `${title} | Brian Ruiz`,
+      description: "BLOG PAGE",
+      type: "article",
+      publishedTime,
+      url: `https://hytfjwr.com/blog/${postId}`,
+      images: {
+        url: `https://hytfjwr.com/api/og?title=${title}`,
+        alt: "hytfjwr.com",
+      },
+    },
+  };
+
+  return metadata;
+}
+
 export default async function page({
   params: { slug },
 }: {
   params: { slug: string };
 }) {
   const post = await getPost(slug);
+
+  const metadata: Metadata = {
+    title: post.title,
+    description:
+      "My portfolio created with Nextjs, Radix Primitives, Framer Motion, Tailwind",
+    openGraph: {
+      title: "Hayato Fujiwara",
+      description:
+        "My portfolio created with Nextjs, Radix Primitives, Framer Motion, Tailwind",
+      type: "website",
+      url: "https://hytfjwr.com",
+      images: [
+        {
+          url: "https://hytfjwr.com/api/og?title=hytfjwr.com",
+          alt: "hytfjwr.com",
+        },
+      ],
+    },
+  };
 
   return (
     <div>
@@ -20,6 +76,7 @@ export default async function page({
           </Link>
         </Button>
         <div className="">
+          <h1>{post.title}</h1>
           <post.content />
         </div>
       </div>

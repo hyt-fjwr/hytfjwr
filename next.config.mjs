@@ -1,10 +1,12 @@
 import createMDX from "@next/mdx";
 import rehypePrettyCode from "rehype-pretty-code";
 
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   // Configure `pageExtensions` to include markdown and MDX files
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  images: {
+    domains: ["tailwindui.com"],
+  },
   // Optionally, add any other Next.js config below
 };
 

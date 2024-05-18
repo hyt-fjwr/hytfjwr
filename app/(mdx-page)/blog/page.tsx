@@ -2,8 +2,10 @@ import { NotebookPen } from "lucide-react";
 import React from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { getAllPosts } from "@/app/data/post";
 
 export default async function page() {
+  const posts = await getAllPosts();
   return (
     <>
       <div className="w-[21rem] flex flex-col md:w-[45rem]">
@@ -19,9 +21,13 @@ export default async function page() {
         </div>
       </div>
       <div className="flex mt-4">
-        <Button variant="ghost" className="bg-primary/5">
-          <Link href="/blog/GenerateOGP">GenerateOGP</Link>
-        </Button>
+        {posts.map((post) => (
+          <div key={post.postId} className="flex flex-col">
+            <Button variant="ghost" className="bg-primary/5 flex flex-col">
+              <Link href={`/blog/${post.postId}`}>{post.postId}</Link>
+            </Button>
+          </div>
+        ))}
       </div>
     </>
   );
