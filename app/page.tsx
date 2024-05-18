@@ -11,7 +11,7 @@ export default function Home() {
         <h1 className="text-black dark:text-white text-4xl font-bold">
           Hayato Fujiwara
         </h1>
-        <h2 className="mt-2">Hey there👋I'm experienced in :</h2>
+        <h2 className="mt-2">Hey there👋 I&apos;m experienced in :</h2>
         <SlideTextAnim />
       </div>
       <div className="w-[21rem] flex flex-col md:w-[45rem]">
