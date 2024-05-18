@@ -25,7 +25,7 @@ export async function generateMetadata(
     title: `${title} | Hayato Fujiwara`,
     description: "BLOG PAGE",
     openGraph: {
-      title: `${title} | Brian Ruiz`,
+      title: `${title} | Hayato Fujiwara`,
       description: "BLOG PAGE",
       type: "article",
       publishedTime,
