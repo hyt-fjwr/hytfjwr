@@ -79,6 +79,15 @@
   }
 }
 
+.animate-in {
+  opacity: 0;
+  animation: 0.3s ease-out animate-in;
+  animation-delay: calc(var(--index) * 150ms);
+  animation-name: animate-in;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards; /*これで値を保持*/
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -122,6 +131,17 @@ pre [data-line] {
     transform: translateY(-20px);
   }
   to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes animate-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
     transform: translateY(0);
   }
 }
