@@ -7,23 +7,36 @@ import SlideTextAnim from "./components/SlideTextAnim";
 export default function Home() {
   return (
     <main>
-      <div className="flex flex-col items-center ">
-        <h1 className="text-black dark:text-white text-4xl font-bold">
+      <div className="flex flex-col items-center">
+        <h1
+          className="text-black dark:text-white text-4xl font-bold animate-in"
+          style={{ "--index": 1 } as React.CSSProperties}
+        >
           Hayato Fujiwara
         </h1>
-        <h2 className="mt-2">Hey there👋 I&apos;m experienced in :</h2>
+        <h2
+          className="mt-2 animate-in"
+          style={{ "--index": 2 } as React.CSSProperties}
+        >
+          Hey there👋 I&apos;m experienced in :
+        </h2>
         <SlideTextAnim />
       </div>
       <div className="w-[21rem] flex flex-col md:w-[45rem]">
         <div className="mt-20">
-          <p>
+          <p
+            className="animate-in"
+            style={{ "--index": 3 } as React.CSSProperties}
+          >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque quasi
             commodi nam iusto, accusantium illum sunt rerum, est saepe omnis
             debitis suscipit optio explicabo accusamus nostrum nulla facilis,
             facere cum!
           </p>
-          <div>test</div>
-          <div className="grid grid-rows-3 grid-flow-col gap-4 h-96 ">
+          <div
+            className="grid grid-rows-3 grid-flow-col gap-4 h-96 animate-in"
+            style={{ "--index": 4 } as React.CSSProperties}
+          >
             <div className="row-span-3 bg-primary/5 rounded-lg p-4 w-32 md:w-96 h-96 text-ellipsis overflow-hidden">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore
               est veritatis repudiandae unde aliquid, sunt iure quia! Ea sit

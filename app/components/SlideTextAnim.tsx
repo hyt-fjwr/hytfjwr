@@ -2,12 +2,15 @@ import React from "react";
 
 export default function SlideTextAnim() {
   return (
-    <div className="font-inter antialiased font-extrabold text-3xl md:text-4xl [text-wrap:balance] text-transparent items-center flex text-center mt-2">
+    <div
+      className="font-inter antialiased font-extrabold text-3xl md:text-4xl [text-wrap:balance] text-transparent items-center flex text-center mt-2 animate-in"
+      style={{ "--index": 3 } as React.CSSProperties}
+    >
       {" "}
       <span className="text-indigo-500 inline-flex flex-col h-[calc(theme(fontSize.3xl)*theme(lineHeight.tight))] md:h-[calc(theme(fontSize.4xl)*theme(lineHeight.tight))] overflow-hidden">
         <ul className="font-inter antialiased block text-center leading-tight [&_li]:block animate-text-slide-4">
           <li className="bg-clip-text text-transparent bg-[linear-gradient(to_right,theme(colors.indigo.400),theme(colors.indigo.100),theme(colors.sky.400),theme(colors.fuchsia.400),theme(colors.sky.400),theme(colors.indigo.100),theme(colors.indigo.400))] bg-[length:200%_auto] animate-gradient">
-            Web Develop
+            Web Development
           </li>
           <li className="bg-clip-text text-transparent bg-[linear-gradient(to_right,theme(colors.green.300),theme(colors.green.100),theme(colors.sky.400),theme(colors.yellow.200),theme(colors.sky.400),theme(colors.green.100),theme(colors.green.300))] bg-[length:200%_auto] animate-gradient">
             Design
@@ -22,7 +25,7 @@ export default function SlideTextAnim() {
             aria-hidden="true"
             className="bg-clip-text text-transparent bg-[linear-gradient(to_right,theme(colors.indigo.400),theme(colors.indigo.100),theme(colors.sky.400),theme(colors.fuchsia.400),theme(colors.sky.400),theme(colors.indigo.100),theme(colors.indigo.400))] bg-[length:200%_auto] animate-gradient"
           >
-            Web Develop
+            Web Development
           </li>
         </ul>
       </span>

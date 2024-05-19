@@ -30,7 +30,7 @@ export async function generateMetadata(
       publishedTime,
       url: `https://hytfjwr.com/blog/${postId}`,
       images: {
-        url: `https://hytfjwr.com/api/og?title=${title}`,
+        url: `http://localhost:3000/api/og?title=${title}`,
         alt: "hytfjwr.com",
       },
     },
