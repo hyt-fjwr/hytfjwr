@@ -1,1 +1,1 @@
-export const PostSchema = ["GenerateOGP", "photo"];
+export const PostSchema = ["GenerateOGP", "photo", "test","test","test"];

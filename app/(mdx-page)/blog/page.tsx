@@ -21,19 +21,11 @@ export default async function page() {
           </h2>
         </div>
       </div>
-      <div className="flex mt-4">
+      <div className="flex flex-row m-4 md:w-[45rem] w-[21rem] bg-black">
         {posts.map((post) => (
-          <div key={post.postId} className="flex flex-col">
-            <Button variant="ghost" className="bg-primary/5 flex flex-col">
-              <Link href={`/blog/${post.postId}`}>{post.postId}</Link>
-            </Button>
-          </div>
-        ))}
-
-        {posts.map((post) => (
-          <button key={post.postId} className=" w-72 h-52">
+          <button key={post.postId} className="m-4 w-72 h-52">
             <Link href={`/blog/${post.postId}`}>
-              <div className="w-72 rounded-lg">
+              <div className="w-72 rounded-lg ">
                 <Image
                   width={1280}
                   height={720}
