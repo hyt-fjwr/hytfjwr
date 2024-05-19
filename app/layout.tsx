@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     url: "https://hytfjwr.com",
     images: [
       {
-        url: "http://localhost:3000/api/og?title=hytfjwr.com",
+        url: "https://hytfjwr.com/api/og?title=hytfjwr.com",
         alt: "hytfjwr.com",
       },
     ],
