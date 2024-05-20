@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 export default function page() {
   return (
     <>
-      <div className="flex flex-col ">
+      <div className="flex flex-col">
         <div className="w-[21rem] flex flex-col md:w-[45rem]">
           <div className="mt-5">
             <h1 className="text-black dark:text-white text-4xl font-bold flex items-center animate-in">
