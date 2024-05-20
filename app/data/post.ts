@@ -18,3 +18,8 @@ export const getPost = async (id: string) => {
 export const getAllPosts = async (): Promise<Post[]> => {
   return await Promise.all(PostSchema.map(async (id) => getPost(id)));
 };
+
+export const getAllPostsByTags = async (tag: string): Promise<Post[]> => {
+  const allPosts = await getAllPosts();
+  return allPosts.filter((post) => post.tags.includes(tag));
+};
