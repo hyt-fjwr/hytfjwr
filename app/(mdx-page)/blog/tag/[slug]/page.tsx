@@ -41,10 +41,11 @@ export default async function page({
           className="grid grid-cols-1 md:grid-cols-3 hide-scroll-bar justify-center animate-in"
           style={{ "--index": 2 } as React.CSSProperties}
         >
-          {posts.map((post) => (
+          {posts.map((post, index) => (
             <button
               key={post.postId}
-              className="m-6 w-72 h-[219px] hover:bg-primary/10 duration-200 rounded-lg"
+              className="m-1.5 md:m-6 w-72 h-[219px] hover:bg-primary/10 duration-200 rounded-lg animate-in"
+              style={{ "--index": index + 2 } as React.CSSProperties}
             >
               <Link href={`/blog/${post.postId}`}>
                 <div className="w-72 rounded-lg ">
