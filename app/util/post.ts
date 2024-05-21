@@ -1,6 +1,5 @@
-import { metadata } from "./../layout";
 import "server-only";
-import { PostSchema } from "./post-schema";
+import { PostSchema } from "../data/post-schema";
 import { Post } from "../types/Post";
 
 export const getPost = async (id: string) => {

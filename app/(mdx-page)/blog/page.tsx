@@ -3,7 +3,9 @@ import Image from "next/image";
 import React from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { getAllPosts } from "@/app/data/post";
+import { getAllPosts } from "@/app/util/post";
+import { cn } from "@/lib/utils";
+import { getCategoryColor } from "@/app/util/tagColorizer";
 
 function convertDateFormat(dateStr: string): string {
   // 正規表現を使って "/" を "-" に置き換える
@@ -58,7 +60,12 @@ export default async function page() {
                       <div className="flex">
                         {post.tags.map((tag: string) => (
                           <Link key={tag} href={`/blog/tag/${tag}`}>
-                            <button className="flex m-1 pl-1 pr-1 font-light text-xs border border-sky-700 rounded-lg  duration-100 dark:bg-primary/10 bg-zinc-100 hover:bg-primary/20 dark:hover:bg-slate-600 z-20">
+                            <button
+                              className={cn(
+                                getCategoryColor(tag),
+                                "flex m-1 pl-1 pr-1 font-light text-xs border rounded-lg  duration-100 dark:bg-primary/10 bg-zinc-100 hover:bg-primary/20 dark:hover:bg-slate-600 z-20"
+                              )}
+                            >
                               {tag}
                             </button>
                           </Link>

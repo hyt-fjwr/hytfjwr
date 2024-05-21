@@ -1,6 +1,6 @@
 import React from "react";
 import { Metadata, ResolvingMetadata } from "next";
-import { getPost } from "../../../data/post";
+import { getPost } from "../../../util/post";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
