@@ -3,7 +3,7 @@ import { PostSchema } from "../data/post-schema";
 import { Post } from "../types/Post";
 
 export const getPost = async (id: string) => {
-  const post = await import(`/content/blog/${id}.mdx`);
+  const post = await import(`@/content/blog/${id}.mdx`);
   const { postId, title, publishedAt, tags } = post.metadata;
   return {
     postId,
