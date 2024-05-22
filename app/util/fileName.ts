@@ -1,12 +1,12 @@
-import fs from "fs";
-import path from "path";
+import * as fs from "fs";
+import * as path from "path";
 
-export function getFileNamesWithoutExtension(dirPath: string): string[] {
-  const files = fs.readdirSync(dirPath);
-
-  const fileNamewWithoutExtension = files.map((file) => {
-    return path.parse(file).name;
-  });
-
-  return fileNamewWithoutExtension;
+export function getFileNamesWithoutExtension(directoryPath: string): string[] {
+  try {
+    const files = fs.readdirSync(directoryPath);
+    return files.map((file) => path.parse(file).name);
+  } catch (error) {
+    console.error("Error reading directory:", error);
+    return [];
+  }
 }

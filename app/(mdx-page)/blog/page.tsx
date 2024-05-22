@@ -6,8 +6,11 @@ import Link from "next/link";
 import { getAllPosts } from "@/app/util/post";
 import { cn } from "@/lib/utils";
 import { getCategoryColor } from "@/app/util/tagColorizer";
+import { getFileNamesWithoutExtension } from "@/app/util/fileName";
 
 function convertDateFormat(dateStr: string): string {
+  const logger = console.log(getFileNamesWithoutExtension("./content/blog/"));
+
   // 正規表現を使って "/" を "-" に置き換える
   return dateStr.replace(/\/+/g, "-");
 }
