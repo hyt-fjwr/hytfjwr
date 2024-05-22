@@ -12,7 +12,7 @@ function convertDateFormat(dateStr: string): string {
 }
 
 export default async function page() {
-  const posts = await getAllPosts("./content/blog/");
+  const posts = await getAllPosts();
   //公開日順にソート
   const postsSorted = posts.sort(
     (x, y) =>
@@ -43,11 +43,11 @@ export default async function page() {
         >
           {postsSorted.map((post, index) => (
             <button
-              key={post.postId}
+              key={post.id}
               className="m-1.5 md:m-6 w-72 h-[219px] hover:bg-primary/10 duration-200 rounded-lg animate-in"
               style={{ "--index": index + 2 } as React.CSSProperties}
             >
-              <Link href={`/blog/${post.postId}`}>
+              <Link href={`/blog/${post.id}`}>
                 <div className="w-72 rounded-lg ">
                   <Image
                     width={1280}

@@ -1,5 +1,3 @@
 import { getFileNamesWithoutExtension } from "../util/fileName";
 
-export const PostSchema = (dir: string): string[] => {
-  return getFileNamesWithoutExtension(dir);
-};
+export const PostSchema = ["GenerateOGP", "photo", "test", "test", "test"];

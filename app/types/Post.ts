@@ -1,5 +1,5 @@
 export type Post = {
-  postId: string;
+  id: string;
   title: string;
   publishedAt: string;
   content: React.ReactNode;

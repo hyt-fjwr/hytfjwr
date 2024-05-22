@@ -17,7 +17,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const post = await getPost(params.slug);
-  const { title, publishedAt: publishedTime, postId } = post;
+  const { title, publishedAt: publishedTime, id } = post;
 
   const metadata: Metadata = {
     metadataBase: new URL("https://hytfjwr.com"),
@@ -28,7 +28,7 @@ export async function generateMetadata(
       description: "BLOG PAGE",
       type: "article",
       publishedTime,
-      url: `https://hytfjwr.com/blog/${postId}`,
+      url: `https://hytfjwr.com/blog/${id}`,
       images: {
         url: `https://hytfjwr.com/api/og?title=${title}`,
         alt: "hytfjwr.com",
