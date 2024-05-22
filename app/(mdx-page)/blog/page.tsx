@@ -9,14 +9,18 @@ import { getCategoryColor } from "@/app/util/tagColorizer";
 import { getFileNamesWithoutExtension } from "@/app/util/fileName";
 
 function convertDateFormat(dateStr: string): string {
-  const logger = console.log(getFileNamesWithoutExtension("./content/blog/"));
-
   // 正規表現を使って "/" を "-" に置き換える
   return dateStr.replace(/\/+/g, "-");
 }
 
 export default async function page() {
   const posts = await getAllPosts();
+  //公開日順にソート
+  const postsSorted = posts.sort(
+    (x, y) =>
+      new Date(y.publishedAt).getTime() - new Date(x.publishedAt).getTime()
+  );
+
   return (
     <>
       <div className="flex flex-col items-center">
@@ -39,7 +43,7 @@ export default async function page() {
           className="grid grid-cols-1 md:grid-cols-3 hide-scroll-bar justify-center"
           style={{ "--index": 2 } as React.CSSProperties}
         >
-          {posts.map((post, index) => (
+          {postsSorted.map((post, index) => (
             <button
               key={post.postId}
               className="m-1.5 md:m-6 w-72 h-[219px] hover:bg-primary/10 duration-200 rounded-lg animate-in"
