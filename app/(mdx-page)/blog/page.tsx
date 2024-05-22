@@ -1,12 +1,10 @@
 import { NotebookPen } from "lucide-react";
 import Image from "next/image";
 import React from "react";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { getAllPosts } from "@/app/util/post";
 import { cn } from "@/lib/utils";
 import { getCategoryColor } from "@/app/util/tagColorizer";
-import { getFileNamesWithoutExtension } from "@/app/util/fileName";
 
 function convertDateFormat(dateStr: string): string {
   // 正規表現を使って "/" を "-" に置き換える
@@ -14,7 +12,7 @@ function convertDateFormat(dateStr: string): string {
 }
 
 export default async function page() {
-  const posts = await getAllPosts();
+  const posts = await getAllPosts("./content/blog/");
   //公開日順にソート
   const postsSorted = posts.sort(
     (x, y) =>

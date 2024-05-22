@@ -14,11 +14,14 @@ export const getPost = async (id: string) => {
   };
 };
 
-export const getAllPosts = async (): Promise<Post[]> => {
-  return await Promise.all(PostSchema.map(async (id) => getPost(id)));
+export const getAllPosts = async (dir: string): Promise<Post[]> => {
+  return await Promise.all(PostSchema(dir).map(async (id) => getPost(id)));
 };
 
-export const getAllPostsByTags = async (tag: string): Promise<Post[]> => {
-  const allPosts = await getAllPosts();
+export const getAllPostsByTags = async (
+  dir: string,
+  tag: string
+): Promise<Post[]> => {
+  const allPosts = await getAllPosts(dir);
   return allPosts.filter((post) => post.tags.includes(tag));
 };

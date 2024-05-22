@@ -1,3 +1,5 @@
 import { getFileNamesWithoutExtension } from "../util/fileName";
 
-export const PostSchema = getFileNamesWithoutExtension("./content/blog/");
+export const PostSchema = (dir: string): string[] => {
+  return getFileNamesWithoutExtension(dir);
+};

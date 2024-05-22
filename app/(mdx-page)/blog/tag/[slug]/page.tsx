@@ -16,7 +16,7 @@ export default async function page({
 }: {
   params: { slug: string };
 }) {
-  const posts = await getAllPostsByTags(slug);
+  const posts = await getAllPostsByTags("../content/blog/", slug);
   //公開日順にソート
   const postsSorted = posts.sort(
     (x, y) =>
