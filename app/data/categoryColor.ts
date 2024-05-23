@@ -15,6 +15,10 @@ export const CategoryColor = [
     Name: "TEST",
     Color: "border-green-400",
   },
+  {
+    Name: "TypeScript",
+    Color: "border-cyan-400",
+  },
 ];
 
 export default CategoryColor;
