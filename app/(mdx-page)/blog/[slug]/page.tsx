@@ -4,6 +4,7 @@ import { getPost } from "../../../util/post";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
+import { Toc } from "@/app/components/Toc";
 
 type Props = {
   params: {
@@ -54,7 +55,8 @@ export default async function page({
             BACK
           </Link>
         </Button>
-        <div className="">
+        <Toc />
+        <div id="post-content" className="post-content">
           <h1>{post.title}</h1>
           <post.content />
         </div>
