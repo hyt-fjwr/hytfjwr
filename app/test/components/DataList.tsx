@@ -49,6 +49,7 @@ export default function DataList({ serverData }: { serverData: Test[] }) {
                   objectFit: "cover",
                   borderRadius: "100%",
                 }}
+                className="w-[40px] h-[40px]"
                 loading="lazy"
                 alt="profile pic"
               />
