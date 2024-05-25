@@ -6,7 +6,6 @@ import { AnimatePresence, MotionConfig, motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { useLocalStorageState } from "../hooks/useLocalStorageState";
 
 const links = [
   { href: "/about", label: "About" },

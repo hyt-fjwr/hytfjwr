@@ -1,9 +1,7 @@
 export interface Test {
-  id: number;
+  id: string;
   text: string;
   created_at: string;
+  user_id: string;
+  imageUrl: string;
 }
-
-export type Props = {
-  items: Test[];
-};

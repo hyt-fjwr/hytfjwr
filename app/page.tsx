@@ -3,6 +3,7 @@ import ImageModal from "./components/ImageModal";
 import { ThemeToggle } from "./components/Theme-Toggle";
 import Loading from "./components/Loading";
 import SlideTextAnim from "./components/SlideTextAnim";
+import { auth } from "@clerk/nextjs/server";
 
 export default function Home() {
   return (

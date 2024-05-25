@@ -6,7 +6,7 @@ const nextConfig = {
   // Configure `pageExtensions` to include markdown and MDX files
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   images: {
-    domains: ["tailwindui.com", "hytfjwr.com", "localhost"],
+    domains: ["tailwindui.com", "hytfjwr.com", "localhost", "img.clerk.com"],
   },
   // Optionally, add any other Next.js config below
 };
