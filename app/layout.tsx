@@ -5,8 +5,8 @@ import Header from "./components/Header";
 import { ThemeProvider } from "./components/Theme-Provider";
 import Footer from "./components/Footer";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { GoogleAnalytics } from '@next/third-parties/google'
-
+import { Analytics } from "@vercel/analytics/react";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const notoSansJp = Noto_Sans_JP({ subsets: ["latin"] });
 
@@ -36,7 +36,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja" suppressHydrationWarning>
-      <GoogleAnalytics gaId="G-KY907GJVK2"/>
+      <GoogleAnalytics gaId="G-KY907GJVK2" />
+      <SpeedInsights />
+      <Analytics />
       <body className={`${notoSansJp.className}`}>
         <ThemeProvider
           attribute="class"
@@ -47,7 +49,6 @@ export default function RootLayout({
           <Header />
           <main className="py-6 container flex justify-center">{children}</main>
           <Footer />
-          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>

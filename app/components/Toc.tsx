@@ -6,20 +6,26 @@ import tocbot from "tocbot";
 export const Toc: FC = () => {
   useEffect(() => {
     tocbot.init({
-      tocSelector: ".post-content",
-      contentSelector: "h1, h2, h3",
-      activeLinkClass: ".is-active-link",
-      listClass: ".toc-list",
-      linkClass: ".toc-link",
+      tocSelector: ".toc",
+      contentSelector: ".post-content",
+      headingSelector: "h1, h2, h3",
+      activeLinkClass: "active-link",
+      ignoreSelector: "toc-ignore",
+      listClass: "toc-list",
+      linkClass: "toc-link",
+      scrollSmooth: true,
+      scrollSmoothDuration: 500,
+      scrollSmoothOffset: 0,
+      headingsOffset: 1,
     });
 
     return () => tocbot.destroy();
   }, []);
 
   return (
-    <nav>
-      <h2 className="toctitle">Table of Contents</h2>
-      <div className=".toc" />
+    <nav className="fixed translate-x-[38rem]">
+      <h2 className="toctitle">目次</h2>
+      <div className="toc pl-3 pr-3 md:visible invisible border rounded-xl w-80 transform-gpu" />
     </nav>
   );
 };

@@ -32,6 +32,7 @@
     --input: 240 5.9% 90%;
     --ring: 240 10% 3.9%;
 
+    --toc-highlight: rgb(105, 88, 255);
     --scrollbar-foreground: rgba(37, 37, 37, 0.425);
 
     --radius: 0.5rem;
@@ -63,6 +64,8 @@
     --destructive-foreground: 0 0% 98%;
 
     --scrollbar-foreground: rgba(81, 80, 90, 0.459);
+
+    --toc-highlight: rgb(197, 255, 88);
 
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
@@ -144,4 +147,16 @@ pre [data-line] {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.active-link {
+  color: var(--toc-highlight);
+  font-weight: 900;
+  transition: 0.6s;
+  text-decoration-line: underline;
+}
+
+.toc-link {
+  transition: 0.6s;
+  text-decoration-line: none;
 }

@@ -1,5 +1,6 @@
 import createMDX from "@next/mdx";
 import rehypePrettyCode from "rehype-pretty-code";
+import remarkSlug from "remark-slug";
 
 const nextConfig = {
   // Configure `pageExtensions` to include markdown and MDX files
@@ -13,6 +14,7 @@ const nextConfig = {
 const withMDX = createMDX({
   options: {
     rehypePlugins: [rehypePrettyCode],
+    remarkPlugins: [remarkSlug],
   },
 });
 
