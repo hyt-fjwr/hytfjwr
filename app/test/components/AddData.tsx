@@ -26,17 +26,24 @@ function createClerkSupabaseClient() {
 
 const client = createClerkSupabaseClient();
 
-export default function AddData() {
+export default function AddData({
+  userId,
+  imageUrl,
+}: {
+  userId: string;
+  imageUrl: string;
+}) {
   const addData = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const text = formData.get("text");
-    const userId = formData.get("userId");
 
     if (text && userId) {
-      const { error } = await client
-        .from("test")
-        .insert({ text: text.toString(), user_id: userId.toString() });
+      const { error } = await client.from("test").insert({
+        text: text.toString(),
+        user_id: userId.toString(),
+        imageUrl: imageUrl.toString(),
+      });
 
       if (error) {
         console.error("Error inserting data:", error.message);
@@ -48,7 +55,6 @@ export default function AddData() {
   return (
     <form onSubmit={addData}>
       <input name="text" required />
-      <input name="userId" required />
       <Button type="submit">submit data</Button>
     </form>
   );

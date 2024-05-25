@@ -33,9 +33,7 @@ export default async function Test() {
       <div>
         <SignedIn>
           <ServerActionTest />
-          <p>{id}</p>
-          <AddData />
-          <Image src={imageSrc} width={100} height={100} quality={80} alt="" />
+          <AddData userId={id} imageUrl={imageUrl} />
           <DataList serverData={data ?? []} />
         </SignedIn>
       </div>

@@ -2,6 +2,7 @@
 import { Test } from "@/app/types/Test";
 import { supabase } from "@/lib/supabase";
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function DataList({ serverData }: { serverData: Test[] }) {
   const [data, setData] = useState(serverData);
@@ -35,13 +36,27 @@ export default function DataList({ serverData }: { serverData: Test[] }) {
         {dataSorted.map((props, index) => (
           <div
             key={index}
-            className="animate-in"
+            className="animate-in flex flex-row border-t border-b m-3 p-2 pl-16 pr-16"
             style={{ "--index": index } as React.CSSProperties}
           >
+            <div className="mr-2">
+              <Image
+                src={props.imageUrl}
+                width={40}
+                height={40}
+                quality={70}
+                style={{
+                  objectFit: "cover",
+                  borderRadius: "100%",
+                }}
+                loading="lazy"
+                alt="profile pic"
+              />
+            </div>
+
             <ul>
-              <li>{props.id}</li>
+              <li className="font-bold text-xl">{props.id}</li>
               <li>{props.text}</li>
-              <li>{props.imageUrl}</li>
               <li>{props.created_at}</li>
             </ul>
           </div>
