@@ -15,7 +15,7 @@ interface ThemeToggleProps {
 }
 
 export const ThemeToggle: FC<ThemeToggleProps> = (props) => {
-  const { setTheme, theme, resolvedTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
   const className =
     "hover:bg-primary/10 text-muted-foreground hover:text-foreground group flex h-8 flex-row items-center space-x-2 rounded-md px-2 text-sm duration-200";
   return (

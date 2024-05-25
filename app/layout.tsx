@@ -7,6 +7,8 @@ import Footer from "./components/Footer";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { ClerkProvider } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
 
 const notoSansJp = Noto_Sans_JP({ subsets: ["latin"] });
 
@@ -46,9 +48,17 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          <main className="py-6 container flex justify-center">{children}</main>
-          <Footer />
+          <ClerkProvider
+            appearance={{
+              baseTheme: dark,
+            }}
+          >
+            <Header />
+            <main className="py-6 container flex justify-center">
+              {children}
+            </main>
+            <Footer />
+          </ClerkProvider>
         </ThemeProvider>
       </body>
     </html>

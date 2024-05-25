@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Navigation from "./Navigation";
 import { ThemeToggle } from "./Theme-Toggle";
+import { UserButton } from "@clerk/nextjs";
 
 export default function Header() {
   return (
@@ -12,6 +13,7 @@ export default function Header() {
         </Button>
         <Navigation />
         <ThemeToggle />
+        <UserButton />
       </header>
     </>
   );
