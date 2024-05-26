@@ -8,7 +8,6 @@ function createClerkSupabaseClient() {
 
   return createClient(supabaseUrl, supabaseAnonKey, {
     global: {
-      // Get the Supabase token with a custom fetch method
       fetch: async (url, options = {}) => {
         const clerkToken = await window.Clerk.session?.getToken({
           template: "hytfjwr-supabase",

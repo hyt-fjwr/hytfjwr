@@ -1,7 +1,6 @@
 import React from "react";
 import { SignIn, SignUp, SignedIn } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
-import Image from "next/image";
 import DataList from "./components/DataList";
 import ServerActionTest from "./components/ServerActionTest";
 import AddData from "./components/AddData";

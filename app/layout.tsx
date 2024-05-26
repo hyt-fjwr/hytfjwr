@@ -37,30 +37,30 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" suppressHydrationWarning>
-      <GoogleAnalytics gaId="G-KY907GJVK2" />
-      <SpeedInsights />
-      <Analytics />
-      <body className={`${notoSansJp.className}`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <ClerkProvider
-            appearance={{
-              baseTheme: dark,
-            }}
+    <ClerkProvider
+      appearance={{
+        baseTheme: dark,
+      }}
+    >
+      <html lang="ja" suppressHydrationWarning>
+        <GoogleAnalytics gaId="G-KY907GJVK2" />
+        <SpeedInsights />
+        <Analytics />
+        <body className={`${notoSansJp.className}`}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
           >
             <Header />
             <main className="py-6 container flex justify-center">
               {children}
             </main>
             <Footer />
-          </ClerkProvider>
-        </ThemeProvider>
-      </body>
-    </html>
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

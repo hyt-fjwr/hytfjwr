@@ -2,7 +2,7 @@
 import { Test } from "@/app/types/Test";
 import { supabase } from "@/lib/supabase";
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
+import ProfilePic from "./ProfilePic";
 
 export default function DataList({ serverData }: { serverData: Test[] }) {
   const [data, setData] = useState(serverData);
@@ -30,6 +30,7 @@ export default function DataList({ serverData }: { serverData: Test[] }) {
     (x, y) =>
       new Date(y.created_at).getTime() - new Date(x.created_at).getTime()
   );
+
   return (
     <>
       <div>
@@ -40,19 +41,7 @@ export default function DataList({ serverData }: { serverData: Test[] }) {
             style={{ "--index": index } as React.CSSProperties}
           >
             <div className="mr-2">
-              <Image
-                src={props.imageUrl}
-                width={40}
-                height={40}
-                quality={70}
-                style={{
-                  objectFit: "cover",
-                  borderRadius: "100%",
-                }}
-                className="w-[40px] h-[40px]"
-                loading="lazy"
-                alt="profile pic"
-              />
+              <ProfilePic a={props.imageUrl} />
             </div>
 
             <ul>

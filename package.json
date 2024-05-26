@@ -24,6 +24,7 @@
     "@vercel/speed-insights": "^1.0.10",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "encoding": "^0.1.13",
     "framer-motion": "^11.1.9",
     "init": "^0.1.2",
     "lucide-react": "^0.378.0",
@@ -41,6 +42,7 @@
     "remark-slug": "^7.0.1",
     "shadcn-ui": "^0.2.3",
     "shiki": "^1.5.2",
+    "svix": "^1.24.0",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "tocbot": "^4.28.2"
