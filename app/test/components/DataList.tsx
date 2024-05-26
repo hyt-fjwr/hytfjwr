@@ -1,10 +1,10 @@
 "use client";
-import { Test } from "@/app/types/Test";
+import { Comments } from "@/app/types/Comments";
+import Image from "next/image";
 import { supabase } from "@/lib/supabase";
 import React, { useEffect, useState } from "react";
-import ProfilePic from "./ProfilePic";
 
-export default function DataList({ serverData }: { serverData: Test[] }) {
+export default function DataList({ serverData }: { serverData: Comments[] }) {
   const [data, setData] = useState(serverData);
   useEffect(() => {
     const channel = supabase
@@ -14,10 +14,17 @@ export default function DataList({ serverData }: { serverData: Test[] }) {
         {
           event: "INSERT",
           schema: "public",
-          table: "test",
+          table: "comments",
         },
         (payload) => {
-          setData([...data, payload.new as Test]);
+          let newCommentData = payload.new as Comments;
+          console.log(newCommentData.id);
+          const userImg = supabase
+            .from("user")
+            .select()
+            .eq("id", newCommentData.id);
+          console.log(userImg);
+          setData([...data, payload.new as Comments]);
         }
       )
       .subscribe();
@@ -30,7 +37,6 @@ export default function DataList({ serverData }: { serverData: Test[] }) {
     (x, y) =>
       new Date(y.created_at).getTime() - new Date(x.created_at).getTime()
   );
-
   return (
     <>
       <div>
@@ -41,9 +47,20 @@ export default function DataList({ serverData }: { serverData: Test[] }) {
             style={{ "--index": index } as React.CSSProperties}
           >
             <div className="mr-2">
-              <ProfilePic a={props.imageUrl} />
+              {/* <Image
+                src={props.user.profileImageUrl}
+                width={40}
+                height={40}
+                quality={70}
+                style={{
+                  objectFit: "cover",
+                  borderRadius: "100%",
+                }}
+                className="w-[40px] h-[40px]"
+                loading="lazy"
+                alt="profile pic"
+              /> */}
             </div>
-
             <ul>
               <li className="font-bold text-xl">{props.id}</li>
               <li>{props.text}</li>

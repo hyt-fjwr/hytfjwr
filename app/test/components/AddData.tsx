@@ -38,10 +38,9 @@ export default function AddData({
     const text = formData.get("text");
 
     if (text && userId) {
-      const { error } = await client.from("test").insert({
+      const { error } = await client.from("comments").insert({
         text: text.toString(),
         user_id: userId.toString(),
-        imageUrl: imageUrl.toString(),
       });
 
       if (error) {

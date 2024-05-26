@@ -1,6 +1,7 @@
 import React from "react";
 import { SignIn, SignUp, SignedIn } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
+import Image from "next/image";
 import DataList from "./components/DataList";
 import ServerActionTest from "./components/ServerActionTest";
 import AddData from "./components/AddData";
@@ -10,8 +11,8 @@ export default async function Test() {
   const user = await currentUser();
 
   const { data } = await supabase
-    .from("test")
-    .select()
+    .from("comments")
+    .select(`*, user(*)`)
     .order("created_at", { ascending: false });
 
   if (!user) {
@@ -32,7 +33,7 @@ export default async function Test() {
       <div>
         <SignedIn>
           <ServerActionTest />
-          <AddData userId={id} imageUrl={imageUrl} />
+          <AddData userId={id} imageUrl={imageSrc} />
           <DataList serverData={data ?? []} />
         </SignedIn>
       </div>
