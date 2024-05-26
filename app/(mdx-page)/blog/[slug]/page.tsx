@@ -5,6 +5,9 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 import { Toc } from "@/app/components/Toc";
+import { supabase } from "@/lib/supabase";
+import { currentUser } from "@clerk/nextjs/server";
+import CommentsList from "@/app/components/CommentsList";
 
 type Props = {
   params: {
@@ -46,6 +49,15 @@ export default async function page({
   params: { slug: string };
 }) {
   const post = await getPost(slug);
+
+  //Comments
+  const user = await currentUser();
+  const { data } = await supabase
+    .from("comments")
+    .select(`*, user(*)`)
+    .eq("page_id", slug)
+    .order("created_at", { ascending: false });
+
   return (
     <div>
       <div className="prose dark:prose-invert w-[21rem] flex flex-col md:w-[45rem]">
@@ -61,6 +73,7 @@ export default async function page({
           <post.content />
         </div>
       </div>
+      <CommentsList serverData={data ?? []} />
     </div>
   );
 }
