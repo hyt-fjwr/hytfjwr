@@ -12,6 +12,7 @@ const nextConfig = {
       "localhost",
       "img.clerk.com",
       "images.clerk.dev",
+      "www.gravatar.com",
     ],
   },
   // Optionally, add any other Next.js config below

@@ -1,11 +1,25 @@
 "use client";
-import { Comments } from "@/app/types/Comments";
+import { Comments, User } from "@/app/types/Comments";
 import Image from "next/image";
 import { supabase } from "@/lib/supabase";
 import React, { useEffect, useState } from "react";
 
 export default function DataList({ serverData }: { serverData: Comments[] }) {
   const [data, setData] = useState(serverData);
+
+  const fetchUserProfile = async (userId: string): Promise<User | null> => {
+    const { data, error } = await supabase
+      .from("user")
+      .select("*")
+      .eq("id", userId)
+      .single();
+    if (error) {
+      console.error("Error fetching user profile:", error);
+      return null;
+    }
+    return data as User;
+  };
+
   useEffect(() => {
     const channel = supabase
       .channel("realtime posts")
@@ -16,15 +30,12 @@ export default function DataList({ serverData }: { serverData: Comments[] }) {
           schema: "public",
           table: "comments",
         },
-        (payload) => {
-          let newCommentData = payload.new as Comments;
-          console.log(newCommentData.id);
-          const userImg = supabase
-            .from("user")
-            .select()
-            .eq("id", newCommentData.id);
-          console.log(userImg);
-          setData([...data, payload.new as Comments]);
+        async (payload) => {
+          const newComment = payload.new as Comments;
+          const userProfile = await fetchUserProfile(newComment.user_id);
+          if (userProfile) {
+            setData([...data, { ...newComment, user: userProfile }]);
+          }
         }
       )
       .subscribe();
@@ -33,10 +44,12 @@ export default function DataList({ serverData }: { serverData: Comments[] }) {
       supabase.removeChannel(channel);
     };
   }, [data, setData]);
+
   const dataSorted = data.sort(
     (x, y) =>
       new Date(y.created_at).getTime() - new Date(x.created_at).getTime()
   );
+
   return (
     <>
       <div>
@@ -47,7 +60,7 @@ export default function DataList({ serverData }: { serverData: Comments[] }) {
             style={{ "--index": index } as React.CSSProperties}
           >
             <div className="mr-2">
-              {/* <Image
+              <Image
                 src={props.user.profileImageUrl}
                 width={40}
                 height={40}
@@ -59,7 +72,7 @@ export default function DataList({ serverData }: { serverData: Comments[] }) {
                 className="w-[40px] h-[40px]"
                 loading="lazy"
                 alt="profile pic"
-              /> */}
+              />
             </div>
             <ul>
               <li className="font-bold text-xl">{props.id}</li>
@@ -72,40 +85,3 @@ export default function DataList({ serverData }: { serverData: Comments[] }) {
     </>
   );
 }
-
-// export default function DataList() {
-//   const [data, setData] = useState<Test[]>([]);
-
-//   useEffect(() => {
-//     const getData = async () => {
-//       const { data } = await supabase
-//         .from("test")
-//         .select()
-//         .order("created_at", { ascending: false });
-//       if (data) {
-//         setData(data);
-//       }
-//     };
-//     getData();
-//   }, [setData]);
-//   return (
-//     <>
-//       <div>
-//         {data.map((props, index) => (
-//           <div
-//             key={index}
-//             className="animate-in"
-//             style={{ "--index": index } as React.CSSProperties}
-//           >
-//             <ul>
-//               <li>{props.id}</li>
-//               <li>{props.text}</li>
-//               <li>{props.imageUrl}</li>
-//               <li>{props.created_at}</li>
-//             </ul>
-//           </div>
-//         ))}
-//       </div>
-//     </>
-//   );
-// }
