@@ -9,7 +9,6 @@ import { supabase } from "@/lib/supabase";
 import { currentUser } from "@clerk/nextjs/server";
 import CommentsList from "@/app/components/CommentsList";
 import AddComment from "@/app/components/AddComment";
-import { SignedIn } from "@clerk/nextjs";
 
 type Props = {
   params: {
@@ -52,7 +51,7 @@ export default async function page({
 }) {
   const post = await getPost(slug);
   const { data } = await supabase
-    .from("comments")
+    .from("getcomments")
     .select(`*, user(*)`)
     .eq("page_id", slug)
     .order("created_at", { ascending: false });

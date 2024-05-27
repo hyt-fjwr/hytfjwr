@@ -14,8 +14,20 @@ import React from "react";
 import { Comments } from "../types/Comments";
 import Image from "next/image";
 import TimeAgo from "./TimeAgo";
+import { supabase } from "@/lib/supabase";
+import ReplyList from "./ReplyList";
 
-export default function ReplyDrawer({ data }: { data: Comments }) {
+export default async function ReplyDrawer({ msgData }: { msgData: Comments }) {
+  // const { data } = await supabase
+  //   .from("comment_replies")
+  //   .select(`*, user(*)`)
+  //   .eq("msg_id", msgData.id)
+  //   .order("created_at", { ascending: false });
+
+  // if (!data) {
+  //   return null;
+  // }
+
   return (
     <>
       <Drawer>
@@ -37,7 +49,7 @@ export default function ReplyDrawer({ data }: { data: Comments }) {
                 <div className="animate-in flex flex-row m-2 pt-1 pb-1 text-left">
                   <div className="mr-2">
                     <Image
-                      src={data.user.profileImageUrl}
+                      src={msgData.user.profileImageUrl}
                       width={30}
                       height={30}
                       quality={70}
@@ -53,15 +65,16 @@ export default function ReplyDrawer({ data }: { data: Comments }) {
                   <div className="flex flex-col w-[290px] md:w-[340px] bg-text-white  text-primary">
                     <div className="flex flex-row items-center text-center">
                       <div className="font-bold">
-                        {data.user.firstName} {data.user.lastName}
+                        {msgData.user.firstName} {msgData.user.lastName}
                       </div>
                       <div className="text-xs ml-2 text-primary/60 items-center">
-                        <TimeAgo timestamp={data.created_at} />
+                        <TimeAgo timestamp={msgData.created_at} />
                       </div>
                     </div>
-                    <div>{data.text}</div>
+                    <div>{msgData.text}</div>
                   </div>
                 </div>
+                {/* <ReplyList replies={data} /> */}
               </DrawerDescription>
             </DrawerHeader>
             <DrawerFooter>

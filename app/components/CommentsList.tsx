@@ -92,8 +92,8 @@ export default function CommentsList({
               <div>
                 {props.text}
                 <div className="flex flex-row items-center mt-2">
-                  <ReplyDrawer data={props} />
-                  <p className="pl-2 font-thin">999</p>
+                  <ReplyDrawer msgData={props} />
+                  <p className="pl-2 font-thin">{props.count}</p>
                 </div>
               </div>
             </div>
