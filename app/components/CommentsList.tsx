@@ -4,6 +4,7 @@ import Image from "next/image";
 import { supabase } from "@/lib/supabase";
 import React, { useEffect, useState } from "react";
 import TimeAgo from "./TimeAgo";
+import ReplyDrawer from "./ReplyDrawer";
 
 export default function CommentsList({
   serverData,
@@ -79,7 +80,7 @@ export default function CommentsList({
                 alt="profile pic"
               />
             </div>
-            <div className="flex flex-col w-72 md:w-96 bg-text-white">
+            <div className="flex flex-col w-[270px] md:w-[551px] bg-text-white">
               <div className="flex flex-row items-center text-center">
                 <div className="font-bold">
                   {props.user.firstName} {props.user.lastName}
@@ -88,7 +89,13 @@ export default function CommentsList({
                   <TimeAgo timestamp={props.created_at} />
                 </div>
               </div>
-              <div>{props.text}</div>
+              <div>
+                {props.text}
+                <div className="flex flex-row items-center mt-2">
+                  <ReplyDrawer data={props} />
+                  <p className="pl-2 font-thin">999</p>
+                </div>
+              </div>
             </div>
           </div>
         ))}
