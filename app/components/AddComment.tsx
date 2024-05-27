@@ -65,7 +65,7 @@ export default function AddComment({
           <input
             name="text"
             placeholder="Sign in to comment"
-            className="ml-2 rounded-lg h-9 w-96"
+            className="ml-2 rounded-lg h-9 w-50 md:w-96"
             disabled
             required
           />
@@ -99,7 +99,7 @@ export default function AddComment({
           <input
             name="text"
             placeholder="Something to share"
-            className="ml-2 rounded-lg h-9 w-96"
+            className="ml-2 rounded-lg h-9 w-50 md:w-96"
             required
           />
           <Button
