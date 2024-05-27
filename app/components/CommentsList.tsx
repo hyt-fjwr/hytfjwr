@@ -79,7 +79,7 @@ export default function CommentsList({
                 alt="profile pic"
               />
             </div>
-            <div className="flex flex-col w-52 md:w-96 bg-text-white">
+            <div className="flex flex-col w-72 md:w-96 bg-text-white">
               <div className="flex flex-row items-center text-center">
                 <div className="font-bold">
                   {props.user.firstName} {props.user.lastName}
