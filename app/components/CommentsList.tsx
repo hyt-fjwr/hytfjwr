@@ -3,6 +3,7 @@ import { Comments, User } from "@/app/types/Comments";
 import Image from "next/image";
 import { supabase } from "@/lib/supabase";
 import React, { useEffect, useState } from "react";
+import TimeAgo from "./TimeAgo";
 
 export default function CommentsList({
   serverData,
@@ -60,7 +61,7 @@ export default function CommentsList({
         {dataSorted.map((props, index) => (
           <div
             key={index}
-            className="animate-in flex flex-row border-t border-b m-3 p-2 pl-16 pr-16"
+            className="animate-in flex flex-row border-t border-b m-3 pt-2 pb-2"
             style={{ "--index": index } as React.CSSProperties}
           >
             <div className="mr-2">
@@ -78,10 +79,14 @@ export default function CommentsList({
                 alt="profile pic"
               />
             </div>
-            <div className="flex flex-col w-80">
-              <div className="flex flex-row items-center">
-                <div className="font-bold">{props.user.userName}</div>
-                <div className="text-xs ml-4">{props.created_at}</div>
+            <div className="flex flex-col w-96">
+              <div className="flex flex-row items-center text-center">
+                <div className="font-bold">
+                  {props.user.firstName} {props.user.lastName}
+                </div>
+                <div className="text-xs ml-2 text-primary/60 items-center">
+                  <TimeAgo timestamp={props.created_at} />
+                </div>
               </div>
               <div>{props.text}</div>
             </div>
