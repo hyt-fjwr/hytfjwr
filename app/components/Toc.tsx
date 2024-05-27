@@ -23,9 +23,9 @@ export const Toc: FC = () => {
   }, []);
 
   return (
-    <nav className="fixed translate-x-[38rem]">
+    <nav className="fixed translate-x-[38rem] md:visible invisible ">
       <h2 className="toctitle">目次</h2>
-      <div className="toc pl-3 pr-3 md:visible invisible border rounded-xl w-80 transform-gpu" />
+      <div className="toc pl-3 pr-3 border rounded-xl w-80 transform-gpu" />
     </nav>
   );
 };
