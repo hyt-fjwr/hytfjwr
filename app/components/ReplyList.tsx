@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Replies } from "../types/Replies";
 import Image from "next/image";

@@ -6,12 +6,8 @@ import React, { useEffect, useState } from "react";
 import TimeAgo from "./TimeAgo";
 import ReplyDrawer from "./ReplyDrawer";
 
-export default function CommentsList({
-  serverData,
-}: {
-  serverData: Comments[];
-}) {
-  const [data, setData] = useState(serverData);
+export default function CommentsList({ pageId }: { pageId: string }) {
+  const [comments, setComments] = useState<Comments[]>([]);
 
   const fetchUserProfile = async (userId: string): Promise<User | null> => {
     const { data, error } = await supabase
@@ -27,6 +23,31 @@ export default function CommentsList({
   };
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data, error } = await supabase
+          .from("comments")
+          .select(`*, user(*)`)
+          .eq("page_id", pageId)
+          .order("created_at", { ascending: false });
+
+        if (error) {
+          throw new Error(error.message);
+        }
+
+        if (data) {
+          console.log("Fetched comments:", data); // デバッグ用ログ
+          setComments(data as Comments[]);
+        } else {
+          console.error("No comments found for the given page ID");
+        }
+      } catch (error) {
+        console.error("Error fetching initial comments:", error);
+      }
+    };
+
+    fetchData();
+
     const channel = supabase
       .channel("realtime posts")
       .on(
@@ -40,7 +61,10 @@ export default function CommentsList({
           const newComment = payload.new as Comments;
           const userProfile = await fetchUserProfile(newComment.user_id);
           if (userProfile) {
-            setData([...data, { ...newComment, user: userProfile }]);
+            setComments((prevComments) => [
+              ...prevComments,
+              { ...newComment, user: userProfile },
+            ]);
           }
         }
       )
@@ -49,57 +73,95 @@ export default function CommentsList({
     return () => {
       supabase.removeChannel(channel);
     };
-  }, [data, setData]);
+  }, [pageId]);
 
-  const dataSorted = data.sort(
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        const fetchData = async () => {
+          try {
+            const { data, error } = await supabase
+              .from("comments")
+              .select(`*, user(*)`)
+              .eq("page_id", pageId)
+              .order("created_at", { ascending: false });
+
+            if (error) {
+              throw new Error(error.message);
+            }
+
+            if (data) {
+              console.log("Fetched comments on visibility change:", data); // デバッグ用ログ
+              setComments(data as Comments[]);
+            } else {
+              console.error("No comments found for the given page ID");
+            }
+          } catch (error) {
+            console.error(
+              "Error fetching comments on visibility change:",
+              error
+            );
+          }
+        };
+
+        fetchData();
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [pageId]);
+
+  const dataSorted = comments.sort(
     (x, y) =>
       new Date(y.created_at).getTime() - new Date(x.created_at).getTime()
   );
 
   return (
-    <>
-      <div>
-        {dataSorted.map((props, index) => (
-          <div
-            key={index}
-            className="animate-in flex flex-row border-t border-b m-3 pt-2 pb-2"
-            style={{ "--index": index } as React.CSSProperties}
-          >
-            <div className="mr-2">
-              <Image
-                src={props.user.profileImageUrl}
-                width={30}
-                height={30}
-                quality={70}
-                style={{
-                  objectFit: "cover",
-                  borderRadius: "100%",
-                }}
-                className="w-[30px] h-[30px]"
-                loading="lazy"
-                alt="profile pic"
-              />
-            </div>
-            <div className="flex flex-col w-[270px] md:w-[551px] bg-text-white">
-              <div className="flex flex-row items-center text-center">
-                <div className="font-bold">
-                  {props.user.firstName} {props.user.lastName}
-                </div>
-                <div className="text-xs ml-2 text-primary/60 items-center">
-                  <TimeAgo timestamp={props.created_at} />
-                </div>
+    <div>
+      {dataSorted.map((props, index) => (
+        <div
+          key={index}
+          className="animate-in flex flex-row border-t border-b m-3 pt-2 pb-2"
+          style={{ "--index": index } as React.CSSProperties}
+        >
+          <div className="mr-2">
+            <Image
+              src={props.user.profileImageUrl}
+              width={30}
+              height={30}
+              quality={70}
+              style={{
+                objectFit: "cover",
+                borderRadius: "100%",
+              }}
+              className="w-[30px] h-[30px]"
+              loading="lazy"
+              alt="profile pic"
+            />
+          </div>
+          <div className="flex flex-col w-[270px] md:w-[551px] bg-text-white">
+            <div className="flex flex-row items-center text-center">
+              <div className="font-bold">
+                {props.user.firstName} {props.user.lastName}
               </div>
-              <div>
-                {props.text}
-                <div className="flex flex-row items-center mt-2">
-                  <ReplyDrawer msgData={props} repliesCount={props.count} />
-                  <p className="pl-2 font-thin">{props.count}</p>
-                </div>
+              <div className="text-xs ml-2 text-primary/60 items-center">
+                <TimeAgo timestamp={props.created_at} />
+              </div>
+            </div>
+            <div>
+              {props.text}
+              <div className="flex flex-row items-center mt-2">
+                <ReplyDrawer msgData={props} repliesCount={props.count} />
+                <p className="pl-2 font-thin">{props.count}</p>
               </div>
             </div>
           </div>
-        ))}
-      </div>
-    </>
+        </div>
+      ))}
+    </div>
   );
 }

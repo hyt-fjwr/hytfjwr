@@ -1,5 +1,6 @@
 import { supabase } from "@/lib/supabase";
 import { Replies } from "../types/Replies";
+import { Comments } from "../types/Comments";
 
 export async function getReplies(msg_id: string): Promise<Replies[]> {
   const { data, error } = await supabase
