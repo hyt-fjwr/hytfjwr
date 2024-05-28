@@ -45,12 +45,12 @@ export default function ReplyDrawer({
               />
             </button>
           </DrawerTrigger>
-          <DrawerContent>
-            <div className="mx-auto w-full max-w-sm">
+          <DrawerContent className="max-h-[90vh]">
+            <div className="mx-auto w-full max-w-sm ">
               <DrawerHeader>
-                <DrawerTitle>Reply</DrawerTitle>
-                <DrawerDescription>
-                  <div className="animate-in flex flex-row m-2 pt-1 pb-1">
+                <DrawerTitle>Replies</DrawerTitle>
+                <DrawerDescription className="text-left text-primary">
+                  <div className="flex flex-row m-2 pt-1 pb-1">
                     <div className="mr-2">
                       <Image
                         src={msgData.user.profileImageUrl}
@@ -66,12 +66,12 @@ export default function ReplyDrawer({
                         alt="profile pic"
                       />
                     </div>
-                    <div className="flex flex-col w-[290px] md:w-[340px] bg-text-white  text-primary">
-                      <div className="flex flex-row items-center text-center">
+                    <div className="flex flex-col w-[290px] md:w-[340px] bg-text-white text-primary ">
+                      <div className="flex flex-row items-center text-left">
                         <div className="font-bold">
                           {msgData.user.firstName} {msgData.user.lastName}
                         </div>
-                        <div className="text-xs ml-2 text-primary/60 items-center">
+                        <div className="text-xs ml-2 text-primary/60 text-left">
                           @{msgData.user.userName}&nbsp;|&nbsp;
                           <TimeAgo timestamp={msgData.created_at} />
                         </div>
