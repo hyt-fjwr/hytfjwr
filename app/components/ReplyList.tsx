@@ -37,6 +37,7 @@ export default function ReplyList({ replies }: { replies: Replies[] }) {
                 {props.user.firstName} {props.user.lastName}
               </div>
               <div className="text-xs ml-2 text-primary/60 items-center">
+                @{props.user.userName}&nbsp;|&nbsp;
                 <TimeAgo timestamp={props.created_at} />
               </div>
             </div>

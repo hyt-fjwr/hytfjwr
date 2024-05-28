@@ -132,6 +132,7 @@ export default function ReplyDrawer({
                         {msgData.user.firstName} {msgData.user.lastName}
                       </div>
                       <div className="text-xs ml-2 text-primary/60 items-center">
+                        @{msgData.user.userName}&nbsp;|&nbsp;
                         <TimeAgo timestamp={msgData.created_at} />
                       </div>
                     </div>
