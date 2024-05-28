@@ -15,11 +15,11 @@ const notoSansJp = Noto_Sans_JP({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Hayato Fujiwara",
   description:
-    "My portfolio created with Nextjs, Radix Primitives, Framer Motion, Tailwind",
+    "My portfolio created with Nextjs, clerk, Supabase, Radix Primitives, shadcn/ui, Framer Motion, Tailwind",
   openGraph: {
     title: "Hayato Fujiwara",
     description:
-      "My portfolio created with Nextjs, Radix Primitives, Framer Motion, Tailwind",
+      "My portfolio created with Nextjs, clerk, Supabase, Radix Primitives, shadcn/ui, Framer Motion, Tailwind",
     type: "website",
     url: "https://hytfjwr.com",
     images: [

@@ -1,10 +1,119 @@
 "use client";
-import React from "react";
-import { Replies } from "../types/Replies";
+import React, { useEffect, useState } from "react";
+import { Replies, User } from "../types/Replies";
 import Image from "next/image";
 import TimeAgo from "./TimeAgo";
+import { supabase } from "@/lib/supabase";
 
-export default function ReplyList({ replies }: { replies: Replies[] }) {
+export default function ReplyList({ msg_id }: { msg_id: string }) {
+  const [replies, setReplies] = useState<Replies[]>([]);
+
+  const fetchUserProfile = async (userId: string): Promise<User | null> => {
+    const { data, error } = await supabase
+      .from("user")
+      .select("*")
+      .eq("id", userId)
+      .single();
+    if (error) {
+      console.error("Error fetching user profile:", error);
+      return null;
+    }
+    return data as User;
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data, error } = await supabase
+          .from("comment_replies")
+          .select(`*, user(*)`)
+          .eq("msg_id", msg_id)
+          .order("created_at", { ascending: false });
+
+        if (error) {
+          throw new Error(error.message);
+        }
+
+        if (data) {
+          console.log(data);
+          setReplies(data as Replies[]);
+        } else {
+          console.error("No comments found for the given page ID");
+        }
+      } catch (error) {
+        console.error("Error fetching initial comments:", error);
+      }
+    };
+
+    fetchData();
+
+    const channel = supabase
+      .channel("realtime posts")
+      .on(
+        "postgres_changes",
+        {
+          event: "INSERT",
+          schema: "public",
+          table: "comment_replies",
+        },
+        async (payload) => {
+          const newReplies = payload.new as Replies;
+          const userProfile = await fetchUserProfile(newReplies.user_id);
+          if (userProfile) {
+            setReplies((prevReplies) => [
+              ...prevReplies,
+              { ...newReplies, user: userProfile },
+            ]);
+          }
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [msg_id]);
+
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        const fetchData = async () => {
+          try {
+            const { data, error } = await supabase
+              .from("comment_replies")
+              .select(`*, user(*)`)
+              .eq("msg_id", msg_id)
+              .order("created_at", { ascending: false });
+
+            if (error) {
+              throw new Error(error.message);
+            }
+
+            if (data) {
+              console.log("Fetched replies on visibility change:", data); // デバッグ用ログ
+              setReplies(data as Replies[]);
+            } else {
+              console.error("No replies found for the given page ID");
+            }
+          } catch (error) {
+            console.error(
+              "Error fetching replies on visibility change:",
+              error
+            );
+          }
+        };
+
+        fetchData();
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [msg_id]);
+
   const repliesSorted = replies.sort(
     (x, y) =>
       new Date(y.created_at).getTime() - new Date(x.created_at).getTime()
