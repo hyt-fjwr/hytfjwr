@@ -28,7 +28,7 @@ export default function ReplyList({ msg_id }: { msg_id: string }) {
           .from("comment_replies")
           .select(`*, user(*)`)
           .eq("msg_id", msg_id)
-          .order("created_at", { ascending: false });
+          .order("created_at", { ascending: true });
 
         if (error) {
           throw new Error(error.message);
@@ -74,86 +74,81 @@ export default function ReplyList({ msg_id }: { msg_id: string }) {
     };
   }, [msg_id]);
 
-  useEffect(() => {
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === "visible") {
-        const fetchData = async () => {
-          try {
-            const { data, error } = await supabase
-              .from("comment_replies")
-              .select(`*, user(*)`)
-              .eq("msg_id", msg_id)
-              .order("created_at", { ascending: false });
+  // useEffect(() => {
+  //   const handleVisibilityChange = () => {
+  //     if (document.visibilityState === "visible") {
+  //       const fetchData = async () => {
+  //         try {
+  //           const { data, error } = await supabase
+  //             .from("comment_replies")
+  //             .select(`*, user(*)`)
+  //             .eq("msg_id", msg_id)
+  //             .order("created_at", { ascending: true });
 
-            if (error) {
-              throw new Error(error.message);
-            }
+  //           if (error) {
+  //             throw new Error(error.message);
+  //           }
 
-            if (data) {
-              console.log("Fetched replies on visibility change:", data); // デバッグ用ログ
-              setReplies(data as Replies[]);
-            } else {
-              console.error("No replies found for the given page ID");
-            }
-          } catch (error) {
-            console.error(
-              "Error fetching replies on visibility change:",
-              error
-            );
-          }
-        };
+  //           if (data) {
+  //             console.log("Fetched replies on visibility change:", data); // デバッグ用ログ
+  //             setReplies(data as Replies[]);
+  //           } else {
+  //             console.error("No replies found for the given page ID");
+  //           }
+  //         } catch (error) {
+  //           console.error(
+  //             "Error fetching replies on visibility change:",
+  //             error
+  //           );
+  //         }
+  //       };
 
-        fetchData();
-      }
-    };
+  //       fetchData();
+  //     }
+  //   };
 
-    document.addEventListener("visibilitychange", handleVisibilityChange);
+  //   document.addEventListener("visibilitychange", handleVisibilityChange);
 
-    return () => {
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-    };
-  }, [msg_id]);
+  //   return () => {
+  //     document.removeEventListener("visibilitychange", handleVisibilityChange);
+  //   };
+  // }, [msg_id]);
 
-  const repliesSorted = replies.sort(
-    (x, y) =>
-      new Date(y.created_at).getTime() - new Date(x.created_at).getTime()
-  );
   return (
     <>
-      {repliesSorted.map((props, index) => (
-        <div
-          key={index}
-          className="animate-in flex flex-row m-2 pt-1 pb-1 text-left"
-        >
-          <div className="mr-2">
-            <Image
-              src={props.user.profileImageUrl}
-              width={30}
-              height={30}
-              quality={70}
-              style={{
-                objectFit: "cover",
-                borderRadius: "100%",
-              }}
-              className="w-[30px] h-[30px]"
-              loading="lazy"
-              alt="profile pic"
-            />
-          </div>
-          <div className="flex flex-col w-[290px] md:w-[340px] bg-text-white  text-primary">
-            <div className="flex flex-row items-center text-center">
-              <div className="font-bold">
-                {props.user.firstName} {props.user.lastName}
-              </div>
-              <div className="text-xs ml-2 text-primary/60 items-center">
-                @{props.user.userName}&nbsp;|&nbsp;
-                <TimeAgo timestamp={props.created_at} />
-              </div>
+      <div className="max-h-[55vh] overflow-scroll">
+        {replies.map((props, index) => (
+          <div key={index} className="flex flex-row m-2 pt-1 pb-1 text-left">
+            <div className="mr-2">
+              <Image
+                src={props.user.profileImageUrl}
+                width={30}
+                height={30}
+                quality={70}
+                style={{
+                  objectFit: "cover",
+                  borderRadius: "100%",
+                }}
+                className="w-[30px] h-[30px]"
+                loading="lazy"
+                alt="profile pic"
+              />
             </div>
-            <div>{props.text}</div>
+            <div className="flex flex-col w-[290px] md:w-[340px] bg-text-white  text-primary">
+              <div className="flex flex-row items-center text-center">
+                <div className="font-bold">
+                  {props.user.firstName} {props.user.lastName}
+                </div>
+                <div className="text-xs ml-2 text-primary/60 items-center">
+                  @{props.user.userName}&nbsp;|&nbsp;
+                  <TimeAgo timestamp={props.created_at} />
+                </div>
+              </div>
+              <div>{props.text}</div>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </>
   );
 }
