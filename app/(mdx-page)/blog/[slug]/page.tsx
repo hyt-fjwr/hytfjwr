@@ -1,5 +1,5 @@
 import React from "react";
-import { Metadata, ResolvingMetadata } from "next";
+import { GetServerSideProps, Metadata, ResolvingMetadata } from "next";
 import { getPost } from "../../../util/post";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -9,6 +9,7 @@ import { supabase } from "@/lib/supabase";
 import { currentUser } from "@clerk/nextjs/server";
 import CommentsList from "@/app/components/CommentsList";
 import AddComment from "@/app/components/AddComment";
+import { UserButton } from "@clerk/nextjs";
 
 type Props = {
   params: {
@@ -51,10 +52,11 @@ export default async function page({
 }) {
   const post = await getPost(slug);
   const { data } = await supabase
-    .from("getcomments")
+    .from("comments")
     .select(`*, user(*)`)
     .eq("page_id", slug)
     .order("created_at", { ascending: false });
+
   //Comments
   const user = await currentUser();
   if (!user) {
@@ -93,7 +95,7 @@ export default async function page({
           </Link>
         </Button>
         <Toc />
-        <div id="post-content" className="post-content">
+        <div id="post-content" className="post-content text-primary">
           <h1>{post.title}</h1>
           <post.content />
         </div>

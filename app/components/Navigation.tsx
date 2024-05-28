@@ -29,7 +29,8 @@ export default function Navigation() {
         {links.map((link) => (
           <Button
             className={cn(
-              pathname === link.href && "bg-accent text-accent-foreground"
+              pathname === link.href && "bg-accent text-accent-foreground",
+              "ml-1 mr-2"
             )}
             variant="ghost"
             key={link.href}

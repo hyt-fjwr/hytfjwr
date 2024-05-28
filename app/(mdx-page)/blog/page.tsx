@@ -5,6 +5,7 @@ import Link from "next/link";
 import { getAllPosts } from "@/app/util/post";
 import { cn } from "@/lib/utils";
 import { getCategoryColor } from "@/app/util/tagColorizer";
+import { supabase } from "@/lib/supabase";
 
 function convertDateFormat(dateStr: string): string {
   // 正規表現を使って "/" を "-" に置き換える
