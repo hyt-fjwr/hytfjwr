@@ -63,7 +63,7 @@ export default async function page({
                 BACK
               </Link>
             </Button>
-            {/* <Toc /> */}
+            <Toc />
             <div id="post-content" className="post-content">
               <h1>{post.title}</h1>
               <post.content />
