@@ -119,6 +119,20 @@ export default function CommentsList({ pageId }: { pageId: string }) {
       new Date(y.created_at).getTime() - new Date(x.created_at).getTime()
   );
 
+  if (comments.length <= 0) {
+    return (
+      <>
+        <div className="animate-in flex flex-row border-t border-b m-3 pt-2 pb-2 justify-center">
+          <div className="flex items-center text-center p-5 text-primary/40 text-sm">
+            hmm.... it&apos;s quite here....
+            <br />
+            Let&apos;s leave some comments!😉
+          </div>
+        </div>
+      </>
+    );
+  }
+
   return (
     <div>
       {dataSorted.map((props, index) => (
