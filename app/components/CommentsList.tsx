@@ -147,7 +147,8 @@ export default function CommentsList({ pageId }: { pageId: string }) {
               <div className="font-bold">
                 {props.user.firstName} {props.user.lastName}
               </div>
-              <div className="text-xs ml-2 text-primary/60 items-center">
+              <div className="text-xs ml-1 text-primary/60 items-center">
+                @{props.user.firstName}&nbsp;|&nbsp;
                 <TimeAgo timestamp={props.created_at} />
               </div>
             </div>

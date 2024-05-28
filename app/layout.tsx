@@ -47,7 +47,12 @@ export default function RootLayout({
         <SpeedInsights />
         <Analytics />
         <body className={`${notoSansJp.className}`}>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            storageKey="theme"
+          >
             <Header />
             <main className="py-6 container flex justify-center">
               {children}
