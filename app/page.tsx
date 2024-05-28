@@ -1,7 +1,3 @@
-import Image from "next/image";
-import ImageModal from "./components/ImageModal";
-import { ThemeToggle } from "./components/Theme-Toggle";
-import Loading from "./components/Loading";
 import SlideTextAnim from "./components/SlideTextAnim";
 
 export default function Home() {

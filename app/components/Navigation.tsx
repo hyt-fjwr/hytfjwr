@@ -6,7 +6,6 @@ import { AnimatePresence, MotionConfig, motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { useLocalStorageState } from "../hooks/useLocalStorageState";
 
 const links = [
   { href: "/about", label: "About" },
@@ -30,7 +29,8 @@ export default function Navigation() {
         {links.map((link) => (
           <Button
             className={cn(
-              pathname === link.href && "bg-accent text-accent-foreground"
+              pathname === link.href && "bg-accent text-accent-foreground",
+              "ml-1 mr-2"
             )}
             variant="ghost"
             key={link.href}
