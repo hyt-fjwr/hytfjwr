@@ -26,7 +26,7 @@ export default function CommentsList({ pageId }: { pageId: string }) {
     const fetchData = async () => {
       try {
         const { data, error } = await supabase
-          .from("comments")
+          .from("getcomments")
           .select(`*, user(*)`)
           .eq("page_id", pageId)
           .order("created_at", { ascending: false });
@@ -36,7 +36,6 @@ export default function CommentsList({ pageId }: { pageId: string }) {
         }
 
         if (data) {
-          console.log("Fetched comments:", data); // デバッグ用ログ
           setComments(data as Comments[]);
         } else {
           console.error("No comments found for the given page ID");
@@ -81,7 +80,7 @@ export default function CommentsList({ pageId }: { pageId: string }) {
         const fetchData = async () => {
           try {
             const { data, error } = await supabase
-              .from("comments")
+              .from("getcomments")
               .select(`*, user(*)`)
               .eq("page_id", pageId)
               .order("created_at", { ascending: false });

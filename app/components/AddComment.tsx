@@ -1,9 +1,16 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { SignIn, SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
+import {
+  SignIn,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 import { createClient } from "@supabase/supabase-js";
 import Image from "next/image";
 import { CircleUserRound } from "lucide-react";
+import React, { useRef } from "react";
 
 function createClerkSupabaseClient() {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -29,15 +36,15 @@ function createClerkSupabaseClient() {
 const client = createClerkSupabaseClient();
 
 export default function AddComment({
-  profileImageUrl,
   userId,
   pageId,
 }: {
   userId: string;
   pageId: string;
-  profileImageUrl: string;
 }) {
-  const AddComment = async (event: React.FormEvent<HTMLFormElement>) => {
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const addComment = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const text = formData.get("text");
@@ -52,6 +59,11 @@ export default function AddComment({
       if (error) {
         console.error("Error inserting data:", error.message);
         return;
+      }
+
+      // Clear the input field after successful submission
+      if (formRef.current) {
+        formRef.current.reset();
       }
     }
   };
@@ -69,7 +81,13 @@ export default function AddComment({
             disabled
             required
           />
-          <SignInButton mode="modal">
+          <SignInButton
+            mode="modal"
+            forceRedirectUrl={`/blog/${pageId}`}
+            fallbackRedirectUrl={`/blog/${pageId}`}
+            signUpForceRedirectUrl={`/blog/${pageId}`}
+            signUpFallbackRedirectUrl={`/blog/${pageId}`}
+          >
             <Button
               variant="ghost"
               className="font-bold border ml-2 p-1.5 pl-2 pr-2 duration-100"
@@ -80,26 +98,18 @@ export default function AddComment({
         </div>
       </SignedOut>
       <SignedIn>
-        <form onSubmit={AddComment} className="flex items-center">
+        <form onSubmit={addComment} ref={formRef} className="flex items-center">
           <div className="ml-3">
-            <Image
-              src={profileImageUrl}
-              width={30}
-              height={30}
-              quality={70}
-              style={{
-                objectFit: "cover",
-                borderRadius: "100%",
-              }}
-              className="w-[30px] h-[30px]"
-              loading="lazy"
-              alt="profile pic"
+            <UserButton
+              userProfileMode="modal"
+              afterSignOutUrl={`/blog/${pageId}`}
+              signInUrl={`/blog/${pageId}`}
             />
           </div>
           <input
             name="text"
             placeholder="Something to share"
-            className="ml-2 rounded-lg h-9 w-52 md:w-96"
+            className="ml-2 rounded-lg h-9 w-52 md:w-96 duration-200"
             required
           />
           <Button
