@@ -1,5 +1,5 @@
+import SocialLinks from "@/app/components/SocialLinks";
 import { User } from "lucide-react";
-import React, { useEffect } from "react";
 
 export default function page() {
   return (
@@ -19,6 +19,7 @@ export default function page() {
             </h2>
           </div>
         </div>
+        <SocialLinks />
       </div>
     </>
   );
