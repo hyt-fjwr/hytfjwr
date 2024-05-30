@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { createClient } from "@supabase/supabase-js";
 import { CircleUserRound } from "lucide-react";
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 
 function createClerkSupabaseClient() {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -35,6 +35,29 @@ export default function AddReply({
   userId: string;
 }) {
   const formRef = useRef<HTMLFormElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const handleFocus = () => {
+      if (inputRef.current) {
+        inputRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }
+    };
+
+    const inputElement = inputRef.current;
+    if (inputElement) {
+      inputElement.addEventListener("focus", handleFocus);
+    }
+
+    return () => {
+      if (inputElement) {
+        inputElement.removeEventListener("focus", handleFocus);
+      }
+    };
+  }, []);
 
   const addReply = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -87,6 +110,7 @@ export default function AddReply({
             <UserButton userProfileMode="modal" />
           </div>
           <input
+            ref={inputRef}
             name="text"
             placeholder="Post your reply!"
             className="ml-2 text-sm rounded-lg h-7 w-full duration-200"

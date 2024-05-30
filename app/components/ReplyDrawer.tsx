@@ -28,11 +28,6 @@ export default function ReplyDrawer({
   repliesCount: string;
   userId: string;
 }) {
-  async function fetchReplies(msg_id: string) {
-    const replies = await getReplies(msg_id);
-    return replies;
-  }
-
   if (repliesCount != "0") {
     return (
       <>
