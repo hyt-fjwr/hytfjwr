@@ -74,45 +74,45 @@ export default function ReplyList({ msg_id }: { msg_id: string }) {
     };
   }, [msg_id]);
 
-  // useEffect(() => {
-  //   const handleVisibilityChange = () => {
-  //     if (document.visibilityState === "visible") {
-  //       const fetchData = async () => {
-  //         try {
-  //           const { data, error } = await supabase
-  //             .from("comment_replies")
-  //             .select(`*, user(*)`)
-  //             .eq("msg_id", msg_id)
-  //             .order("created_at", { ascending: true });
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        const fetchData = async () => {
+          try {
+            const { data, error } = await supabase
+              .from("comment_replies")
+              .select(`*, user(*)`)
+              .eq("msg_id", msg_id)
+              .order("created_at", { ascending: true });
 
-  //           if (error) {
-  //             throw new Error(error.message);
-  //           }
+            if (error) {
+              throw new Error(error.message);
+            }
 
-  //           if (data) {
-  //             console.log("Fetched replies on visibility change:", data); // デバッグ用ログ
-  //             setReplies(data as Replies[]);
-  //           } else {
-  //             console.error("No replies found for the given page ID");
-  //           }
-  //         } catch (error) {
-  //           console.error(
-  //             "Error fetching replies on visibility change:",
-  //             error
-  //           );
-  //         }
-  //       };
+            if (data) {
+              console.log("Fetched replies on visibility change:", data); // デバッグ用ログ
+              setReplies(data as Replies[]);
+            } else {
+              console.error("No replies found for the given page ID");
+            }
+          } catch (error) {
+            console.error(
+              "Error fetching replies on visibility change:",
+              error
+            );
+          }
+        };
 
-  //       fetchData();
-  //     }
-  //   };
+        fetchData();
+      }
+    };
 
-  //   document.addEventListener("visibilitychange", handleVisibilityChange);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
-  //   return () => {
-  //     document.removeEventListener("visibilitychange", handleVisibilityChange);
-  //   };
-  // }, [msg_id]);
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [msg_id]);
 
   return (
     <>

@@ -70,13 +70,12 @@ export default async function page({
             </div>
           </div>
           <AddComment userId={""} pageId={slug} />
-          <CommentsList pageId={slug} />
+          <CommentsList pageId={slug} userId="" />
         </div>
       </>
     );
   }
   const { id } = user;
-  const { imageUrl } = user;
   return (
     <div>
       <div className="prose dark:prose-invert w-[21rem] flex flex-col md:w-[45rem]">
@@ -93,7 +92,7 @@ export default async function page({
         </div>
       </div>
       <AddComment userId={id} pageId={slug} />
-      <CommentsList pageId={slug} />
+      <CommentsList pageId={slug} userId={id} />
     </div>
   );
 }
