@@ -113,7 +113,7 @@ export default function AddReply({
             ref={inputRef}
             name="text"
             placeholder="Post your reply!"
-            className="ml-2 text-sm rounded-lg h-7 w-full duration-200"
+            className="ml-2 rounded-lg h-7 w-full duration-200"
             required
           />
           <Button
