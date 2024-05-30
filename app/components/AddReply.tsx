@@ -61,10 +61,6 @@ export default function AddReply({
 
   return (
     <>
-      <meta
-        name="viewport"
-        content="width=device-width,initial-scale=1.0,maximum-scale=1.0"
-      />
       <SignedOut>
         <div className="flex items-center">
           <CircleUserRound aria-hidden="true" className="h-8 w-8" />
