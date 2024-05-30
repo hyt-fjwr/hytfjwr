@@ -1,4 +1,3 @@
-// src/components/TimeAgo.tsx
 import React, { useState, useEffect } from "react";
 import { formatTimeAgo } from "../util/formatTime";
 

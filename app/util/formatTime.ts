@@ -1,4 +1,3 @@
-// src/utils/formatTime.ts
 export function formatTimeAgo(inputTime: string): string {
   const now = new Date();
   const past = new Date(inputTime);

@@ -11,20 +11,22 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { MessageCircleMore } from "lucide-react";
-import React from "react";
+import React, { use } from "react";
 import { Comments } from "../types/Comments";
 import Image from "next/image";
 import TimeAgo from "./TimeAgo";
-import { supabase } from "@/lib/supabase";
 import ReplyList from "./ReplyList";
 import { getReplies } from "../db/query";
+import AddReply from "./AddReply";
 
 export default function ReplyDrawer({
   msgData,
   repliesCount,
+  userId,
 }: {
   msgData: Comments;
-  repliesCount: String;
+  repliesCount: string;
+  userId: string;
 }) {
   async function fetchReplies(msg_id: string) {
     const replies = await getReplies(msg_id);
@@ -81,6 +83,7 @@ export default function ReplyDrawer({
                   </div>
                   <ReplyList msg_id={msgData.id} />
                 </DrawerDescription>
+                <AddReply msgId={msgData.id} userId={userId} />
               </DrawerHeader>
               <DrawerFooter>
                 <DrawerClose asChild>
@@ -141,6 +144,7 @@ export default function ReplyDrawer({
                   </div>
                 </div>
               </DrawerDescription>
+              <AddReply msgId={msgData.id} userId={userId} />
             </DrawerHeader>
             <DrawerFooter>
               <DrawerClose asChild>

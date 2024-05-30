@@ -6,7 +6,13 @@ import React, { useEffect, useState } from "react";
 import TimeAgo from "./TimeAgo";
 import ReplyDrawer from "./ReplyDrawer";
 
-export default function CommentsList({ pageId }: { pageId: string }) {
+export default function CommentsList({
+  pageId,
+  userId,
+}: {
+  pageId: string;
+  userId: string;
+}) {
   const [comments, setComments] = useState<Comments[]>([]);
 
   const fetchUserProfile = async (userId: string): Promise<User | null> => {
@@ -169,7 +175,11 @@ export default function CommentsList({ pageId }: { pageId: string }) {
             <div>
               {props.text}
               <div className="flex flex-row items-center mt-2">
-                <ReplyDrawer msgData={props} repliesCount={props.count} />
+                <ReplyDrawer
+                  msgData={props}
+                  repliesCount={props.count}
+                  userId={userId}
+                />
                 <p className="pl-2 font-thin">{props.count}</p>
               </div>
             </div>

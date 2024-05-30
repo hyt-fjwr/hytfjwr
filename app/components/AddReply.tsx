@@ -1,12 +1,5 @@
-"use client";
 import { Button } from "@/components/ui/button";
-import {
-  SignIn,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { createClient } from "@supabase/supabase-js";
 import { CircleUserRound } from "lucide-react";
 import React, { useRef } from "react";
@@ -34,25 +27,25 @@ function createClerkSupabaseClient() {
 
 const client = createClerkSupabaseClient();
 
-export default function AddComment({
+export default function AddReply({
+  msgId,
   userId,
-  pageId,
 }: {
+  msgId: string;
   userId: string;
-  pageId: string;
 }) {
   const formRef = useRef<HTMLFormElement>(null);
 
-  const addComment = async (event: React.FormEvent<HTMLFormElement>) => {
+  const addReply = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const text = formData.get("text");
 
     if (text && userId) {
-      const { error } = await client.from("comments").insert({
+      const { error } = await client.from("comment_replies").insert({
         text: text.toString(),
         user_id: userId.toString(),
-        page_id: pageId.toString(),
+        msg_id: msgId.toString(),
       });
 
       if (error) {
@@ -60,7 +53,6 @@ export default function AddComment({
         return;
       }
 
-      // Clear the input field after successful submission
       if (formRef.current) {
         formRef.current.reset();
       }
@@ -69,27 +61,20 @@ export default function AddComment({
 
   return (
     <>
-      <div className="m-2 font-bold">Comments:</div>
       <SignedOut>
         <div className="flex items-center">
-          <CircleUserRound aria-hidden="true" className="h-8 w-8 ml-3" />
+          <CircleUserRound aria-hidden="true" className="h-8 w-8" />
           <input
             name="text"
-            placeholder="Sign in to comment"
-            className="ml-2 rounded-lg h-9 w-52 md:w-96"
+            placeholder="Sign in to reply!"
+            className="ml-2 rounded-lg h-7 w-52 md:w-full"
             disabled
             required
           />
-          <SignInButton
-            mode="modal"
-            forceRedirectUrl={`/blog/${pageId}`}
-            fallbackRedirectUrl={`/blog/${pageId}`}
-            signUpForceRedirectUrl={`/blog/${pageId}`}
-            signUpFallbackRedirectUrl={`/blog/${pageId}`}
-          >
+          <SignInButton mode="modal">
             <Button
               variant="ghost"
-              className="font-bold border ml-2 p-1.5 pl-2 pr-2 duration-100"
+              className="font-bold text-sm border pl-2 pr-2 duration-100"
             >
               Sign In
             </Button>
@@ -97,25 +82,22 @@ export default function AddComment({
         </div>
       </SignedOut>
       <SignedIn>
-        <form onSubmit={addComment} ref={formRef} className="flex items-center">
-          <div className="ml-3">
-            <UserButton
-              userProfileMode="modal"
-              afterSignOutUrl={`/blog/${pageId}`}
-              signInUrl={`/blog/${pageId}`}
-            />
+        <form onSubmit={addReply} ref={formRef} className="flex items-center">
+          <div className="">
+            <UserButton userProfileMode="modal" />
           </div>
           <input
             name="text"
-            placeholder="Something to share"
-            className="ml-2 rounded-lg h-9 w-52 md:w-96 duration-200"
+            placeholder="Post your reply!"
+            className="ml-2 text-sm rounded-lg h-7 w-full duration-200"
             required
           />
           <Button
             type="submit"
-            className="font-bold ml-2 p-1.5 pl-2 pr-2 rounded-full hover:bg-sky-400 duration-100"
+            variant={"ghost"}
+            className="font-bold text-sm ml-2 pl-2 pr-2 rounded-full hover:bg-sky-400 duration-100 border"
           >
-            Share
+            Reply
           </Button>
         </form>
       </SignedIn>
