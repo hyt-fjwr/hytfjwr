@@ -84,47 +84,49 @@ export default function AddReply({
 
   return (
     <>
-      <SignedOut>
-        <div className="flex items-center">
-          <CircleUserRound aria-hidden="true" className="h-8 w-8" />
-          <input
-            name="text"
-            placeholder="Sign in to reply!"
-            className="ml-2 rounded-lg h-7 w-52 md:w-full"
-            disabled
-            required
-          />
-          <SignInButton mode="modal">
-            <Button
-              variant="ghost"
-              className="font-bold text-sm border pl-2 pr-2 duration-100"
-            >
-              Sign In
-            </Button>
-          </SignInButton>
-        </div>
-      </SignedOut>
-      <SignedIn>
-        <form onSubmit={addReply} ref={formRef} className="flex items-center">
-          <div className="">
-            <UserButton userProfileMode="modal" />
+      <div className="pt-2">
+        <SignedOut>
+          <div className="flex items-center">
+            <CircleUserRound aria-hidden="true" className="h-8 w-8" />
+            <input
+              name="text"
+              placeholder="Sign in to reply!"
+              className="ml-2 rounded-lg h-7 w-52 md:w-full"
+              disabled
+              required
+            />
+            <SignInButton mode="modal">
+              <Button
+                variant="ghost"
+                className="font-bold text-sm border pl-2 pr-2 duration-100"
+              >
+                Sign In
+              </Button>
+            </SignInButton>
           </div>
-          <input
-            ref={inputRef}
-            name="text"
-            placeholder="Post your reply!"
-            className="ml-2 rounded-lg h-7 w-full duration-200"
-            required
-          />
-          <Button
-            type="submit"
-            variant={"ghost"}
-            className="font-bold text-sm ml-2 pl-2 pr-2 rounded-full hover:bg-sky-400 duration-100 border"
-          >
-            Reply
-          </Button>
-        </form>
-      </SignedIn>
+        </SignedOut>
+        <SignedIn>
+          <form onSubmit={addReply} ref={formRef} className="flex items-center">
+            <div className="">
+              <UserButton userProfileMode="modal" />
+            </div>
+            <input
+              ref={inputRef}
+              name="text"
+              placeholder="Post your reply!"
+              className="ml-2 rounded-lg h-7 w-full duration-200 "
+              required
+            />
+            <Button
+              type="submit"
+              variant={"ghost"}
+              className="font-bold text-sm ml-2 pl-2 pr-2 rounded-full hover:bg-sky-400 duration-100 border"
+            >
+              Reply
+            </Button>
+          </form>
+        </SignedIn>
+      </div>
     </>
   );
 }

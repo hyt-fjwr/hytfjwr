@@ -108,12 +108,12 @@ export default function AddComment({
           <input
             name="text"
             placeholder="Something to share"
-            className="ml-2 rounded-lg h-9 w-52 md:w-96 duration-200"
+            className="ml-2 rounded-lg h-9 w-52 md:w-96 duration-200  "
             required
           />
           <Button
             type="submit"
-            className="font-bold ml-2 p-1.5 pl-2 pr-2 rounded-full hover:bg-sky-400 duration-100"
+            className="ml-2 p-1.5 pl-2 pr-2 rounded-full hover:bg-sky-400 duration-100"
           >
             Share
           </Button>

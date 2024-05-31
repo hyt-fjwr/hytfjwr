@@ -7,6 +7,7 @@ import {
   DrawerDescription,
   DrawerFooter,
   DrawerHeader,
+  DrawerOverlay,
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
@@ -31,7 +32,7 @@ export default function ReplyDrawer({
   if (repliesCount != "0") {
     return (
       <>
-        <Drawer>
+        <Drawer scrollLockTimeout={1000}>
           <DrawerTrigger asChild>
             <button>
               <MessageCircleMore
@@ -42,12 +43,12 @@ export default function ReplyDrawer({
               />
             </button>
           </DrawerTrigger>
-          <DrawerContent className="max-h-[90vh]">
-            <div className="mx-auto w-full max-w-sm ">
+          <DrawerContent className="flex flex-col fixed bottom-0 left-0 right-0 max-h-[96%] rounded-t-[10px] bg-background">
+            <div className="max-w-md w-full mx-auto flex flex-col overflow-auto p-4">
               <DrawerHeader>
                 <DrawerTitle>Replies</DrawerTitle>
                 <DrawerDescription className="text-left text-primary">
-                  <div className="flex flex-row m-2 pt-1 pb-1">
+                  <div className="flex flex-row m-2 pt-1 pb-3 border-b">
                     <div className="mr-2">
                       <Image
                         src={msgData.user.profileImageUrl}
@@ -77,13 +78,13 @@ export default function ReplyDrawer({
                     </div>
                   </div>
                   <ReplyList msg_id={msgData.id} />
+                  <AddReply msgId={msgData.id} userId={userId} />
                 </DrawerDescription>
-                <AddReply msgId={msgData.id} userId={userId} />
               </DrawerHeader>
               <DrawerFooter>
-                <DrawerClose asChild>
+                {/* <DrawerClose asChild>
                   <Button variant="outline">Close</Button>
-                </DrawerClose>
+                </DrawerClose> */}
               </DrawerFooter>
             </div>
           </DrawerContent>
@@ -104,12 +105,12 @@ export default function ReplyDrawer({
             />
           </button>
         </DrawerTrigger>
-        <DrawerContent>
-          <div className="mx-auto w-full max-w-sm">
+        <DrawerContent className="flex flex-col fixed bottom-0 left-0 right-0 max-h-[96%] rounded-t-[10px] bg-background">
+          <div className="max-w-md w-full mx-auto flex flex-col overflow-auto p-4">
             <DrawerHeader>
-              <DrawerTitle>Reply</DrawerTitle>
-              <DrawerDescription>
-                <div className="animate-in flex flex-row m-2 pt-1 pb-1 text-left">
+              <DrawerTitle>Replies</DrawerTitle>
+              <DrawerDescription className="text-left text-primary">
+                <div className="flex flex-row m-2 pt-1 pb-3 border-b">
                   <div className="mr-2">
                     <Image
                       src={msgData.user.profileImageUrl}
@@ -141,11 +142,7 @@ export default function ReplyDrawer({
               </DrawerDescription>
               <AddReply msgId={msgData.id} userId={userId} />
             </DrawerHeader>
-            <DrawerFooter>
-              <DrawerClose asChild>
-                <Button variant="outline">Close</Button>
-              </DrawerClose>
-            </DrawerFooter>
+            <DrawerFooter></DrawerFooter>
           </div>
         </DrawerContent>
       </Drawer>

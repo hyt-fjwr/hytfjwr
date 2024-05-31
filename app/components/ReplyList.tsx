@@ -134,7 +134,7 @@ export default function ReplyList({ msg_id }: { msg_id: string }) {
                 alt="profile pic"
               />
             </div>
-            <div className="flex flex-col w-[290px] md:w-[340px] bg-text-white  text-primary">
+            <div className="flex flex-col w-[290px] md:w-[340px] bg-text-white text-primary break-words">
               <div className="flex flex-row items-center text-center">
                 <div className="font-bold">
                   {props.user.firstName} {props.user.lastName}
