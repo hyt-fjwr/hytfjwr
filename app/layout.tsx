@@ -8,8 +8,9 @@ import { Analytics } from "@vercel/analytics/react";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
+import Favicon from "./components/Favicon";
 
-const notoSansJp = Inter({ subsets: ["latin"] });
+const notoSansJp = Noto_Sans_JP({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Hayato Fujiwara",
@@ -42,6 +43,7 @@ export default function RootLayout({
       }}
     >
       <html lang="ja" suppressHydrationWarning>
+        <Favicon />
         <GoogleAnalytics gaId="G-KY907GJVK2" />
         <SpeedInsights />
         <Analytics />
