@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "@/components/ui/button";
+
 import {
   SignIn,
   SignInButton,
@@ -10,6 +10,7 @@ import {
 import { createClient } from "@supabase/supabase-js";
 import { CircleUserRound } from "lucide-react";
 import React, { useRef } from "react";
+import { Button } from "../ui/button";
 
 function createClerkSupabaseClient() {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;

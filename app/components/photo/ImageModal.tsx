@@ -1,9 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import React, { useState } from "react";
 import Modal from "react-modal";
 import Image from "next/image";
-import Loading from "./Loading";
+import Loading from "../Loading";
 
 interface ImageModalProps {
   imageUrl: any;

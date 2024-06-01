@@ -1,13 +1,13 @@
 import React from "react";
 import { Metadata, ResolvingMetadata } from "next";
 import { getPost } from "../../../util/post";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
-import { Toc } from "@/app/components/Toc";
 import { currentUser } from "@clerk/nextjs/server";
-import CommentsList from "@/app/components/CommentsList";
-import AddComment from "@/app/components/AddComment";
+import CommentsList from "@/app/components/blog/CommentsList";
+import AddComment from "@/app/components/blog/AddComment";
+import { Button } from "@/app/components/ui/button";
+import { Toc } from "@/app/components/blog/Toc";
 
 type Props = {
   params: {

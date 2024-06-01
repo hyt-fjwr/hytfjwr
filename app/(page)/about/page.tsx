@@ -1,4 +1,4 @@
-import SocialLinks from "@/app/components/SocialLinks";
+import SocialLinks from "@/app/components/about/SocialLinks";
 import { User } from "lucide-react";
 
 export default function page() {

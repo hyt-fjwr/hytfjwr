@@ -1,5 +1,4 @@
-import SlideTextAnim from "./components/SlideTextAnim";
-
+import SlideTextAnim from "./components/root/SlideTextAnim";
 export default function Home() {
   return (
     <main>

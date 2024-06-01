@@ -1,5 +1,5 @@
 import React from "react";
-import { socialLinks } from "../data/socialLinks";
+import { socialLinks } from "../../data/socialLinks";
 import Image from "next/image";
 import Link from "next/link";
 

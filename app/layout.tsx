@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
 import { Inter, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
-import Header from "./components/Header";
-import { ThemeProvider } from "./components/Theme-Provider";
-import Footer from "./components/Footer";
+import Header from "./components/header/Header";
+import { ThemeProvider } from "./components/header/Theme-Provider";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 
-const notoSansJp = Noto_Sans_JP({ subsets: ["latin"] });
+const notoSansJp = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Hayato Fujiwara",

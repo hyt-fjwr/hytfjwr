@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { formatTimeAgo } from "../util/formatTime";
+import { formatTimeAgo } from "../../util/formatTime";
 
 interface TimeAgoProps {
   timestamp: string;

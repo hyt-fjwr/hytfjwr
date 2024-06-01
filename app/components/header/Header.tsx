@@ -1,8 +1,6 @@
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Navigation from "./Navigation";
 import { ThemeToggle } from "./Theme-Toggle";
-import { UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 
 export default function Header() {

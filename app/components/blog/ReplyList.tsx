@@ -1,6 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { Replies, User } from "../types/Replies";
+import React, { useEffect, useRef, useState } from "react";
+import { Replies, User } from "../../types/Replies";
 import Image from "next/image";
 import TimeAgo from "./TimeAgo";
 import { supabase } from "@/lib/supabase";
@@ -114,9 +114,20 @@ export default function ReplyList({ msg_id }: { msg_id: string }) {
     };
   }, [msg_id]);
 
+  //Scroll down for new replies.
+  const containerRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.scrollTo({
+        top: containerRef.current.scrollHeight,
+        behavior: "smooth",
+      });
+    }
+  }, [replies]);
+
   return (
     <>
-      <div className="max-h-[55vh] overflow-scroll">
+      <div ref={containerRef} className="max-h-[55vh] overflow-scroll">
         {replies.map((props, index) => (
           <div key={index} className="flex flex-row m-2 pt-1 pb-1 text-left">
             <div className="mr-2">

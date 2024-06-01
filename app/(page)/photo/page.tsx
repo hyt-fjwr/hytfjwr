@@ -1,6 +1,6 @@
 "use client";
 import { Camera } from "lucide-react";
-import ImageModal from "../../components/ImageModal";
+import ImageModal from "../../components/photo/ImageModal";
 import { photos } from "../../data/photo";
 import { motion, Variants } from "framer-motion";
 

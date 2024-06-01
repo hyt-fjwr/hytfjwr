@@ -1,24 +1,23 @@
 "use client";
-import { Button } from "@/components/ui/button";
+import { Button } from "../ui/button";
+
+import { MessageCircleMore } from "lucide-react";
+import React, { use } from "react";
+import { Comments } from "../../types/Comments";
+import Image from "next/image";
+import TimeAgo from "./TimeAgo";
+import ReplyList from "./ReplyList";
+import { getReplies } from "../../db/query";
+import AddReply from "./AddReply";
 import {
   Drawer,
-  DrawerClose,
   DrawerContent,
   DrawerDescription,
   DrawerFooter,
   DrawerHeader,
-  DrawerOverlay,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/drawer";
-import { MessageCircleMore } from "lucide-react";
-import React, { use } from "react";
-import { Comments } from "../types/Comments";
-import Image from "next/image";
-import TimeAgo from "./TimeAgo";
-import ReplyList from "./ReplyList";
-import { getReplies } from "../db/query";
-import AddReply from "./AddReply";
+} from "../ui/drawer";
 
 export default function ReplyDrawer({
   msgData,

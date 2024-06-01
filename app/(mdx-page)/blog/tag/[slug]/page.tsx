@@ -1,11 +1,11 @@
 import { ChevronLeft, NotebookPen } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import { getAllPostsByTags } from "@/app/util/post";
 import { cn } from "@/lib/utils";
 import { getCategoryColor } from "@/app/util/tagColorizer";
 import { getFileNamesWithoutExtension } from "@/app/util/fileName";
+import { Button } from "@/app/components/ui/button";
 
 function convertDateFormat(dateStr: string): string {
   // 正規表現を使って "/" を "-" に置き換える
