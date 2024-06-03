@@ -1,9 +1,15 @@
+import { cn } from "@/lib/utils";
 import React from "react";
+import { Inter } from "next/font/google";
+const inter = Inter({ subsets: ["latin"] });
 
 export default function SlideTextAnim() {
   return (
     <div
-      className="font-inter antialiased font-extrabold text-3xl md:text-4xl [text-wrap:balance] text-transparent items-center flex text-center mt-2 animate-in"
+      className={cn(
+        `${inter.className}`,
+        "antialiased font-extrabold text-3xl md:text-4xl [text-wrap:balance] text-transparent items-center flex text-center mt-2 animate-in"
+      )}
       style={{ "--index": 3 } as React.CSSProperties}
     >
       {" "}

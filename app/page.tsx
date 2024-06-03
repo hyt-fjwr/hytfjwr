@@ -1,10 +1,17 @@
+import { cn } from "@/lib/utils";
 import SlideTextAnim from "./components/root/SlideTextAnim";
+import { Inter } from "next/font/google";
+import ShowFirstTime from "./components/root/ShowFirstTime";
+const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <main>
       <div className="flex flex-col items-center">
         <h1
-          className="text-black dark:text-white text-4xl font-bold animate-in"
+          className={cn(
+            `${inter.className}`,
+            "text-black dark:text-white text-4xl font-bold animate-in"
+          )}
           style={{ "--index": 1 } as React.CSSProperties}
         >
           Hayato Fujiwara
@@ -20,7 +27,7 @@ export default function Home() {
       <div className="w-[21rem] flex flex-col md:w-[45rem]">
         <div className="mt-20">
           <p
-            className="animate-in"
+            className={cn(`${inter.className}`, "animate-in")}
             style={{ "--index": 3 } as React.CSSProperties}
           >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque quasi

@@ -59,6 +59,11 @@ const config = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        fadeInOut: {
+          "0%": { opacity: "1" },
+          "71.43%": { opacity: "1" },
+          "100%": { opacity: "0" },
+        },
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -124,6 +129,7 @@ const config = {
         "text-slide-5":
           "text-slide-5 12.5s cubic-bezier(0.83, 0, 0.17, 1) infinite",
         gradient: "gradient 8s linear infinite",
+        fadeInOut: "fadeInOut 7s forwards",
       },
     },
     fontFamily: {
