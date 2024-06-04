@@ -68,7 +68,7 @@ export default async function page() {
                             <button
                               className={cn(
                                 getCategoryColor(tag),
-                                "flex m-1 pl-1 pr-1 font-light text-xs border rounded-lg  duration-100 dark:bg-primary/10 bg-zinc-100 hover:bg-primary/20 dark:hover:bg-slate-600 z-20"
+                                "flex m-1 pb-px pt-px pl-2 pr-2 text-xs border rounded-full duration-100 z-20 font-normal dark:font-light"
                               )}
                             >
                               {tag}
