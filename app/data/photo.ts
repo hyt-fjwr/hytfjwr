@@ -14,11 +14,11 @@ export const photos = [
     place: "沖縄 | 美ら海水族館",
   },
   {
-    imageUrl: "/photo/DSC04679.jpg",
+    imageUrl: "/photo/DSC04340.jpg",
     flickrUrl:
-      "https://live.staticflickr.com/65535/53686642146_e2080455e0_o.jpg",
-    date: "2024/04/14",
-    place: "沖縄 | 美ら海水族館",
+      "https://live.staticflickr.com/65535/53639829355_e1e1f354bc_o.jpg",
+    date: "2024/01/03",
+    place: "山梨 | 小菅村",
   },
   {
     imageUrl: "/photo/DSC04679.jpg",
