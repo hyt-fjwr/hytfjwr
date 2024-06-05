@@ -18,7 +18,7 @@ export default function SocialLinks() {
               className="w-full h-12 rounded-xl border flex justify-between animate-in"
               style={{ "--index": index } as React.CSSProperties}
             >
-              <div className="text-lg items-center flex ml-3">
+              <div className="text-sm md:text-lg items-center flex ml-3">
                 {social.name}
               </div>
               <Image
@@ -26,7 +26,7 @@ export default function SocialLinks() {
                 width={30}
                 height={30}
                 alt={social.name}
-                className="mr-3"
+                className="mr-3 scale-75 md:scale-100"
               />
             </div>
           </Link>
