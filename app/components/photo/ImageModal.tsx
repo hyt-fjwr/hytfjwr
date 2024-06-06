@@ -55,11 +55,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
             sizes="(max-width: 768px) 100vw, 50vw"
             width={500}
             height={500}
-            style={{
-              objectFit: "cover",
-              borderRadius: "10px",
-            }}
-            className="flex md:w-60 md:h-60 w-28 h-28 object-cover cursor-zoom-in hover:scale-110 transition duration-500"
+            className="flex md:w-60 md:h-60 w-40 h-40 object-cover cursor-zoom-in hover:scale-110 transition duration-500"
             alt={place}
             quality={70}
             onLoad={() => setIsLoading(true)}

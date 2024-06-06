@@ -40,15 +40,15 @@ export default function page() {
           </div>
         </div>
         <br />
-        <div className="w-full h-full grid md:grid-cols-4 grid-cols-2 md:gap-3">
+        <div className="w-full h-full grid md:grid-cols-5 grid-cols-2 gap-0">
           {photos.map((photo, index) => (
             <div
               key={photo.imageUrl}
-              className="animate-in"
+              className="animate-in border md:w-60 md:h-60 w-40 h-40"
               style={{ "--index": index } as React.CSSProperties}
             >
               <motion.div
-                className="flex flex-col py-3 px-4 object-cover overflow-hidden items-center"
+                className="flex flex-col overflow-hidden items-center md:w-60 md:h-60 w-40 h-40"
                 initial="offscreen"
                 whileInView="onscreen"
                 viewport={{ once: true, amount: 0.2 }}
@@ -61,12 +61,12 @@ export default function page() {
                   place={photo.place}
                   date={photo.date}
                 />
-                <p className="text-center text-xs md:text-base">
+                {/* <p className="text-center text-xs md:text-base">
                   Location : {photo.place}
                 </p>
                 <p className="text-center text-zinc-600 font-light text-xs md:text-base">
                   Photo taken on {photo.date}
-                </p>
+                </p> */}
               </motion.div>
             </div>
           ))}
