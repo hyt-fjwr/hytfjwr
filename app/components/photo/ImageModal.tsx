@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import Image from "next/image";
 import Loading from "../Loading";
-
+import "../../globals.css";
 interface ImageModalProps {
   imageUrl: any;
   flickrUrl: string;
@@ -46,22 +46,29 @@ const ImageModal: React.FC<ImageModalProps> = ({
 
   return (
     <div>
-      <button onClick={openModal}>
+      <button onClick={openModal} className="">
         {isLoading ? (
           <Loading />
         ) : (
-          <Image
-            src={imageUrl}
-            sizes="(max-width: 768px) 100vw, 50vw"
-            width={500}
-            height={500}
-            className="flex md:w-60 md:h-60 w-40 h-40 object-cover cursor-zoom-in hover:scale-110 transition duration-500"
-            alt={place}
-            quality={70}
-            onLoad={() => setIsLoading(true)}
-            onLoadingComplete={() => setIsLoading(false)}
-            loading="lazy"
-          />
+          <div className="relative group">
+            <div className="absolute flex z-10 group-hover:backdrop-blur-sm duration-500 group-hover:bg-black/30 w-full bottom-0 left-0">
+              <span className="p-2 opacity-0 translate-y-3 group-hover:translate-y-0 group-hover:opacity-100 duration-500">{place}</span>
+            </div>
+              <div className="cursor-zoom-in group-hover:scale-110 transition duration-500">
+                <Image
+                  src={imageUrl}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  width={500}
+                  height={500}
+                  className="flex md:w-60 md:h-60 w-40 h-40 object-cover"
+                  alt={place}
+                  quality={70}
+                  onLoad={() => setIsLoading(true)}
+                  onLoadingComplete={() => setIsLoading(false)}
+                  loading="lazy"
+                />
+            </div>
+          </div>
         )}
       </button>
       <Modal
