@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function SocialLinks() {
   return (
     <>
-      <div className="w-2/3 grid grid-cols-2 gap-2">
+      <div className="w-2/3 flex flex-col md:grid md:grid-cols-2 gap-2 justify-center">
         {socialLinks.map((social, index) => (
           <Link
             key={index}

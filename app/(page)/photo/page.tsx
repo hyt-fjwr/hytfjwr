@@ -25,11 +25,11 @@ export default function page() {
           {photos.map((photo, index) => (
             <div
               key={photo.imageUrl}
-              className="animate-in border md:w-60 md:h-60 w-40 h-40"
+              className="animate-in md:w-60 md:h-60 w-40 h-40"
               style={{ "--index": index } as React.CSSProperties}
             >
               <div
-                className="flex flex-col overflow-hidden items-center md:w-60 md:h-60 w-40 h-40"
+                className="flex flex-col overflow-hidden items-center md:w-60 md:h-60 w-40 h-40 border"
               >
                 <ImageModal
                   imageUrl={photo.imageUrl}
