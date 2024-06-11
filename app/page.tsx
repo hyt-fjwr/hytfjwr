@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import SlideTextAnim from "./components/root/SlideTextAnim";
 import { Inter } from "next/font/google";
 import ShowFirstTime from "./components/root/ShowFirstTime";
+import LatestPosts from "./components/root/LatestPosts";
 const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
@@ -35,6 +36,7 @@ export default function Home() {
             debitis suscipit optio explicabo accusamus nostrum nulla facilis,
             facere cum!
           </p>
+          <LatestPosts/>
           <div
             className="grid grid-rows-3 grid-flow-col gap-4 h-96 animate-in"
             style={{ "--index": 4 } as React.CSSProperties}

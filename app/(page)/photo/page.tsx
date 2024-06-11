@@ -2,27 +2,8 @@
 import { Camera } from "lucide-react";
 import ImageModal from "../../components/photo/ImageModal";
 import { photos } from "../../data/photo";
-import { motion, Variants } from "framer-motion";
 
 export default function page() {
-  const photoVariants: Variants = {
-    offscreen: {
-      y: 200,
-      opacity: 0,
-      rotate: -15,
-    },
-    onscreen: {
-      y: 0,
-      opacity: 100,
-      rotate: 0,
-      transition: {
-        type: "spring",
-        bounce: 0.2,
-        duration: 1.5,
-      },
-    },
-  };
-
   return (
     <>
       <div>
@@ -40,20 +21,15 @@ export default function page() {
           </div>
         </div>
         <br />
-        <div className="w-full h-full grid md:grid-cols-4 grid-cols-2 md:gap-3">
+        <div className="w-full h-full grid md:grid-cols-5 grid-cols-2 gap-0">
           {photos.map((photo, index) => (
             <div
               key={photo.imageUrl}
-              className="animate-in"
+              className="animate-in md:w-60 md:h-60 w-40 h-40"
               style={{ "--index": index } as React.CSSProperties}
             >
-              <motion.div
-                className="flex flex-col py-3 px-4 object-cover overflow-hidden items-center"
-                initial="offscreen"
-                whileInView="onscreen"
-                viewport={{ once: true, amount: 0.2 }}
-                variants={photoVariants}
-                transition={{ type: "spring", delay: index }}
+              <div
+                className="flex flex-col overflow-hidden items-center md:w-60 md:h-60 w-40 h-40 border"
               >
                 <ImageModal
                   imageUrl={photo.imageUrl}
@@ -61,13 +37,7 @@ export default function page() {
                   place={photo.place}
                   date={photo.date}
                 />
-                <p className="text-center text-xs md:text-base">
-                  Location : {photo.place}
-                </p>
-                <p className="text-center text-zinc-600 font-light text-xs md:text-base">
-                  Photo taken on {photo.date}
-                </p>
-              </motion.div>
+              </div>
             </div>
           ))}
         </div>
