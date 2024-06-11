@@ -116,7 +116,7 @@ export default function Navigation() {
               initial="hide"
               animate="show"
               exit="hide"
-              className="fixed inset-0 bg-zinc-100  dark:bg-zinc-800 p-6 flex flex-col justify-center space-y-10 lg:hidden z-10"
+              className="fixed inset-0 bg-zinc-100  dark:bg-zinc-800 p-6 flex flex-col justify-center space-y-10 lg:hidden z-50"
             >
               <motion.ul
                 variants={{
