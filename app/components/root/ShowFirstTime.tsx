@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import Image from "next/image";
 import { Gilda_Display } from "next/font/google";
@@ -11,7 +12,11 @@ const ShowFirstTime: React.FC = () => {
 
   return (
     <>
-      {!imageLoaded && <Loading />}
+      {!imageLoaded && (
+        <div className="flex inset-0 fixed items-center justify-center">
+          <Loading />
+        </div>
+      )}
       <div
         className={cn(
           "subpixel-antialiased md:invisible visible z-[150] flex flex-col fixed inset-0 justify-center items-center text-4xl pointer-events-none font-bold tracking-wide text-yellow-500 text-center animate-textFadeInOut",
