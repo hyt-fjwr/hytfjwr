@@ -142,6 +142,8 @@ const config = {
           "fadeInOut 5s cubic-bezier(0.000, 0.915, 0.365, 0.995) forwards",
         textFadeInOut:
           "textFadeInOut 5s cubic-bezier(0.000, 0.915, 0.365, 0.995) forwards",
+        textFadeInOut2:
+          "textFadeInOut 5.6s cubic-bezier(0.000, 0.915, 0.465, 1) forwards",
       },
     },
     fontFamily: {
