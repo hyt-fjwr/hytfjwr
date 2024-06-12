@@ -21,7 +21,7 @@ export default function page() {
           </div>
         </div>
         <br />
-        <div className="w-full h-full grid md:grid-cols-5 grid-cols-2 gap-0">
+        <div className="w-full h-full grid xl:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-0">
           {photos.map((photo, index) => (
             <div
               key={photo.imageUrl}

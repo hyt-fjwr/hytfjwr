@@ -36,10 +36,10 @@ export default function Home() {
             debitis suscipit optio explicabo accusamus nostrum nulla facilis,
             facere cum!
           </p>
-          <LatestPosts/>
+          <LatestPosts cssIndex={4} />
           <div
             className="grid grid-rows-3 grid-flow-col gap-4 h-96 animate-in"
-            style={{ "--index": 4 } as React.CSSProperties}
+            style={{ "--index": 5 } as React.CSSProperties}
           >
             <div className="row-span-3 bg-primary/5 rounded-lg p-4 w-32 md:w-96 h-96 text-ellipsis overflow-hidden">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore
