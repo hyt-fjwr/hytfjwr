@@ -1,39 +1,46 @@
-"use client";
-import { useEffect, useState } from "react";
 import Image from "next/image";
-import { Inter } from "next/font/google";
-const inter = Inter({ subsets: ["latin"] });
+import { Gilda_Display } from "next/font/google";
+import { cn } from "@/lib/utils";
+const Gilda = Gilda_Display({ subsets: ["latin"], weight: "400" });
 const ShowFirstTime: React.FC = () => {
-  const [isFirstTime, setIsFirstTime] = useState(false);
-
-  useEffect(() => {
-    const hasVisited = localStorage.getItem("hassVisited");
-
-    if (!hasVisited) {
-      setIsFirstTime(true);
-      localStorage.setItem("hassVisited", "true");
-
-      setTimeout(() => {
-        setIsFirstTime(false);
-      }, 7000);
-    }
-  }, []);
-
-  if (!isFirstTime) {
-    return null;
-  }
-
   return (
-    <div className="w-[100%] h-[100vh] flex fixed z-10 animate-fadeInOut bg-primary">
-      <h1 className={`${inter.className}`}>HAYATO FUJIWARA</h1>
-      <Image
-        src="/photo/DSC01542.jpg"
-        fill
-        alt=""
-        className="object-cover"
-      ></Image>
-    </div>
+    <>
+      <div
+        className={cn(
+          "subpixel-antialiased md:invisible visible z-[150] flex flex-col fixed inset-0 justify-center items-center text-4xl pointer-events-none font-bold tracking-wide text-yellow-500 text-center animate-textFadeInOut",
+          Gilda.className
+        )}
+      >
+        <h1>
+          HAYATO
+          <br />
+          FUJIWARA
+        </h1>
+        <h2 className="text-xl tracking-tight">Welcome to the portfolio</h2>
+      </div>
+      <div
+        className={cn(
+          "subpixel-antialiased md:visible invisible z-[150] flex flex-col fixed inset-0 justify-center items-center text-4xl pointer-events-none font-bold tracking-wide text-yellow-500 text-center animate-textFadeInOut",
+          Gilda.className
+        )}
+      >
+        <h1>HAYATO FUJIWARA</h1>
+        <h2 className="text-xl tracking-tight">Welcome to the portfolio</h2>
+      </div>
+      <div
+        className={cn(
+          "w-full h-full z-[100] fixed inset-0 animate-fadeInOut pointer-events-none"
+        )}
+      >
+        <Image
+          src="/photo/DSC02392.jpg"
+          fill
+          alt=""
+          quality={100}
+          className="object-cover pointer-events-none"
+        ></Image>
+      </div>
+    </>
   );
 };
-
 export default ShowFirstTime;

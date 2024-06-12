@@ -7,6 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <main>
+      <ShowFirstTime />
       <div className="flex flex-col items-center">
         <h1
           className={cn(
@@ -26,7 +27,7 @@ export default function Home() {
         <SlideTextAnim />
       </div>
       <div className="w-[21rem] flex flex-col md:w-[45rem]">
-        <div className="mt-20">
+        <div className="mt-5">
           <p
             className={cn(`${inter.className}`, "animate-in")}
             style={{ "--index": 3 } as React.CSSProperties}
@@ -38,7 +39,7 @@ export default function Home() {
           </p>
           <LatestPosts cssIndex={4} />
           <div
-            className="grid grid-rows-3 grid-flow-col gap-4 h-96 animate-in"
+            className="grid grid-rows-3 grid-flow-col gap-4 h-96 animate-in mt-3"
             style={{ "--index": 5 } as React.CSSProperties}
           >
             <div className="row-span-3 bg-primary/5 rounded-lg p-4 w-32 md:w-96 h-96 text-ellipsis overflow-hidden">

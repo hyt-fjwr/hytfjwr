@@ -50,7 +50,7 @@ export default async function page({
           </div>
         </div>
         <div
-          className="grid grid-cols-1 md:grid-cols-3 hide-scroll-bar justify-center animate-in"
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 hide-scroll-bar justify-center animate-in"
           style={{ "--index": 2 } as React.CSSProperties}
         >
           {postsSorted.map((post, index) => (

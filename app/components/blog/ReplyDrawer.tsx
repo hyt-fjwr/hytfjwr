@@ -1,13 +1,10 @@
 "use client";
-import { Button } from "../ui/button";
-
 import { MessageCircleMore } from "lucide-react";
 import React, { use } from "react";
 import { Comments } from "../../types/Comments";
 import Image from "next/image";
 import TimeAgo from "./TimeAgo";
 import ReplyList from "./ReplyList";
-import { getReplies } from "../../db/query";
 import AddReply from "./AddReply";
 import {
   Drawer,
