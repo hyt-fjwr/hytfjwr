@@ -1,10 +1,17 @@
+import React, { useState } from "react";
 import Image from "next/image";
 import { Gilda_Display } from "next/font/google";
 import { cn } from "@/lib/utils";
+import Loading from "../Loading";
+
 const Gilda = Gilda_Display({ subsets: ["latin"], weight: "400" });
+
 const ShowFirstTime: React.FC = () => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   return (
     <>
+      {!imageLoaded && <Loading />}
       <div
         className={cn(
           "subpixel-antialiased md:invisible visible z-[150] flex flex-col fixed inset-0 justify-center items-center text-4xl pointer-events-none font-bold tracking-wide text-yellow-500 text-center animate-textFadeInOut",
@@ -38,9 +45,11 @@ const ShowFirstTime: React.FC = () => {
           alt=""
           quality={100}
           className="object-cover pointer-events-none"
-        ></Image>
+          onLoadingComplete={() => setImageLoaded(true)}
+        />
       </div>
     </>
   );
 };
+
 export default ShowFirstTime;
