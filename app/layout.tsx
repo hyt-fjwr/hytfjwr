@@ -9,6 +9,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import Favicon from "./components/Favicon";
+import Head from "next/head";
 
 const notoSansJp = Noto_Sans_JP({ subsets: ["latin"] });
 
@@ -44,7 +45,12 @@ export default function RootLayout({
     >
       <html lang="ja" suppressHydrationWarning>
         <Favicon />
-        <GoogleAnalytics gaId="G-KY907GJVK2" />
+        <Head>
+          <meta
+            name="google-site-verification"
+            content="kX8H2m370t5RqTdrRF8pK0xWj3DJqk-50DZSwcqg6AU"
+          />
+        </Head>
         <SpeedInsights />
         <Analytics />
         <body className={`${notoSansJp.className}`}>

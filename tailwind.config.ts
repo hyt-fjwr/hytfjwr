@@ -75,8 +75,8 @@ const config = {
           "0%": { opacity: "0", transform: "scale(1.2)", filter: "blur(4px)" },
           "15%": { opacity: "0", transform: "scale(1.2)", filter: "blur(4px)" },
           "40%": { opacity: "1", transform: "scale(1)", filter: "blur(0px)" },
-          "71.43%": { opacity: "1" },
-          "100%": { opacity: "0" },
+          "71.43%": { opacity: "1", filter: "blur(0px)" },
+          "100%": { opacity: "0", filter: "blur(4px)" },
         },
         "accordion-down": {
           from: { height: "0" },

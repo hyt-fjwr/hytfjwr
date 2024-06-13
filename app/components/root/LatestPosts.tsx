@@ -21,7 +21,8 @@ export default async function LatestPosts({ cssIndex }: { cssIndex: number }) {
           <Link
             key={index}
             href={`/blog/${post.id}`}
-            className="flex flex-row gap-2 items-center hover:bg-primary/10 rounded-full duration-150 p-0.5 pl-2 truncate w-full m-0.5"
+            className="flex flex-row gap-2 items-center hover:bg-primary/10 rounded-full duration-150 p-0.5 pl-2 truncate w-full m-0.5 animate-in"
+            style={{ "--index": cssIndex + index } as React.CSSProperties}
           >
             <p className="text-primary/30 text-sm">{post.publishedAt}</p>
             <h1 className="ml-3 truncate">{post.title}</h1>
