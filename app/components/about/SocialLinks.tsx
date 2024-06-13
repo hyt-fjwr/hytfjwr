@@ -3,7 +3,7 @@ import { socialLinks } from "../../data/socialLinks";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function SocialLinks() {
+export default function SocialLinks({ cssIndex }: { cssIndex: number }) {
   return (
     <>
       <div className="w-full gap-1 grid grid-cols-2 md:flex md:flex-row justify-center">
@@ -16,7 +16,7 @@ export default function SocialLinks() {
           >
             <div
               className="h-9 md:h-10 rounded-xl border flex animate-in duration-200 hover:bg-primary/5"
-              style={{ "--index": index } as React.CSSProperties}
+              style={{ "--index": index + cssIndex } as React.CSSProperties}
             >
               <Image
                 src={social.icon}

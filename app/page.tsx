@@ -15,13 +15,13 @@ export default function Home() {
             `${inter.className}`,
             "text-black dark:text-white text-4xl font-bold animate-in"
           )}
-          style={{ "--index": 1 } as React.CSSProperties}
+          style={{ "--index": 20 } as React.CSSProperties}
         >
           Hayato Fujiwara
         </h1>
         <h2
           className="mt-2 animate-in"
-          style={{ "--index": 2 } as React.CSSProperties}
+          style={{ "--index": 21 } as React.CSSProperties}
         >
           Hey there👋 I&apos;m experienced in :
         </h2>
@@ -34,12 +34,12 @@ export default function Home() {
               `${inter.className}`,
               "text-primary prose-xl font-semibold animate-in justify-center flex"
             )}
-            style={{ "--index": 3 } as React.CSSProperties}
+            style={{ "--index": 22 } as React.CSSProperties}
           >
             Social Links
           </h1>
-          <SocialLinks />
-          <LatestPosts cssIndex={4} />
+          <SocialLinks cssIndex={23} />
+          <LatestPosts cssIndex={27} />
           {/* <div
             className="grid grid-rows-3 grid-flow-col gap-4 h-96 animate-in mt-3"
             style={{ "--index": 5 } as React.CSSProperties}

@@ -10,7 +10,6 @@ const Gilda = Gilda_Display({ subsets: ["latin"], weight: "400" });
 const ShowFirstTime: React.FC = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [showContent, setShowContent] = useState(false);
-
   useEffect(() => {
     if (imageLoaded) {
       const timer = setTimeout(() => {
@@ -34,12 +33,12 @@ const ShowFirstTime: React.FC = () => {
               Gilda.className
             )}
           >
-            <h1 className="animate-textFadeInOut">
+            <h1 className="animate-textFadeInOut ">
               HAYATO
               <br />
               FUJIWARA
             </h1>
-            <h2 className="text-xl tracking-tight animate-textFadeInOut2">
+            <h2 className="text-xl tracking-tight animate-textFadeInOut2 ">
               Welcome to my portfolio
             </h2>
           </div>
@@ -50,7 +49,7 @@ const ShowFirstTime: React.FC = () => {
             )}
           >
             <h1 className="animate-textFadeInOut">HAYATO FUJIWARA</h1>
-            <h2 className="text-xl tracking-tight animate-textFadeInOut2">
+            <h2 className="text-xl tracking-tight animate-textFadeInOut2 ">
               Welcome to my portfolio
             </h2>
           </div>

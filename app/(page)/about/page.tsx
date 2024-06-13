@@ -19,7 +19,7 @@ export default function page() {
             </h2>
           </div>
         </div>
-        <SocialLinks />
+        <SocialLinks cssIndex={2} />
       </div>
     </>
   );

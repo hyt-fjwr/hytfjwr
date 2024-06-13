@@ -10,7 +10,7 @@ export default function SlideTextAnim() {
         `${inter.className}`,
         "antialiased font-extrabold text-3xl md:text-4xl [text-wrap:balance] text-transparent items-center flex text-center mt-2 animate-in"
       )}
-      style={{ "--index": 3 } as React.CSSProperties}
+      style={{ "--index": 27 } as React.CSSProperties}
     >
       {" "}
       <span className="text-indigo-500 inline-flex flex-col h-[calc(theme(fontSize.3xl)*theme(lineHeight.tight))] md:h-[calc(theme(fontSize.4xl)*theme(lineHeight.tight))] overflow-hidden">

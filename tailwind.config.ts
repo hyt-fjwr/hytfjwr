@@ -144,12 +144,12 @@ const config = {
           "text-slide-5 12.5s cubic-bezier(0.83, 0, 0.17, 1) infinite",
         gradient: "gradient 8s linear infinite",
         fadeInOut:
-          "fadeInOut 5s cubic-bezier(0.000, 0.915, 0.365, 0.995) forwards",
-        fadeOut: "fadeOut 5s cubic-bezier(0.000, 0.915, 0.365, 0.995) forwards",
+          "fadeInOut 4s cubic-bezier(0.000, 0.915, 0.365, 0.995) forwards",
+        fadeOut: "fadeOut 4s cubic-bezier(0.000, 0.915, 0.365, 0.995) forwards",
         textFadeInOut:
-          "textFadeInOut 5s cubic-bezier(0.000, 0.915, 0.365, 0.995) forwards",
+          "textFadeInOut 4s cubic-bezier(0.000, 0.915, 0.365, 0.995) forwards",
         textFadeInOut2:
-          "textFadeInOut 5.6s cubic-bezier(0.000, 0.915, 0.465, 1) forwards",
+          "textFadeInOut 4.6s cubic-bezier(0.000, 0.915, 0.465, 1) forwards",
       },
     },
     fontFamily: {
