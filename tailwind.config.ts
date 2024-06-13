@@ -66,6 +66,11 @@ const config = {
           "71.43%": { opacity: "1" },
           "100%": { opacity: "0" },
         },
+        fadeOut: {
+          "0%": { opacity: "1" },
+          "71.43%": { opacity: "1" },
+          "100%": { opacity: "0" },
+        },
         textFadeInOut: {
           "0%": { opacity: "0", transform: "scale(1.2)", filter: "blur(4px)" },
           "15%": { opacity: "0", transform: "scale(1.2)", filter: "blur(4px)" },
@@ -140,6 +145,7 @@ const config = {
         gradient: "gradient 8s linear infinite",
         fadeInOut:
           "fadeInOut 5s cubic-bezier(0.000, 0.915, 0.365, 0.995) forwards",
+        fadeOut: "fadeOut 5s cubic-bezier(0.000, 0.915, 0.365, 0.995) forwards",
         textFadeInOut:
           "textFadeInOut 5s cubic-bezier(0.000, 0.915, 0.365, 0.995) forwards",
         textFadeInOut2:

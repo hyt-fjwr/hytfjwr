@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function SocialLinks() {
   return (
     <>
-      <div className="w-2/3 flex flex-col md:grid md:grid-cols-2 gap-2 justify-center">
+      <div className="w-full gap-1 grid grid-cols-2 md:flex md:flex-row justify-center">
         {socialLinks.map((social, index) => (
           <Link
             key={index}
@@ -15,19 +15,19 @@ export default function SocialLinks() {
             target="_blank"
           >
             <div
-              className="w-full h-12 rounded-xl border flex justify-between animate-in"
+              className="h-9 md:h-10 rounded-xl border flex animate-in duration-200 hover:bg-primary/5"
               style={{ "--index": index } as React.CSSProperties}
             >
-              <div className="text-sm md:text-lg items-center flex ml-3">
-                {social.name}
-              </div>
               <Image
                 src={social.icon}
-                width={30}
-                height={30}
+                width={25}
+                height={25}
                 alt={social.name}
-                className="mr-3 scale-75 md:scale-100"
+                className="ml-3 scale-75 md:scale-100 dark:invert"
               />
+              <div className="text-sm items-center flex ml-2 mr-3">
+                {social.name}
+              </div>
             </div>
           </Link>
         ))}

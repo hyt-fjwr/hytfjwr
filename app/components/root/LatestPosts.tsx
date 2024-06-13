@@ -12,7 +12,7 @@ export default async function LatestPosts({ cssIndex }: { cssIndex: number }) {
   );
   return (
     <div
-      className="animate-in"
+      className="animate-in mt-2"
       style={{ "--index": cssIndex } as React.CSSProperties}
     >
       <h1 className="text-primary prose-xl font-semibold ">Latest Blogs</h1>

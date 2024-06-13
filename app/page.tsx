@@ -3,6 +3,7 @@ import SlideTextAnim from "./components/root/SlideTextAnim";
 import { Inter } from "next/font/google";
 import ShowFirstTime from "./components/root/ShowFirstTime";
 import LatestPosts from "./components/root/LatestPosts";
+import SocialLinks from "./components/about/SocialLinks";
 const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
@@ -27,18 +28,19 @@ export default function Home() {
         <SlideTextAnim />
       </div>
       <div className="w-[21rem] flex flex-col md:w-[45rem]">
-        <div className="mt-5">
-          <p
-            className={cn(`${inter.className}`, "animate-in")}
+        <div className="mt-2">
+          <h1
+            className={cn(
+              `${inter.className}`,
+              "text-primary prose-xl font-semibold animate-in justify-center flex"
+            )}
             style={{ "--index": 3 } as React.CSSProperties}
           >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque quasi
-            commodi nam iusto, accusantium illum sunt rerum, est saepe omnis
-            debitis suscipit optio explicabo accusamus nostrum nulla facilis,
-            facere cum!
-          </p>
+            Social Links
+          </h1>
+          <SocialLinks />
           <LatestPosts cssIndex={4} />
-          <div
+          {/* <div
             className="grid grid-rows-3 grid-flow-col gap-4 h-96 animate-in mt-3"
             style={{ "--index": 5 } as React.CSSProperties}
           >
@@ -62,7 +64,7 @@ export default function Home() {
               Maiores veritatis, iure, enim voluptas beatae vel nobis sequi, est
               quos vitae qui!
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </main>

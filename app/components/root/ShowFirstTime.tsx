@@ -19,7 +19,6 @@ const ShowFirstTime: React.FC = () => {
       return () => clearTimeout(timer); // クリーンアップ関数でタイマーをクリア
     }
   }, [imageLoaded]);
-
   return (
     <>
       {!showContent && (
@@ -52,7 +51,7 @@ const ShowFirstTime: React.FC = () => {
           >
             <h1 className="animate-textFadeInOut">HAYATO FUJIWARA</h1>
             <h2 className="text-xl tracking-tight animate-textFadeInOut2">
-              Welcome to portfolio
+              Welcome to my portfolio
             </h2>
           </div>
         </>
@@ -71,6 +70,7 @@ const ShowFirstTime: React.FC = () => {
           onLoadingComplete={() => setImageLoaded(true)}
         />
       </div>
+      <div className="w-full h-full bg-primary-foreground z-[90] fixed inset-0 animate-fadeOut pointer-events-none"></div>
     </>
   );
 };
