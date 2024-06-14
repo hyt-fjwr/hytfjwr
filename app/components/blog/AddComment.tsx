@@ -1,11 +1,5 @@
 "use client";
-import {
-  SignIn,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { createClient } from "@supabase/supabase-js";
 import { CircleUserRound } from "lucide-react";
 import React, { useRef } from "react";

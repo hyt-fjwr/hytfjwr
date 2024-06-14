@@ -1,8 +1,9 @@
 import "server-only";
-import { PostSchema } from "../data/post-schema";
 import { Post } from "../types/Post";
+import { blogPostSchema, projectPostSchema } from "../data/post-schema";
 
-export const getPost = async (id: string) => {
+//Blogs
+export const getBlogPost = async (id: string) => {
   const post = await import(`@/content/blog/${id}.mdx`);
   const { title, publishedAt, tags } = post.metadata;
   return {
@@ -14,11 +15,37 @@ export const getPost = async (id: string) => {
   };
 };
 
-export const getAllPosts = async (): Promise<Post[]> => {
-  return await Promise.all(PostSchema.map(async (id) => getPost(id)));
+export const getAllBlogPosts = async (): Promise<Post[]> => {
+  return await Promise.all(blogPostSchema.map(async (id) => getBlogPost(id)));
 };
 
-export const getAllPostsByTags = async (tag: string): Promise<Post[]> => {
-  const allPosts = await getAllPosts();
+export const getAllBlogPostsByTags = async (tag: string): Promise<Post[]> => {
+  const allPosts = await getAllBlogPosts();
+  return allPosts.filter((post) => post.tags.includes(tag));
+};
+
+//Projects
+export const getProjectPost = async (id: string) => {
+  const post = await import(`@/content/project/${id}.mdx`);
+  const { title, publishedAt, tags } = post.metadata;
+  return {
+    id,
+    title,
+    publishedAt,
+    tags,
+    content: post.default,
+  };
+};
+
+export const getAllProjectPosts = async (): Promise<Post[]> => {
+  return await Promise.all(
+    projectPostSchema.map(async (id) => getProjectPost(id))
+  );
+};
+
+export const getAllProjectPostsByTags = async (
+  tag: string
+): Promise<Post[]> => {
+  const allPosts = await getAllProjectPosts();
   return allPosts.filter((post) => post.tags.includes(tag));
 };

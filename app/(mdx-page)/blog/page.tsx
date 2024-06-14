@@ -2,9 +2,11 @@ import { NotebookPen } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-import { getAllPosts } from "@/app/util/post";
+import { getAllBlogPosts } from "@/app/util/post";
 import { cn } from "@/lib/utils";
 import { getCategoryColor } from "@/app/util/tagColorizer";
+import { Inter } from "next/font/google";
+const inter = Inter({ subsets: ["latin"] });
 
 function convertDateFormat(dateStr: string): string {
   // 正規表現を使って "/" を "-" に置き換える
@@ -12,7 +14,7 @@ function convertDateFormat(dateStr: string): string {
 }
 
 export default async function page() {
-  const posts = await getAllPosts();
+  const posts = await getAllBlogPosts();
   //公開日順にソート
   const postsSorted = posts.sort(
     (x, y) =>
@@ -23,7 +25,7 @@ export default async function page() {
     <>
       <div className="flex flex-col items-center">
         <div className="w-[21rem] flex flex-col md:w-[45rem]">
-          <div className="mt-5">
+          <div className={cn(`${inter.className}`, "mt-5")}>
             <h1 className="text-black dark:text-white text-4xl font-bold flex items-center animate-in">
               Blog
               <NotebookPen aria-hidden="true" className="h-8 w-8 ml-2" />

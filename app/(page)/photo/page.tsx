@@ -2,15 +2,18 @@
 import { Camera } from "lucide-react";
 import ImageModal from "../../components/photo/ImageModal";
 import { photos } from "../../data/photo";
+import { cn } from "@/lib/utils";
+import { Inter } from "next/font/google";
+const inter = Inter({ subsets: ["latin"] });
 
 export default function page() {
   return (
     <>
       <div>
         <div className="w-[21rem] md:w-[45rem] flex flex-row mx-auto">
-          <div className="mt-5">
+          <div className={cn(`${inter.className}`, "mt-5")}>
             <h1 className="text-black dark:text-white text-4xl font-bold flex items-center animate-in">
-              Photos <Camera aria-hidden="true" className="h-8 w-8 ml-2" />
+              Photo <Camera aria-hidden="true" className="h-8 w-8 ml-2" />
             </h1>
             <h2
               className="animate-in"

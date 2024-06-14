@@ -1,9 +1,9 @@
 import { cn } from "@/lib/utils";
 import SlideTextAnim from "./components/root/SlideTextAnim";
-import { Inter } from "next/font/google";
 import ShowFirstTime from "./components/root/ShowFirstTime";
 import LatestPosts from "./components/root/LatestPosts";
 import SocialLinks from "./components/about/SocialLinks";
+import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (

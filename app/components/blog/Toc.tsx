@@ -15,8 +15,8 @@ export const Toc: FC = () => {
       linkClass: "toc-link",
       scrollSmooth: true,
       scrollSmoothDuration: 500,
-      scrollSmoothOffset: 0,
-      headingsOffset: 1,
+      scrollSmoothOffset: -80,
+      headingsOffset: 80,
     });
 
     return () => tocbot.destroy();

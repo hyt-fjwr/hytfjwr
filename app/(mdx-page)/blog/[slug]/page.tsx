@@ -1,6 +1,6 @@
 import React from "react";
 import { Metadata, ResolvingMetadata } from "next";
-import { getPost } from "../../../util/post";
+import { getBlogPost } from "../../../util/post";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 import { currentUser } from "@clerk/nextjs/server";
@@ -20,7 +20,7 @@ export async function generateMetadata(
   { params, searchParams }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const post = await getPost(params.slug);
+  const post = await getBlogPost(params.slug);
   const { title, publishedAt: publishedTime, id } = post;
 
   const metadata: Metadata = {
@@ -48,7 +48,7 @@ export default async function page({
 }: {
   params: { slug: string };
 }) {
-  const post = await getPost(slug);
+  const post = await getBlogPost(slug);
 
   const user = await currentUser();
   if (!user) {

@@ -1,9 +1,11 @@
-import { getFileNamesWithoutExtension } from "../util/fileName";
+// import { getFileNamesWithoutExtension } from "../util/fileName";
 
-export const PostSchema = [
+export const blogPostSchema = [
   "GenerateOGP",
   "photo",
   "LearnNextjs",
   "test",
   "test",
 ];
+
+export const projectPostSchema = ["riddle"];

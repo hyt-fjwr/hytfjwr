@@ -1,10 +1,9 @@
-import { ChevronLeft, NotebookPen } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { getAllPostsByTags } from "@/app/util/post";
+import { getAllBlogPostsByTags } from "@/app/util/post";
 import { cn } from "@/lib/utils";
 import { getCategoryColor } from "@/app/util/tagColorizer";
-import { getFileNamesWithoutExtension } from "@/app/util/fileName";
 import { Button } from "@/app/components/ui/button";
 
 function convertDateFormat(dateStr: string): string {
@@ -16,7 +15,7 @@ export default async function page({
 }: {
   params: { slug: string };
 }) {
-  const posts = await getAllPostsByTags(slug);
+  const posts = await getAllBlogPostsByTags(slug);
   //公開日順にソート
   const postsSorted = posts.sort(
     (x, y) =>

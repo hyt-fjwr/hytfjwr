@@ -1,3 +1,4 @@
+import Image from "next/image";
 export const metadata = {
   title: "Next.js 14 の ImageResponse を使用して OGP 画像を動的生成する",
   publishedAt: "2024-05-16",
@@ -117,7 +118,7 @@ API では title というパラメータを追加していたの URL へのパ�
 
 ## 完成画像
 
-<img src="/images/evidence-ogp.png" />
+<Image width={505} height={412} alt="" src="/images/evidence-ogp.png" />
 
 Discord での確認ですが上記のような画像が自動生成され、OGP 画像として設定されます。
 これにより各ページ(pages.tsx)に Metadata を設定することで、ページ別で違った文字を挿入した画像が OPG 画像として設定できます。
