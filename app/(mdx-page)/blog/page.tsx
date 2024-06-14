@@ -6,12 +6,8 @@ import { getAllBlogPosts } from "@/app/util/post";
 import { cn } from "@/lib/utils";
 import { getCategoryColor } from "@/app/util/tagColorizer";
 import { Inter } from "next/font/google";
+import { formatDate } from "@/app/util/formatDate";
 const inter = Inter({ subsets: ["latin"] });
-
-function convertDateFormat(dateStr: string): string {
-  // 正規表現を使って "/" を "-" に置き換える
-  return dateStr.replace(/\/+/g, "-");
-}
 
 export default async function page() {
   const posts = await getAllBlogPosts();
@@ -25,17 +21,23 @@ export default async function page() {
     <>
       <div className="flex flex-col items-center">
         <div className="w-[21rem] flex flex-col md:w-[45rem]">
-          <div className={cn(`${inter.className}`, "mt-5")}>
-            <h1 className="text-black dark:text-white text-4xl font-bold flex items-center animate-in">
+          <div className="mt-5">
+            <h1
+              className={cn(
+                `${inter.className}`,
+                "text-black dark:text-white text-4xl font-bold flex items-center animate-in"
+              )}
+            >
               Blog
               <NotebookPen aria-hidden="true" className="h-8 w-8 ml-2" />
             </h1>
             <h2
-              className="animate-in"
+              className="animate-in mt-2"
               style={{ "--index": 1 } as React.CSSProperties}
             >
-              The post will be updated on an occasionaly. <br />
-              There are currently 1 posts.
+              不定期で投稿の更新をしてます。
+              <br />
+              現在の投稿数は{postsSorted.length}件です。
             </h2>
           </div>
         </div>
@@ -63,7 +65,7 @@ export default async function page() {
                 <div className="h-14 rounded-b-lg border-r border-b border-l border-zinc-700">
                   <div className="h-14 text-wrap text-left ml-2 text-sm flex flex-row ">
                     <div className="flex flex-col h-5 font-thin mt-0.5">
-                      {convertDateFormat(post.publishedAt)}
+                      {formatDate(post.publishedAt)}
                       <div className="flex">
                         {post.tags.map((tag: string) => (
                           <Link key={tag} href={`/blog/tag/${tag}`}>

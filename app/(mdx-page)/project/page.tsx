@@ -1,13 +1,9 @@
+import PinnedProject from "@/app/components/project/PinnedProject";
 import { getAllProjectPosts } from "@/app/util/post";
 import { cn } from "@/lib/utils";
 import { FolderOpenDot } from "lucide-react";
 import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
-
-function convertDateFormat(dateStr: string): string {
-  // 正規表現を使って "/" を "-" に置き換える
-  return dateStr.replace(/\/+/g, "-");
-}
 
 export default async function page() {
   const posts = await getAllProjectPosts();
@@ -20,17 +16,35 @@ export default async function page() {
     <>
       <div className="flex flex-col">
         <div className="w-[21rem] flex flex-col md:w-[45rem]">
-          <div className={cn(`${inter.className}`, "mt-5")}>
-            <h1 className="text-black dark:text-white text-4xl font-bold flex items-center animate-in">
+          <div className="mt-5">
+            <h1
+              className={cn(
+                `${inter.className}`,
+                "text-black dark:text-white text-4xl font-bold flex items-center animate-in"
+              )}
+            >
               Project
               <FolderOpenDot aria-hidden="true" className="h-8 w-7 ml-2" />
             </h1>
             <h2
-              className="animate-in"
+              className="animate-in mt-1"
               style={{ "--index": 1 } as React.CSSProperties}
             >
-              Get to know about me.
+              これまでに作成してきた作品です。
+              <br />
+              個人制作のものも含まれます。
             </h2>
+          </div>
+          <div className="mt-4 justify-center flex flex-col ">
+            <h2
+              className="text-lg font-semibold prose dark:prose-invert animate-in"
+              style={{ "--index": 2 } as React.CSSProperties}
+            >
+              Pinned Project...
+            </h2>
+            <div className="mt-4 flex flex-col items-center ">
+              <PinnedProject ProjectId="riddle" />
+            </div>
           </div>
         </div>
       </div>

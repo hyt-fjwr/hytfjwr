@@ -5,11 +5,8 @@ import { getAllBlogPostsByTags } from "@/app/util/post";
 import { cn } from "@/lib/utils";
 import { getCategoryColor } from "@/app/util/tagColorizer";
 import { Button } from "@/app/components/ui/button";
+import { formatDate } from "@/app/util/formatDate";
 
-function convertDateFormat(dateStr: string): string {
-  // 正規表現を使って "/" を "-" に置き換える
-  return dateStr.replace(/\/+/g, "-");
-}
 export default async function page({
   params: { slug },
 }: {
@@ -72,7 +69,7 @@ export default async function page({
                 <div className=" h-14 rounded-b-lg border-r border-b border-l border-zinc-700">
                   <div className="h-14 text-wrap text-left ml-2 text-sm flex flex-row ">
                     <div className="flex flex-col h-5 font-thin mt-0.5">
-                      {convertDateFormat(post.publishedAt)}
+                      {formatDate(post.publishedAt)}
                       <div className="flex">
                         {post.tags.map((tag: string) => (
                           <Link key={tag} href={`/blog/tag/${tag}`}>

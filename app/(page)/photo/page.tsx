@@ -11,15 +11,20 @@ export default function page() {
     <>
       <div>
         <div className="w-[21rem] md:w-[45rem] flex flex-row mx-auto">
-          <div className={cn(`${inter.className}`, "mt-5")}>
-            <h1 className="text-black dark:text-white text-4xl font-bold flex items-center animate-in">
+          <div className="mt-5">
+            <h1
+              className={cn(
+                `${inter.className}`,
+                "text-black dark:text-white text-4xl font-bold flex items-center animate-in"
+              )}
+            >
               Photo <Camera aria-hidden="true" className="h-8 w-8 ml-2" />
             </h1>
             <h2
-              className="animate-in"
+              className="animate-in mt-2"
               style={{ "--index": 1 } as React.CSSProperties}
             >
-              These are some of my favorite moments from my travels.
+              旅先で記録したお気に入りの写真。
             </h2>
           </div>
         </div>
