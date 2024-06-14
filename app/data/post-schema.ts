@@ -8,4 +8,4 @@ export const blogPostSchema = [
   "test",
 ];
 
-export const projectPostSchema = ["riddle"];
+export const projectPostSchema = ["riddle", "bmw"];
