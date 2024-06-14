@@ -1,10 +1,10 @@
-import { getAllPosts } from "@/app/util/post";
+import { getAllBlogPosts } from "@/app/util/post";
 import { Link2 } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
 export default async function Projects() {
-  const posts = await getAllPosts();
+  const posts = await getAllBlogPosts();
   //公開日順にソート
   const postsSorted = posts.sort(
     (x, y) =>
