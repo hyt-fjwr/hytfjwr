@@ -40,17 +40,17 @@ export default function Home() {
             Featured Projects
           </h1>
           <RootDisplayProject ProjectId={["bmw", "riddle"]} cssIndex={23} />
-          <LatestBlogs cssIndex={25} />
+          <LatestBlogs cssIndex={26} />
           <h1
             className={cn(
               `${inter.className}`,
               "text-primary font-semibold animate-in justify-center flex p-4 mt-4 w-full border-t"
             )}
-            style={{ "--index": 30 } as React.CSSProperties}
+            style={{ "--index": 32 } as React.CSSProperties}
           >
             Social Links
           </h1>
-          <SocialLinks cssIndex={31} />
+          <SocialLinks cssIndex={33} />
         </div>
       </div>
     </main>
