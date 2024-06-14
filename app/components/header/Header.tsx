@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Header() {
   return (
     <>
-      <header className="sticky inset-0 h-16 flex md:justify-center items-center px-6 border-b justify-between z-10 backdrop-blur-sm bg-primary-header backdrop-brightness-105">
+      <header className="sticky inset-0 h-16 flex md:justify-center items-center px-6 border-b justify-between z-10 backdrop-blur-header bg-primary-header backdrop-brightness-105">
         <Link href="/">
           <Image
             src={"/logo.png"}

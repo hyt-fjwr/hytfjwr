@@ -88,6 +88,11 @@
   background-color: hsl(var(--primary-header));
 }
 
+.backdrop-blur-header {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
 .animate-in {
   opacity: 0;
   animation: 0.3s ease-out animate-in;
