@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { FolderOpenDot } from "lucide-react";
 import { Inter } from "next/font/google";
 import { formatDate } from "@/app/util/formatDate";
+import ProjectList from "@/app/components/project/ProjectList";
 const inter = Inter({ subsets: ["latin"] });
 
 export default async function page() {
@@ -49,42 +50,12 @@ export default async function page() {
               <PinnedProject ProjectId="riddle" />
             </div>
             <h2
-              className="text-lg font-semibold prose dark:prose-invert animate-in mt-6"
+              className="text-lg font-semibold prose dark:prose-invert animate-in mt-6 mb-3"
               style={{ "--index": 4 } as React.CSSProperties}
             >
-              More Project...
+              More Projects...
             </h2>
-            <div>
-              {postsSorted.map((post, index) => (
-                <Link href={`/project/${post.id}`}>
-                  <div
-                    className="flex flex-row border-t w-full mt-2 mb-2 pt-2 pb-2 md:mt-4 md:mb-4 md:pt-4 md:pb-4 pr-2 group hover:bg-primary/5 duration-500 animate-in"
-                    style={{ "--index": 5 + index } as React.CSSProperties}
-                  >
-                    <div className="overflow-hidden w-24 h-24 md:w-28 md:h-28 bg-black rounded-3xl ml-4 mt-2">
-                      <Image
-                        width={500}
-                        height={500}
-                        alt=""
-                        src={`/images/project/${post.id}/thumbnail.jpg`}
-                        className="w-full h-full object-cover group-hover:scale-110 duration-500"
-                      />
-                    </div>
-                    <div className="flex flex-col justify-between">
-                      <h2 className="text-left items-start text-primary/70 text-wrap md:text-sm text-xs pl-3 md:pl-8 pt-2 md:pt-4 font-semibold">
-                        {post.tags}
-                      </h2>
-                      <h1 className="text-left text-wrap md:text-lg text-base pl-3 md:pl-8 pb-2 pt-2 font-semibold">
-                        {post.title}
-                      </h1>
-                      <h2 className="text-left text-primary/70 text-wrap md:text-sm text-xs pl-3 md:pl-8 pb-1 md:pb-4 font-semibold">
-                        {formatDate(post.publishedAt)}
-                      </h2>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
+            <ProjectList props={postsSorted} cssIndex={5} />
           </div>
         </div>
       </div>

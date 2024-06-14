@@ -1,9 +1,10 @@
 import { cn } from "@/lib/utils";
 import SlideTextAnim from "./components/root/SlideTextAnim";
 import ShowFirstTime from "./components/root/ShowFirstTime";
-import LatestPosts from "./components/root/LatestPosts";
+import LatestBlogs from "./components/root/LatestBlogs";
 import SocialLinks from "./components/about/SocialLinks";
 import { Inter } from "next/font/google";
+import RootDisplayProject from "./components/root/RootDisplayProject";
 const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
@@ -32,39 +33,24 @@ export default function Home() {
           <h1
             className={cn(
               `${inter.className}`,
-              "text-primary prose-xl font-semibold animate-in justify-center flex"
+              "text-primary prose-xl font-semibold animate-in flex mt-5 mb-2"
             )}
             style={{ "--index": 22 } as React.CSSProperties}
           >
+            Featured Projects
+          </h1>
+          <RootDisplayProject ProjectId={["bmw", "riddle"]} cssIndex={23} />
+          <LatestBlogs cssIndex={25} />
+          <h1
+            className={cn(
+              `${inter.className}`,
+              "text-primary font-semibold animate-in justify-center flex p-4 mt-4 w-full border-t"
+            )}
+            style={{ "--index": 30 } as React.CSSProperties}
+          >
             Social Links
           </h1>
-          <SocialLinks cssIndex={23} />
-          <LatestPosts cssIndex={27} />
-          {/* <div
-            className="grid grid-rows-3 grid-flow-col gap-4 h-96 animate-in mt-3"
-            style={{ "--index": 5 } as React.CSSProperties}
-          >
-            <div className="row-span-3 bg-primary/5 rounded-lg p-4 w-32 md:w-96 h-96 text-ellipsis overflow-hidden">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore
-              est veritatis repudiandae unde aliquid, sunt iure quia! Ea sit
-              possimus dignissimos doloremque soluta provident facere,
-              laboriosam earum cupiditate. Vitae, molestias? Lorem ipsum, dolor
-              sit amet consectetur adipisicing elit. Voluptatem eos cum alias
-              corporis id, neque, at voluptates natus nobis minus accusantium
-              maxime quibusdam non laudantium rerum? Exercitationem velit autem
-              perspiciatis.
-            </div>
-            <div className="col-span-2 bg-primary/5 rounded-lg p-4 text-ellipsis overflow-hidden">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Perferendis earum explicabo ipsam dicta eveniet deleniti
-            </div>
-            <div className="row-span-2 col-span-2 bg-primary/5 rounded-lg p-4 text-ellipsis overflow-hidden">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga
-              perspiciatis dignissimos cupiditate, optio in atque animi vel!
-              Maiores veritatis, iure, enim voluptas beatae vel nobis sequi, est
-              quos vitae qui!
-            </div>
-          </div> */}
+          <SocialLinks cssIndex={31} />
         </div>
       </div>
     </main>
