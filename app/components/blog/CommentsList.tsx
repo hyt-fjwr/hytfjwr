@@ -173,12 +173,13 @@ export default function CommentsList({
               </div>
             </div>
             <div>
-              {props.text}
+              <div className="w-full break-words">{props.text}</div>
               <div className="flex flex-row items-center mt-2">
                 <ReplyDrawer
                   msgData={props}
                   repliesCount={props.count}
                   userId={userId}
+                  redirectPath={pageId}
                 />
                 <p className="pl-2 font-thin">{props.count}</p>
               </div>

@@ -3,6 +3,10 @@ import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { createClient } from "@supabase/supabase-js";
 import { CircleUserRound } from "lucide-react";
 import React, { useRef, useEffect } from "react";
+import { toast } from "react-toastify";
+import { z } from "zod";
+import "react-toastify/dist/ReactToastify.css";
+import { useTheme } from "next-themes";
 
 function createClerkSupabaseClient() {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -24,18 +28,21 @@ function createClerkSupabaseClient() {
     },
   });
 }
-
 const client = createClerkSupabaseClient();
-
 export default function AddReply({
   msgId,
   userId,
+  redirectPath,
 }: {
   msgId: string;
   userId: string;
+  redirectPath: string;
 }) {
   const formRef = useRef<HTMLFormElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const schema = z
+    .string()
+    .max(200, { message: "200文字以下に収めてください。" });
 
   useEffect(() => {
     const handleFocus = () => {
@@ -64,24 +71,52 @@ export default function AddReply({
     const formData = new FormData(event.currentTarget);
     const text = formData.get("text");
 
-    if (text && userId) {
-      const { error } = await client.from("comment_replies").insert({
-        text: text.toString(),
-        user_id: userId.toString(),
-        msg_id: msgId.toString(),
-      });
+    //validation check make sure text is 200 or fewer characters long.
+    try {
+      const reply = schema.parse(text);
+      if (text && userId) {
+        const { error } = await client.from("comment_replies").insert({
+          text: reply.toString(),
+          user_id: userId.toString(),
+          msg_id: msgId.toString(),
+        });
 
-      if (error) {
-        console.error("Error inserting data:", error.message);
-        return;
+        if (error) {
+          console.error("Error inserting data:", error.message);
+          toast.error("DB更新でエラーが発生しました。", {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+            theme: resolvedTheme.theme,
+          });
+        }
+
+        if (formRef.current) {
+          formRef.current.reset();
+        }
       }
-
-      if (formRef.current) {
-        formRef.current.reset();
+    } catch (err) {
+      if (err instanceof z.ZodError) {
+        toast.error(err.errors[0].message, {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+          theme: resolvedTheme.theme,
+        });
+      } else {
+        toast("予期せぬエラーが発生しました。");
       }
     }
   };
-
+  const resolvedTheme = useTheme();
   return (
     <>
       <div className="pt-2">
@@ -91,11 +126,17 @@ export default function AddReply({
             <input
               name="text"
               placeholder="Sign in to reply!"
-              className="ml-2 rounded-lg h-7 w-52 md:w-full"
+              className="p-2 ml-2 rounded-lg h-7 w-52 md:w-full"
               disabled
               required
             />
-            <SignInButton mode="modal">
+            <SignInButton
+              mode="modal"
+              forceRedirectUrl={`/${redirectPath}`}
+              fallbackRedirectUrl={`/${redirectPath}`}
+              signUpForceRedirectUrl={`/${redirectPath}`}
+              signUpFallbackRedirectUrl={`/${redirectPath}`}
+            >
               <Button
                 variant="ghost"
                 className="font-bold text-sm border pl-2 pr-2 duration-100"
@@ -108,13 +149,17 @@ export default function AddReply({
         <SignedIn>
           <form onSubmit={addReply} ref={formRef} className="flex items-center">
             <div className="">
-              <UserButton userProfileMode="modal" />
+              <UserButton
+                userProfileMode="modal"
+                afterSignOutUrl={`/${redirectPath}`}
+                signInUrl={`/${redirectPath}`}
+              />
             </div>
             <input
               ref={inputRef}
               name="text"
               placeholder="Post your reply!"
-              className="ml-2 rounded-lg h-7 w-full duration-200 "
+              className="p-2 ml-2 rounded-lg h-7 w-full duration-200 "
               required
             />
             <Button

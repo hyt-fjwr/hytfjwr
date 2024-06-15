@@ -20,10 +20,12 @@ export default function ReplyDrawer({
   msgData,
   repliesCount,
   userId,
+  redirectPath,
 }: {
   msgData: Comments;
   repliesCount: string;
   userId: string;
+  redirectPath: string;
 }) {
   if (repliesCount != "0") {
     return (
@@ -74,14 +76,13 @@ export default function ReplyDrawer({
                     </div>
                   </div>
                   <ReplyList msg_id={msgData.id} />
-                  <AddReply msgId={msgData.id} userId={userId} />
+                  <AddReply
+                    msgId={msgData.id}
+                    userId={userId}
+                    redirectPath={redirectPath}
+                  />
                 </DrawerDescription>
               </DrawerHeader>
-              <DrawerFooter>
-                {/* <DrawerClose asChild>
-                  <Button variant="outline">Close</Button>
-                </DrawerClose> */}
-              </DrawerFooter>
             </div>
           </DrawerContent>
         </Drawer>
@@ -136,7 +137,11 @@ export default function ReplyDrawer({
                   </div>
                 </div>
               </DrawerDescription>
-              <AddReply msgId={msgData.id} userId={userId} />
+              <AddReply
+                msgId={msgData.id}
+                userId={userId}
+                redirectPath={redirectPath}
+              />
             </DrawerHeader>
             <DrawerFooter></DrawerFooter>
           </div>

@@ -8,6 +8,7 @@ import CommentsList from "@/app/components/blog/CommentsList";
 import AddComment from "@/app/components/blog/AddComment";
 import { Button } from "@/app/components/ui/button";
 import { Toc } from "@/app/components/blog/Toc";
+import { formatDate } from "@/app/util/formatDate";
 
 type Props = {
   params: {
@@ -64,12 +65,15 @@ export default async function page({
               </Link>
             </Button>
             <Toc />
+            <h3 className="flex inset-0 p-1 m-0 text-xs w-full justify-end text-primary/60">
+              {formatDate(post.publishedAt)}
+            </h3>
             <div id="post-content" className="post-content">
               <h1>{post.title}</h1>
               <post.content />
             </div>
           </div>
-          <AddComment userId={""} pageId={slug} />
+          <AddComment userId={""} pageId={slug} redirectPath="project" />
           <CommentsList pageId={slug} userId="" />
         </div>
       </>
@@ -86,12 +90,15 @@ export default async function page({
           </Link>
         </Button>
         <Toc />
+        <h3 className="flex inset-0 p-1 m-0 text-xs w-full justify-end text-primary/60">
+          {formatDate(post.publishedAt)}
+        </h3>
         <div id="post-content" className="post-content text-primary">
           <h1 className="text-center">{post.title}</h1>
           <post.content />
         </div>
       </div>
-      <AddComment userId={id} pageId={slug} />
+      <AddComment userId={id} pageId={slug} redirectPath="project" />
       <CommentsList pageId={slug} userId={id} />
     </div>
   );

@@ -9,6 +9,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import Favicon from "./components/Favicon";
+import { ToastContainer } from "react-toastify";
 
 const notoSansJp = Noto_Sans_JP({ subsets: ["latin"] });
 
@@ -54,6 +55,7 @@ export default function RootLayout({
             storageKey="theme"
           >
             <Header />
+            <ToastContainer />
             <main className="py-6 container flex justify-center">
               {children}
             </main>

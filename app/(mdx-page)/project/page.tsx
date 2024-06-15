@@ -36,7 +36,7 @@ export default async function page() {
             >
               これまでに作成してきた作品です。
               <br />
-              個人制作のものも含まれます。
+              自主制作のものも含まれます。
             </h2>
           </div>
           <div className="mt-4 justify-center flex flex-col ">

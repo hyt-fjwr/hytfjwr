@@ -69,7 +69,7 @@ export default async function page({
               <post.content />
             </div>
           </div>
-          <AddComment userId={""} pageId={slug} />
+          <AddComment userId={""} pageId={slug} redirectPath="blog" />
           <CommentsList pageId={slug} userId="" />
         </div>
       </>
@@ -91,7 +91,7 @@ export default async function page({
           <post.content />
         </div>
       </div>
-      <AddComment userId={id} pageId={slug} />
+      <AddComment userId={id} pageId={slug} redirectPath="blog" />
       <CommentsList pageId={slug} userId={id} />
     </div>
   );
