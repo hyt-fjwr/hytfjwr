@@ -10,7 +10,7 @@
 ## 技術スタック
 
 ・[Next.js](https://nextjs.org/) (TypeScript) / メインのフルスタックフレームワーク<br/>
-・[Supabase](https://supabase.com/) / 投稿へのコメント用 DB<br/>
+・[Supabase](https://supabase.com/) / 投稿へのコメント、ユーザー管理情報用 DB<br/>
 ・[Clerk](https://clerk.com/) / ログイン認証<br/>
 ・[TailwindCSS](https://tailwindcss.com/) / フロント用 CSS フレームワーク<br/>
 ・[shadcn-ui](https://ui.shadcn.com/) / シンプルできれいなコンポーネントライブラリ<br/>
