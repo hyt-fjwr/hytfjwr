@@ -52,7 +52,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
         ) : (
           <div className="relative group">
             <div className="absolute flex z-10 group-hover:backdrop-blur-sm duration-500 group-hover:bg-black/30 w-full bottom-0 left-0">
-              <span className="p-2 opacity-0 translate-y-3 group-hover:translate-y-0 group-hover:opacity-100 duration-500 text-white font-semibold">
+              <span className="p-2 opacity-0 translate-y-3 group-hover:translate-y-0 group-hover:opacity-100 duration-500 text-white font-semibold truncate">
                 {place}
               </span>
             </div>
