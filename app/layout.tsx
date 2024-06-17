@@ -38,31 +38,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider
-      appearance={{
-        baseTheme: dark,
-      }}
-    >
-      <html lang="ja" suppressHydrationWarning>
-        <Favicon />
-        <SpeedInsights />
-        <Analytics />
-        <body className={`${notoSansJp.className}`}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            storageKey="theme"
-          >
-            <Header />
-            <ToastContainer />
-            <main className="py-6 container flex justify-center">
-              {children}
-            </main>
-          </ThemeProvider>
-        </body>
-        <GoogleAnalytics gaId="G-KY907GJVK2" />
-      </html>
-    </ClerkProvider>
+    <html lang="ja" suppressHydrationWarning>
+      <Favicon />
+      <SpeedInsights />
+      <Analytics />
+      <body className={`${notoSansJp.className}`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          storageKey="theme"
+        >
+          <Header />
+          <ToastContainer />
+          <main className="py-6 container flex justify-center">{children}</main>
+        </ThemeProvider>
+      </body>
+      <GoogleAnalytics gaId="G-KY907GJVK2" />
+    </html>
   );
 }
