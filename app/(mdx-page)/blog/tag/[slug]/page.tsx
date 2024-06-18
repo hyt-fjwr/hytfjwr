@@ -1,22 +1,18 @@
-import { ChevronLeft, NotebookPen } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { getAllPostsByTags } from "@/app/util/post";
+import { getAllBlogPostsByTags } from "@/app/util/post";
 import { cn } from "@/lib/utils";
 import { getCategoryColor } from "@/app/util/tagColorizer";
-import { getFileNamesWithoutExtension } from "@/app/util/fileName";
+import { Button } from "@/app/components/ui/button";
+import { formatDate } from "@/app/util/formatDate";
 
-function convertDateFormat(dateStr: string): string {
-  // 正規表現を使って "/" を "-" に置き換える
-  return dateStr.replace(/\/+/g, "-");
-}
 export default async function page({
   params: { slug },
 }: {
   params: { slug: string };
 }) {
-  const posts = await getAllPostsByTags(slug);
+  const posts = await getAllBlogPostsByTags(slug);
   //公開日順にソート
   const postsSorted = posts.sort(
     (x, y) =>
@@ -41,7 +37,7 @@ export default async function page({
               <div
                 className={cn(
                   getCategoryColor(slug),
-                  "flex m-1 pl-1 pr-1 font-light text-sm border rounded-lg  duration-100 dark:bg-primary/10 bg-zinc-100 hover:bg-primary/20 dark:hover:bg-slate-600"
+                  "flex m-1 pb-px pt-px pl-2 pr-2 text-base border rounded-full duration-100 z-20 font-normal dark:font-light"
                 )}
               >
                 {slug}
@@ -50,7 +46,7 @@ export default async function page({
           </div>
         </div>
         <div
-          className="grid grid-cols-1 md:grid-cols-3 hide-scroll-bar justify-center animate-in"
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 hide-scroll-bar justify-center animate-in"
           style={{ "--index": 2 } as React.CSSProperties}
         >
           {postsSorted.map((post, index) => (
@@ -73,14 +69,14 @@ export default async function page({
                 <div className=" h-14 rounded-b-lg border-r border-b border-l border-zinc-700">
                   <div className="h-14 text-wrap text-left ml-2 text-sm flex flex-row ">
                     <div className="flex flex-col h-5 font-thin mt-0.5">
-                      {convertDateFormat(post.publishedAt)}
+                      {formatDate(post.publishedAt)}
                       <div className="flex">
                         {post.tags.map((tag: string) => (
                           <Link key={tag} href={`/blog/tag/${tag}`}>
                             <button
                               className={cn(
                                 getCategoryColor(tag),
-                                "flex m-1 pl-1 pr-1 font-light text-xs border rounded-lg  duration-100 dark:bg-primary/10 bg-zinc-100 hover:bg-primary/20 dark:hover:bg-slate-600 z-20"
+                                "flex m-1 pb-px pt-px pl-2 pr-2 text-xs border rounded-full duration-100 z-20 font-normal dark:font-light"
                               )}
                             >
                               {tag}

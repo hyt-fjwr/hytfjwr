@@ -15,6 +15,7 @@
 
     --primary: 240 5.9% 10%;
     --primary-foreground: 0 0% 98%;
+    --primary-header: 0 0% 98% / 0.6;
 
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
@@ -39,7 +40,7 @@
   }
 
   .dark {
-    --background: grey;
+    --background: 0 0% 7%;
     --foreground: 0 0% 98%;
 
     --card: 240 10% 3.9%;
@@ -50,6 +51,7 @@
 
     --primary: 0 0% 98%;
     --primary-foreground: 240 5.9% 10%;
+    --primary-header: 240 5.9% 10% / 0.6;
 
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
@@ -80,6 +82,15 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.bg-primary-header {
+  background-color: hsl(var(--primary-header));
+}
+
+.backdrop-blur-header {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 
 .animate-in {

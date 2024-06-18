@@ -1,12 +1,15 @@
-import SocialLinks from "@/app/components/SocialLinks";
+import SocialLinks from "@/app/components/about/SocialLinks";
+import { cn } from "@/lib/utils";
 import { User } from "lucide-react";
+import { Inter } from "next/font/google";
+const inter = Inter({ subsets: ["latin"] });
 
 export default function page() {
   return (
     <>
       <div className="flex flex-col">
         <div className="w-[21rem] flex flex-col md:w-[45rem]">
-          <div className="mt-5">
+          <div className={cn(`${inter.className}`, "mt-5")}>
             <h1 className="text-black dark:text-white text-4xl font-bold flex items-center animate-in">
               About
               <User aria-hidden="true" className="h-8 w-7 ml-2" />
@@ -19,7 +22,7 @@ export default function page() {
             </h2>
           </div>
         </div>
-        <SocialLinks />
+        <SocialLinks cssIndex={2} />
       </div>
     </>
   );

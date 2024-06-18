@@ -1,0 +1,2 @@
+Disallow: /test/
+Sitemap: https://hytfjwr.com/sitemap.xml

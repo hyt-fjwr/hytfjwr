@@ -1,3 +1,4 @@
+import { transform } from "next/dist/build/swc";
 import type { Config } from "tailwindcss";
 
 const config = {
@@ -59,6 +60,24 @@ const config = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        fadeInOut: {
+          "0%": { opacity: "0", transform: "scale(1.2)" },
+          "30%": { opacity: "1", transform: "scale(1)" },
+          "71.43%": { opacity: "1" },
+          "100%": { opacity: "0" },
+        },
+        fadeOut: {
+          "0%": { opacity: "1" },
+          "71.43%": { opacity: "1" },
+          "100%": { opacity: "0" },
+        },
+        textFadeInOut: {
+          "0%": { opacity: "0", transform: "scale(1.2)", filter: "blur(4px)" },
+          "15%": { opacity: "0", transform: "scale(1.2)", filter: "blur(4px)" },
+          "40%": { opacity: "1", transform: "scale(1)", filter: "blur(0px)" },
+          "71.43%": { opacity: "1", filter: "blur(0px)" },
+          "100%": { opacity: "0", filter: "blur(4px)" },
+        },
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -124,10 +143,18 @@ const config = {
         "text-slide-5":
           "text-slide-5 12.5s cubic-bezier(0.83, 0, 0.17, 1) infinite",
         gradient: "gradient 8s linear infinite",
+        fadeInOut:
+          "fadeInOut 4s cubic-bezier(0.000, 0.915, 0.365, 0.995) forwards",
+        fadeOut: "fadeOut 4s cubic-bezier(0.000, 0.915, 0.365, 0.995) forwards",
+        textFadeInOut:
+          "textFadeInOut 4s cubic-bezier(0.000, 0.915, 0.365, 0.995) forwards",
+        textFadeInOut2:
+          "textFadeInOut 4.6s cubic-bezier(0.000, 0.915, 0.465, 1) forwards",
       },
     },
     fontFamily: {
       Inter: ["var(--font-Inter)"],
+      Gilda: ["var(--font-Gilda)"],
     },
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],

@@ -1,59 +1,56 @@
-import SlideTextAnim from "./components/SlideTextAnim";
-
+import { cn } from "@/lib/utils";
+import SlideTextAnim from "./components/root/SlideTextAnim";
+import ShowFirstTime from "./components/root/ShowFirstTime";
+import LatestBlogs from "./components/root/LatestBlogs";
+import SocialLinks from "./components/about/SocialLinks";
+import { Inter } from "next/font/google";
+import RootDisplayProject from "./components/root/RootDisplayProject";
+const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <main>
+      <ShowFirstTime />
       <div className="flex flex-col items-center">
         <h1
-          className="text-black dark:text-white text-4xl font-bold animate-in"
-          style={{ "--index": 1 } as React.CSSProperties}
+          className={cn(
+            `${inter.className}`,
+            "text-black dark:text-white text-4xl font-bold animate-in"
+          )}
+          style={{ "--index": 20 } as React.CSSProperties}
         >
           Hayato Fujiwara
         </h1>
         <h2
           className="mt-2 animate-in"
-          style={{ "--index": 2 } as React.CSSProperties}
+          style={{ "--index": 21 } as React.CSSProperties}
         >
           Hey there👋 I&apos;m experienced in :
         </h2>
         <SlideTextAnim />
       </div>
       <div className="w-[21rem] flex flex-col md:w-[45rem]">
-        <div className="mt-20">
-          <p
-            className="animate-in"
-            style={{ "--index": 3 } as React.CSSProperties}
+        <div className="mt-2">
+          <h1
+            className={cn(
+              `${inter.className}`,
+              "text-primary prose-xl font-semibold animate-in flex mt-5 mb-2"
+            )}
+            style={{ "--index": 22 } as React.CSSProperties}
           >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque quasi
-            commodi nam iusto, accusantium illum sunt rerum, est saepe omnis
-            debitis suscipit optio explicabo accusamus nostrum nulla facilis,
-            facere cum!
-          </p>
-          <div
-            className="grid grid-rows-3 grid-flow-col gap-4 h-96 animate-in"
-            style={{ "--index": 4 } as React.CSSProperties}
+            Featured Projects
+          </h1>
+          <RootDisplayProject ProjectId={["bmw", "riddle"]} cssIndex={23} />
+          <LatestBlogs cssIndex={26} />
+          <h1
+            className={cn(
+              `${inter.className}`,
+              "text-primary font-semibold animate-in justify-center flex p-4 mt-4 w-full border-t"
+            )}
+            style={{ "--index": 32 } as React.CSSProperties}
           >
-            <div className="row-span-3 bg-primary/5 rounded-lg p-4 w-32 md:w-96 h-96 text-ellipsis overflow-hidden">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore
-              est veritatis repudiandae unde aliquid, sunt iure quia! Ea sit
-              possimus dignissimos doloremque soluta provident facere,
-              laboriosam earum cupiditate. Vitae, molestias? Lorem ipsum, dolor
-              sit amet consectetur adipisicing elit. Voluptatem eos cum alias
-              corporis id, neque, at voluptates natus nobis minus accusantium
-              maxime quibusdam non laudantium rerum? Exercitationem velit autem
-              perspiciatis.
-            </div>
-            <div className="col-span-2 bg-primary/5 rounded-lg p-4 text-ellipsis overflow-hidden">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Perferendis earum explicabo ipsam dicta eveniet deleniti
-            </div>
-            <div className="row-span-2 col-span-2 bg-primary/5 rounded-lg p-4 text-ellipsis overflow-hidden">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga
-              perspiciatis dignissimos cupiditate, optio in atque animi vel!
-              Maiores veritatis, iure, enim voluptas beatae vel nobis sequi, est
-              quos vitae qui!
-            </div>
-          </div>
+            Social Links
+          </h1>
+          <SocialLinks cssIndex={33} />
         </div>
       </div>
     </main>

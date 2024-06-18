@@ -1,36 +1,24 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# My Portfolio
 
-## Getting Started
+[https://hytfjwr.com/](https://hytfjwr.com/)
 
-First, run the development server:
+私のポートフォリオサイトで、自己紹介やブログ、趣味の写真等を掲載しています。<br/>
+ダークモードへの切り替え、サインアップ、ログイン、投稿へのコメント機能（リアルタイム更新）があります。<br/>
+スマホやタブレットへのレスポンシブも対応済みです。<br/>
+![image](https://github.com/hyt-fjwr/hytfjwr/assets/133951156/ebd4199a-3b3e-4838-87f1-056759546b68)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 技術スタック
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+・[Next.js](https://nextjs.org/) (TypeScript) / メインのフルスタックフレームワーク<br/>
+・[Supabase](https://supabase.com/) / 投稿へのコメント、ユーザー管理情報用 DB<br/>
+・[Clerk](https://clerk.com/) / ログイン認証<br/>
+・[TailwindCSS](https://tailwindcss.com/) / フロント用 CSS フレームワーク<br/>
+・[shadcn-ui](https://ui.shadcn.com/) / シンプルできれいなコンポーネントライブラリ<br/>
+・[Framer Motion](https://www.framer.com/motion/) / React 用 Animation ライブラリ<br/>
+・[Lucide React](https://lucide.dev/) / 各画面のアイコン<br/>
+・[@next/mdx](https://nextjs.org/docs/pages/building-your-application/configuring/mdx) / Markdown ファイルからページを生成する為に導入<br/>
+・[shiki](http://shiki.style/) / blog ページで Syntax highlighter を使用するために導入<br/>
+・[rehype-pretty-code](rehype-pretty-code) / Syntax highlight<br/>
+・[Tocbot](https://tscanlin.github.io/tocbot/) / 投稿ページに Table of Contents を追加するために導入<br/>
+・[zod](https://zod.dev/) / TypeScript 用 Validation ライブラリ コメントへの文字数制限をするために導入<br/>
+・[eslint](https://eslint.org/) / TypeScript の静的解析用<br/>

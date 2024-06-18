@@ -1,13 +1,13 @@
 import React from "react";
 import { Metadata, ResolvingMetadata } from "next";
-import { getPost } from "../../../util/post";
-import { Button } from "@/components/ui/button";
+import { getBlogPost } from "../../../util/post";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
-import { Toc } from "@/app/components/Toc";
 import { currentUser } from "@clerk/nextjs/server";
-import CommentsList from "@/app/components/CommentsList";
-import AddComment from "@/app/components/AddComment";
+import CommentsList from "@/app/components/blog/CommentsList";
+import AddComment from "@/app/components/blog/AddComment";
+import { Button } from "@/app/components/ui/button";
+import { Toc } from "@/app/components/blog/Toc";
 
 type Props = {
   params: {
@@ -20,7 +20,7 @@ export async function generateMetadata(
   { params, searchParams }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const post = await getPost(params.slug);
+  const post = await getBlogPost(params.slug);
   const { title, publishedAt: publishedTime, id } = post;
 
   const metadata: Metadata = {
@@ -48,7 +48,7 @@ export default async function page({
 }: {
   params: { slug: string };
 }) {
-  const post = await getPost(slug);
+  const post = await getBlogPost(slug);
 
   const user = await currentUser();
   if (!user) {
@@ -69,7 +69,7 @@ export default async function page({
               <post.content />
             </div>
           </div>
-          <AddComment userId={""} pageId={slug} />
+          <AddComment userId={""} pageId={slug} redirectPath="blog" />
           <CommentsList pageId={slug} userId="" />
         </div>
       </>
@@ -91,7 +91,7 @@ export default async function page({
           <post.content />
         </div>
       </div>
-      <AddComment userId={id} pageId={slug} />
+      <AddComment userId={id} pageId={slug} redirectPath="blog" />
       <CommentsList pageId={slug} userId={id} />
     </div>
   );
