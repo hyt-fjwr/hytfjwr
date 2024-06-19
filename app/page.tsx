@@ -5,21 +5,9 @@ import LatestBlogs from "./components/root/LatestBlogs";
 import SocialLinks from "./components/about/SocialLinks";
 import { Inter } from "next/font/google";
 import RootDisplayProject from "./components/root/RootDisplayProject";
-import { cookies } from "next/headers";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const setCookie = async () => {
-    const cookieStore = cookies();
-    cookieStore.set("isOpened", "true", {
-      httpOnly: false,
-      sameSite: "lax",
-      path: "/",
-    });
-  };
-
-  // コンポーネントがレンダリングされたときにクッキーを設定
-  setCookie();
   return (
     <main>
       <ShowFirstTime />
