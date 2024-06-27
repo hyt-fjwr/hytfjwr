@@ -1,6 +1,6 @@
 import SocialLinks from "@/app/components/about/SocialLinks";
 import { cn } from "@/lib/utils";
-import { Music, User } from "lucide-react";
+import { ExternalLink, Music, User } from "lucide-react";
 import { Inter } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
@@ -56,6 +56,14 @@ export default function page() {
             className="flex items-center text-lg animate-in p-2"
             style={{ "--index": 3 } as React.CSSProperties}
           >
+            <ExternalLink aria-hidden="true" className="h-8 w-7 mr-2" />
+            Social Links
+          </h2>
+          <SocialLinks cssIndex={4} />
+          <h2
+            className="flex items-center text-lg animate-in p-2"
+            style={{ "--index": 5 } as React.CSSProperties}
+          >
             <Music aria-hidden="true" className="h-8 w-7 mr-2" />
             My Playlist
           </h2>
@@ -67,7 +75,7 @@ export default function page() {
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             loading="lazy"
             className="rounded-2xl animate-in"
-            style={{ "--index": 4 } as React.CSSProperties}
+            style={{ "--index": 6 } as React.CSSProperties}
           ></iframe>
         </div>
       </div>
