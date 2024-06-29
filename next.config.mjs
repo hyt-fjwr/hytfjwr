@@ -13,7 +13,7 @@ const nextConfig = {
       "img.clerk.com",
       "images.clerk.dev",
       "www.gravatar.com",
-      "placehold.jp",
+      "m.media-amazon.com",
     ],
   },
   // Optionally, add any other Next.js config below
