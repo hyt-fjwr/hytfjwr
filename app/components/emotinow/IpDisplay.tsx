@@ -10,24 +10,36 @@ export default function IpDisplay() {
       try {
         const ipResponse = await fetch("https://hytfjwr.com/api/emotinow");
         if (!ipResponse.ok) {
-          throw new Error(`HTTP error! status: ${ipResponse.status}`);
+          throw new Error(`IP fetch error! status: ${ipResponse.status}`);
         }
-        const data = await ipResponse.json();
-        console.log("APIレスポンス:", data); // ログ追加
-        if (!data.ip) {
-          throw new Error("IP not found in response");
-        }
-        const { ip } = data;
+        const { ip } = await ipResponse.json();
+        console.log("取得したIP:", ip); // ログ追加
 
         const countryResponse = await fetch(
           `https://hytfjwr.com/api/getCountry?ip=${ip}`
         );
-        const { country_name } = await countryResponse.json();
+        if (!countryResponse.ok) {
+          throw new Error(
+            `Country fetch error! status: ${countryResponse.status}`
+          );
+        }
+        const data = await countryResponse.json();
+        console.log("国データ:", data); // ログ追加
 
-        setLocation(country_name);
+        if (data.country_name) {
+          setLocation(data.country_name);
+        } else {
+          setLocation("国名が取得できませんでした");
+        }
       } catch (error) {
-        console.error("エラー！😱", error);
-        setLocation(`取得できなかった😢 エラー: ${error}`);
+        console.error("詳細エラー:", error);
+        if (error instanceof TypeError) {
+          setLocation(`ネットワークエラー: ${error.message}`);
+        } else if (error instanceof SyntaxError) {
+          setLocation("JSONパースエラー");
+        } else {
+          setLocation(`予期せぬエラー: ${error}`);
+        }
       }
     };
 
