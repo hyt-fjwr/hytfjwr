@@ -10,6 +10,7 @@ export default function IpDisplay() {
       try {
         const ipResponse = await fetch("https://hytfjwr.com/api/emotinow");
         const { ip } = await ipResponse.json();
+        console.log(ip);
 
         const countryResponse = await fetch(
           `https://hytfjwr.com/api/api/getCountry?ip=${ip}`

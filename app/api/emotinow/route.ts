@@ -7,5 +7,15 @@ export async function GET(req: NextRequest) {
     req.ip ||
     "Unknown";
 
-  return NextResponse.json({ ip });
+  // ここがポイント！CORSヘッダーを追加しちゃう！
+  return NextResponse.json(
+    { ip },
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      },
+    }
+  );
 }
