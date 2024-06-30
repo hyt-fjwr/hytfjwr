@@ -1,12 +1,30 @@
-import React from "react";
+"use client";
 
-export default async function IpDisplay() {
-  const ip = await fetch("https://hytfjwr.com/api/emotinow");
-  const ipJson = await ip.json();
-  const getCountry = await fetch(
-    `https://api.iplocation.net/?cmd=ip-country&ip=${ipJson.ip}`
-  );
-  const contry = await getCountry.json();
+import React, { useState, useEffect } from "react";
 
-  return <div className="p-2">Your Location :{contry.country_name}</div>;
+export default function IpDisplay() {
+  const [location, setLocation] = useState<string>("Loading...");
+
+  useEffect(() => {
+    const fetchLocation = async () => {
+      try {
+        const ipResponse = await fetch("https://hytfjwr.com/api/emotinow");
+        const { ip } = await ipResponse.json();
+
+        const countryResponse = await fetch(
+          `https://hytfjwr.com/api/api/getCountry?ip=${ip}`
+        );
+        const { country_name } = await countryResponse.json();
+
+        setLocation(country_name);
+      } catch (error) {
+        console.error("エラー！😱", error);
+        setLocation("取得できなかった😢");
+      }
+    };
+
+    fetchLocation();
+  }, []);
+
+  return <div className="p-2">Your Location: {location}</div>;
 }
