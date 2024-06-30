@@ -7,14 +7,12 @@ export async function GET(req: NextRequest) {
     req.ip ||
     "Unknown";
 
-  return NextResponse.json(
-    { ip },
-    {
-      headers: {
-        "Access-Control-Allow-Origin": "https://hytfjwr.com",
-        "Access-Control-Allow-Methods": "GET",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization",
-      },
-    }
-  );
+  console.log("取得したIP:", ip);
+
+  if (ip === "Unknown") {
+    console.log("IPアドレスが取得できませんでした");
+    return NextResponse.json({ error: "IP not found" }, { status: 404 });
+  }
+
+  return NextResponse.json({ ip }, { status: 200 });
 }

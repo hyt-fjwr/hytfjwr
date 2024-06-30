@@ -8,14 +8,16 @@ export default function IpDisplay() {
   useEffect(() => {
     const fetchLocation = async () => {
       try {
-        const ipResponse = await fetch("https://hytfjwr.com/api/emotinow", {
-          credentials: "include",
-          headers: {
-            "User-Agent": navigator.userAgent,
-          },
-        });
-        const { ip } = await ipResponse.json();
-        console.log(ip);
+        const ipResponse = await fetch("https://hytfjwr.com/api/emotinow");
+        if (!ipResponse.ok) {
+          throw new Error(`HTTP error! status: ${ipResponse.status}`);
+        }
+        const data = await ipResponse.json();
+        console.log("APIレスポンス:", data); // ログ追加
+        if (!data.ip) {
+          throw new Error("IP not found in response");
+        }
+        const { ip } = data;
 
         const countryResponse = await fetch(
           `https://hytfjwr.com/api/getCountry?ip=${ip}`
