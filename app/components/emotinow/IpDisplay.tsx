@@ -1,22 +1,8 @@
-"use client";
+import React from "react";
 
-import { useState, useEffect } from "react";
+export default async function IpDisplay() {
+  const res = await fetch("https://hytfjwr.com/api/emotinow");
+  const data = await res.json();
 
-const IpDisplay = () => {
-  const [ip, setIp] = useState<string | null>(null);
-
-  useEffect(() => {
-    fetch("http://localhost:3000/api/emotinow")
-      .then((res) => res.json())
-      .then((data) => setIp(data.ip));
-  }, []);
-
-  return (
-    <div>
-      <h2>あなたのIPアドレス:</h2>
-      {ip ? <p>{ip}</p> : <p>IPアドレスを取得中...</p>}
-    </div>
-  );
-};
-
-export default IpDisplay;
+  return <div>your IP :{data.data}</div>;
+}
