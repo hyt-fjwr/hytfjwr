@@ -1,8 +1,12 @@
 import React from "react";
 
 export default async function IpDisplay() {
-  const res = await fetch("https://hytfjwr.com/api/emotinow");
-  const data = await res.json();
+  const ip = await fetch("https://hytfjwr.com/api/emotinow");
+  const ipJson = await ip.json();
+  const getCountry = await fetch(
+    `https://api.iplocation.net/?cmd=ip-country&ip=${ipJson.ip}`
+  );
+  const contry = await getCountry.json();
 
-  return <div>your IP :{data.data}</div>;
+  return <div className="p-2">Your Location :{contry.country_name}</div>;
 }
