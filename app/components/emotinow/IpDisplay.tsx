@@ -13,7 +13,7 @@ export default function IpDisplay() {
         console.log(ip);
 
         const countryResponse = await fetch(
-          `https://hytfjwr.com/api/api/getCountry?ip=${ip}`
+          `https://hytfjwr.com/api/getCountry?ip=${ip}`
         );
         const { country_name } = await countryResponse.json();
 
