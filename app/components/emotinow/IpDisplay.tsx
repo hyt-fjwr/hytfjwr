@@ -16,8 +16,17 @@ export default function IpDisplay() {
         console.log("取得したIP:", ip); // ログ追加
 
         const countryResponse = await fetch(
-          `https://hytfjwr.com/api/getCountry?ip=${ip}`
+          `https://hytfjwr.com/api/getCountry?ip=${ip}`,
+          {
+            method: "GET",
+            credentials: "include",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+          }
         );
+
         if (!countryResponse.ok) {
           throw new Error(
             `Country fetch error! status: ${countryResponse.status}`
