@@ -7,12 +7,11 @@ export async function GET(req: NextRequest) {
     req.ip ||
     "Unknown";
 
-  // ここがポイント！CORSヘッダーを追加しちゃう！
   return NextResponse.json(
     { ip },
     {
       headers: {
-        "Access-Control-Allow-Origin": "https://hytfjwr.com/",
+        "Access-Control-Allow-Origin": "https://hytfjwr.com",
         "Access-Control-Allow-Methods": "GET",
         "Access-Control-Allow-Headers": "Content-Type, Authorization",
       },

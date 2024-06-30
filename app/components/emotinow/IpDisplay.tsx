@@ -8,7 +8,12 @@ export default function IpDisplay() {
   useEffect(() => {
     const fetchLocation = async () => {
       try {
-        const ipResponse = await fetch("https://hytfjwr.com/api/emotinow");
+        const ipResponse = await fetch("https://hytfjwr.com/api/emotinow", {
+          credentials: "include",
+          headers: {
+            "User-Agent": navigator.userAgent,
+          },
+        });
         const { ip } = await ipResponse.json();
         console.log(ip);
 
@@ -20,7 +25,7 @@ export default function IpDisplay() {
         setLocation(country_name);
       } catch (error) {
         console.error("エラー！😱", error);
-        setLocation("取得できなかった😢");
+        setLocation(`取得できなかった😢 エラー: ${error}`);
       }
     };
 
