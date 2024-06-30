@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 
 export async function GET(req: NextRequest) {
   let ip = req.headers.get("x-real-ip") || req.ip || "Unknown";
@@ -6,5 +6,5 @@ export async function GET(req: NextRequest) {
     ip = req.headers.get("x-forwarded-for") || req.ip || "Unknown";
   }
 
-  return NextResponse.json({ ip });
+  return Response.json({ ip });
 }
