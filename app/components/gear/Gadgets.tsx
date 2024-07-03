@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function Gadgets() {
   return (
     <>
-      <div className="gap-5 grid grid-cols-2 h-20 ">
+      <div className="gap-5 grid md:grid-cols-2 h-20 ">
         {gears.map((gear, index) => (
           <div
             key={index}
@@ -21,7 +21,7 @@ export default function Gadgets() {
               alt=""
             />
             <div className="truncate p-2 select-none">
-              <div className="text- font-bold">{gear.name}</div>
+              <div className="text- font-bold truncate">{gear.name}</div>
               <div className="mt-2 text-sm text-primary/60">
                 {gear.description}
               </div>
