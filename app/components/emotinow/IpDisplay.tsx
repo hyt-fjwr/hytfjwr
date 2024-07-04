@@ -32,7 +32,7 @@ export default function IpDisplay() {
         console.log("国データ:", data); // ログ追加
 
         if (data.country_name) {
-          setLocation(data.country_name);
+          setLocation(data.country_code2);
         } else {
           setLocation("国名が取得できませんでした");
         }
@@ -51,5 +51,10 @@ export default function IpDisplay() {
     fetchLocation();
   }, []);
 
-  return <div className="p-2">Your Location: {location}</div>;
+  return (
+    <>
+      <img src={`https://flagsapi.com/${location}/flat/64.png`} />
+      <div className="p-2">Your Location: {location}</div>
+    </>
+  );
 }
