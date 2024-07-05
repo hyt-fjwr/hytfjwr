@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { Replies, User } from "../../types/Replies";
+import { Replies } from "../../types/Replies";
+import { User } from "../../types/Comments";
 import Image from "next/image";
 import TimeAgo from "./TimeAgo";
 import { supabase } from "@/lib/supabase";
