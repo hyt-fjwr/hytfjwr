@@ -1,13 +1,4 @@
-export type User = {
-  id: string;
-  lastName: string;
-  userName: string;
-  firstName: string;
-  created_at: string;
-  updated_at: string;
-  profileImageUrl: string;
-};
-
+import { User } from "./Comments";
 export type Replies = {
   id: string;
   msg_id: string;
