@@ -8,7 +8,7 @@ export default function page() {
     <div className="flex bg-black w-lvw h-lvh text-white items-center justify-center">
       Share your emotion with emoji
       <IpDisplay />
-      <AddEmotion emotion="😃" />
+      <AddEmotion emotion="🙃" />
       <EmojiSelector />
     </div>
   );
