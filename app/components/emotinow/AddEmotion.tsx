@@ -42,7 +42,6 @@ export default function AddEmotion({ emotion }: { emotion: string }) {
           type="submit"
           className="m-2 w-12 h-12 bg-white rounded-2xl text-4xl"
         >
-          送信
           {emotion}
         </Button>
       </form>

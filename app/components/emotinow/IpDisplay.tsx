@@ -54,7 +54,6 @@ export default function IpDisplay() {
   return (
     <>
       <img src={`https://flagsapi.com/${location}/flat/64.png`} />
-      <div className="p-2">Your Location: {location}</div>
     </>
   );
 }
