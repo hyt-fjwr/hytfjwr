@@ -1,6 +1,6 @@
-import AddEmotion from "@/app/components/emotinow/AddEmotion";
-import EmojiSelector from "@/app/components/emotinow/EmojiSelector";
-import IpDisplay from "@/app/components/emotinow/IpDisplay";
+import AddEmotion from "@/app/components/emotionow/AddEmotion";
+import EmojiSelector from "@/app/components/emotionow/EmojiSelector";
+import IpDisplay from "@/app/components/emotionow/IpDisplay";
 import React from "react";
 
 export default function page() {

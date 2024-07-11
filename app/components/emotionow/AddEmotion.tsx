@@ -1,5 +1,3 @@
-"use client";
-import { createClient } from "@supabase/supabase-js";
 import React from "react";
 import { toast } from "react-toastify";
 import { z } from "zod";

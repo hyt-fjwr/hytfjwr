@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "EMOTINOW",
     description: "Share your emotion with emoji ;)",
     type: "website",
-    url: "https://hytfjwr.com/emotinow",
+    url: "https://hytfjwr.com/emotionow",
     images: [
       {
         url: "https://hytfjwr.com/api/og?title=EMOTINOW",
