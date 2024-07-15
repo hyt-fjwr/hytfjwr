@@ -12,7 +12,7 @@ export default function AddEmotion({ emotion }: { emotion: string }) {
     try {
       if (emotion) {
         const { error } = await client.from("emotionow").insert({
-          content: emotion, // テストデータではなく、実際のemotionを挿入
+          content: emotion,
         });
 
         if (error) {
@@ -25,11 +25,7 @@ export default function AddEmotion({ emotion }: { emotion: string }) {
         toast.warn("感情を入力してください。");
       }
     } catch (err) {
-      if (err instanceof z.ZodError) {
-        toast.error("バリデーションエラーが発生しました。");
-      } else {
-        toast.error("予期せぬエラーが発生しました。");
-      }
+      toast.error("予期せぬエラーが発生しました。");
     }
   };
 
