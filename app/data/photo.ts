@@ -1,5 +1,26 @@
 export const photos = [
   {
+    imageUrl: "/photo/DSC04800.jpg",
+    flickrUrl:
+      "https://live.staticflickr.com/65535/53887221392_f2dcc258bc_o.jpg",
+    date: "2024/07/12",
+    place: "長野 | 石の教会",
+  },
+  {
+    imageUrl: "/photo/DSC04804.jpg",
+    flickrUrl:
+      "https://live.staticflickr.com/65535/53888367073_91de1655c7_o.jpg",
+    date: "2024/07/12",
+    place: "長野 | 石の教会",
+  },
+  {
+    imageUrl: "/photo/DSC04834.jpg",
+    flickrUrl:
+      "https://live.staticflickr.com/65535/53888367013_10c39b8388_o.jpg",
+    date: "2024/07/12",
+    place: "群馬 | 碓氷第三橋梁",
+  },
+  {
     imageUrl: "/photo/DSC04541.jpg",
     flickrUrl:
       "https://live.staticflickr.com/65535/53686858598_2efd73dd8e_o.jpg",
