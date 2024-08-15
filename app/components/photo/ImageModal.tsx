@@ -87,7 +87,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
           onClick={closeModal}
           className="p-5 md:scale-[0.85] absolute inset-0 flex flex-col md:h-full items-center justify-center md:top-8"
         >
-          <p className="font-bold hover:scale-110 m-2 duration-200 drop-shadow-md w-20 text-white ">
+          <p className="pt-12 md:pt-0 font-bold hover:scale-110 m-2 duration-200 drop-shadow-md w-20 text-white ">
             CLOSE
           </p>
           <img

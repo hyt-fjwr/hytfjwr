@@ -100,7 +100,7 @@ const config = {
             transform: "translateY(-43%)",
           },
           "75%, 95%": {
-            transform: "translateY(-61%)",
+            transform: "translateY(-61.3%)",
           },
           "100%": {
             transform: "translateY(-80%)",

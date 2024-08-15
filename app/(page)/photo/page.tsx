@@ -1,9 +1,10 @@
 "use client";
-import { Camera } from "lucide-react";
+import { Camera, ChevronRight } from "lucide-react";
 import ImageModal from "../../components/photo/ImageModal";
 import { photos } from "../../data/photo";
 import { cn } from "@/lib/utils";
 import { Inter } from "next/font/google";
+import Link from "next/link";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function page() {
@@ -20,12 +21,30 @@ export default function page() {
             >
               Photo <Camera aria-hidden="true" className="h-8 w-8 ml-2" />
             </h1>
-            <h2
-              className="animate-in mt-2"
-              style={{ "--index": 1 } as React.CSSProperties}
-            >
-              旅先で記録したお気に入りの写真。
-            </h2>
+            <div className="flex md:flex-row flex-col">
+              <h2
+                className="animate-in mt-2"
+                style={{ "--index": 1 } as React.CSSProperties}
+              >
+                旅先で記録したお気に入りの写真。
+              </h2>
+              <Link
+                rel="noopener noreferrer"
+                target="_blank"
+                href="https://www.flickr.com/photos/186351996@N07/"
+                className="flex flex-row items-center prose dark:prose-invert text-xs group hover:text-primary duration-100 pt-1 animate-in md:mt-1"
+                style={{ "--index": 1 } as React.CSSProperties}
+              >
+                <p className="flex flex-row justify-center items-center hover:bg-slate-200 hover:dark:bg-slate-800 md:px-2 md:py-1 rounded-full duration-200">
+                  See more photos on flickr
+                  <ChevronRight
+                    width={15}
+                    height={15}
+                    className="-left-2 group-hover:translate-x-1 duration-100"
+                  />
+                </p>
+              </Link>
+            </div>
           </div>
         </div>
         <br />
