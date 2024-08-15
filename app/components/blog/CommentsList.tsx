@@ -128,7 +128,7 @@ export default function CommentsList({
   if (comments.length <= 0) {
     return (
       <>
-        <div className="animate-in flex flex-row border-t border-b m-3 pt-2 pb-2 justify-center">
+        <div className="animate-in flex flex-row border-t border-b m-3 pt-2 pb-2 justify-center select-none">
           <div className="flex items-center text-center p-5 text-primary/40 text-sm">
             hmm.... it&apos;s quite here....
             <br />
@@ -147,7 +147,7 @@ export default function CommentsList({
           className="animate-in flex flex-row border-t border-b m-3 pt-2 pb-2"
           style={{ "--index": index } as React.CSSProperties}
         >
-          <div className="mr-2">
+          <div className="mr-2 select-none">
             <Image
               src={props.user.profileImageUrl}
               width={30}
@@ -163,11 +163,11 @@ export default function CommentsList({
             />
           </div>
           <div className="flex flex-col w-[270px] md:w-[551px] bg-text-white">
-            <div className="flex flex-row items-center text-center">
-              <div className="font-bold">
+            <div className="flex flex-row items-center text-center select-none">
+              <div className="font-bold select-none">
                 {props.user.firstName} {props.user.lastName}
               </div>
-              <div className="text-xs ml-1 text-primary/60 items-center">
+              <div className="text-xs ml-1 text-primary/60 items-center select-none">
                 @{props.user.userName}&nbsp;|&nbsp;
                 <TimeAgo timestamp={props.created_at} />
               </div>
@@ -181,7 +181,7 @@ export default function CommentsList({
                   userId={userId}
                   redirectPath={pageId}
                 />
-                <p className="pl-2 font-thin">{props.count}</p>
+                <p className="pl-2 font-thin select-none">{props.count}</p>
               </div>
             </div>
           </div>

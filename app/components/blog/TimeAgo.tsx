@@ -19,7 +19,7 @@ const TimeAgo: React.FC<TimeAgoProps> = ({ timestamp }) => {
     return () => clearInterval(intervalId); // Cleanup interval on component unmount
   }, [timestamp]);
 
-  return <span>{timeAgo}</span>;
+  return <span className="select-none">{timeAgo}</span>;
 };
 
 export default TimeAgo;

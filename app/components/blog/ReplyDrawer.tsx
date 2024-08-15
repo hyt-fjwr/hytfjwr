@@ -47,7 +47,7 @@ export default function ReplyDrawer({
                 <DrawerTitle>Replies</DrawerTitle>
                 <DrawerDescription className="text-left text-primary">
                   <div className="flex flex-row m-2 pt-1 pb-3 border-b">
-                    <div className="mr-2">
+                    <div className="mr-2 select-none">
                       <Image
                         src={msgData.user.profileImageUrl}
                         width={30}
