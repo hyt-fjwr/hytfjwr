@@ -92,11 +92,12 @@ const ImageModal: React.FC<ImageModalProps> = ({
           </p>
           <Image
             src={imageUrl}
-            width={4000}
-            height={5000}
+            width={2000}
+            height={3000}
             alt={place}
             quality={100}
             className="md:h-full md:object-contain"
+            loading="lazy"
           />
           <p className=" text-[12px] md:text-sm font-mono py-1 opacity-60 text-white">
             Location: {place} <br /> Photo taken on {date}
