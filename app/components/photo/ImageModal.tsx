@@ -90,9 +90,12 @@ const ImageModal: React.FC<ImageModalProps> = ({
           <p className="pt-12 md:pt-0 font-bold hover:scale-110 m-2 duration-200 drop-shadow-md w-20 text-white ">
             CLOSE
           </p>
-          <img
-            src={flickrUrl}
+          <Image
+            src={imageUrl}
+            width={4000}
+            height={5000}
             alt={place}
+            quality={100}
             className="md:h-full md:object-contain"
           />
           <p className=" text-[12px] md:text-sm font-mono py-1 opacity-60 text-white">
