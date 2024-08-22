@@ -30,8 +30,8 @@ export default function Navigation() {
         {links.map((link) => (
           <Button
             className={cn(
-              pathname === link.href && "bg-primary/10 text-accent-foreground",
-              "ml-1 mr-2"
+              pathname === link.href && "bg-primary/10 text-accent-foreground ",
+              "ml-1 mr-2 hover:bg-primary/10 hover:animate-pulse"
             )}
             variant="ghost"
             key={link.href}
