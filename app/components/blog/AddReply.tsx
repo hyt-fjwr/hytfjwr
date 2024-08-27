@@ -33,10 +33,12 @@ export default function AddReply({
   msgId,
   userId,
   redirectPath,
+  pageId,
 }: {
   msgId: string;
   userId: string;
   redirectPath: string;
+  pageId: string;
 }) {
   const formRef = useRef<HTMLFormElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -132,10 +134,10 @@ export default function AddReply({
             />
             <SignInButton
               mode="modal"
-              forceRedirectUrl={`/${redirectPath}`}
-              fallbackRedirectUrl={`/${redirectPath}`}
-              signUpForceRedirectUrl={`/${redirectPath}`}
-              signUpFallbackRedirectUrl={`/${redirectPath}`}
+              forceRedirectUrl={`/${redirectPath}/${pageId}`}
+              fallbackRedirectUrl={`/${redirectPath}/${pageId}`}
+              signUpForceRedirectUrl={`/${redirectPath}/${pageId}`}
+              signUpFallbackRedirectUrl={`/${redirectPath}/${pageId}`}
             >
               <Button
                 variant="ghost"
@@ -151,8 +153,8 @@ export default function AddReply({
             <div className="">
               <UserButton
                 userProfileMode="modal"
-                afterSignOutUrl={`/${redirectPath}`}
-                signInUrl={`/${redirectPath}`}
+                afterSignOutUrl={`/${redirectPath}/${pageId}`}
+                signInUrl={`/${redirectPath}/${pageId}`}
               />
             </div>
             <input

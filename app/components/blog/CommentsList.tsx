@@ -7,9 +7,11 @@ import TimeAgo from "./TimeAgo";
 import ReplyDrawer from "./ReplyDrawer";
 
 export default function CommentsList({
+  redirectPath,
   pageId,
   userId,
 }: {
+  redirectPath: string;
   pageId: string;
   userId: string;
 }) {
@@ -50,7 +52,6 @@ export default function CommentsList({
         console.error("Error fetching initial comments:", error);
       }
     };
-
     fetchData();
 
     const channel = supabase
@@ -138,7 +139,6 @@ export default function CommentsList({
       </>
     );
   }
-
   return (
     <div>
       {dataSorted.map((props, index) => (
@@ -179,7 +179,8 @@ export default function CommentsList({
                   msgData={props}
                   repliesCount={props.count}
                   userId={userId}
-                  redirectPath={pageId}
+                  redirectPath={redirectPath}
+                  pageId={pageId}
                 />
                 <p className="pl-2 font-thin select-none">{props.count}</p>
               </div>

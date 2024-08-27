@@ -21,11 +21,13 @@ export default function ReplyDrawer({
   repliesCount,
   userId,
   redirectPath,
+  pageId,
 }: {
   msgData: Comments;
   repliesCount: string;
   userId: string;
   redirectPath: string;
+  pageId: string;
 }) {
   if (repliesCount != "0") {
     return (
@@ -80,6 +82,7 @@ export default function ReplyDrawer({
                     msgId={msgData.id}
                     userId={userId}
                     redirectPath={redirectPath}
+                    pageId={pageId}
                   />
                 </DrawerDescription>
               </DrawerHeader>
@@ -89,6 +92,7 @@ export default function ReplyDrawer({
       </>
     );
   }
+  console.log(pageId);
   return (
     <>
       <Drawer>
@@ -141,6 +145,7 @@ export default function ReplyDrawer({
                 msgId={msgData.id}
                 userId={userId}
                 redirectPath={redirectPath}
+                pageId={pageId}
               />
             </DrawerHeader>
             <DrawerFooter></DrawerFooter>
