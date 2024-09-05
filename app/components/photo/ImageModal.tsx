@@ -65,6 +65,8 @@ const ImageModal: React.FC<ImageModalProps> = ({
                 className="flex md:w-60 md:h-60 w-40 h-40 object-cover"
                 alt={place}
                 quality={70}
+                placeholder="blur"
+                blurDataURL={imageUrl}
                 onLoad={() => {
                   console.log("Image loaded successfully.");
                   setIsLoading(false);
@@ -96,6 +98,8 @@ const ImageModal: React.FC<ImageModalProps> = ({
             height={3000}
             alt={place}
             quality={100}
+            placeholder="blur"
+            blurDataURL="/loading.webp"
             className="md:h-full md:object-contain"
             loading="lazy"
           />
