@@ -61,7 +61,7 @@ const ShowFirstTime: React.FC = () => {
         )}
       >
         <Image
-          src="/photo/DSC02392.jpg"
+          src="/photo/DSC02392.webp"
           fill
           alt=""
           quality={100}
