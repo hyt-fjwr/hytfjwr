@@ -33,7 +33,7 @@ export const ThemeToggle: FC<ThemeToggleProps> = (props) => {
               className={cn(
                 className,
                 props.className,
-                "bg-primary/10 dark:bg-background"
+                "bg-primary/10 dark:bg-popover"
               )}
             >
               <Sun aria-hidden="true" className="h-5 w-5" />
