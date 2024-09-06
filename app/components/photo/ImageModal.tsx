@@ -94,8 +94,8 @@ const ImageModal: React.FC<ImageModalProps> = ({
           </p>
           <Image
             src={imageUrl}
-            width={2000}
-            height={3000}
+            width={1500}
+            height={2500}
             alt={place}
             quality={100}
             placeholder="blur"
