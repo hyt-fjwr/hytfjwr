@@ -46,7 +46,7 @@
     "shadcn-ui": "^0.8.0",
     "shiki": "^1.13.0",
     "svix": "^1.29.0",
-    "tailwind-merge": "^2.5.2",
+    "tailwind-merge": "^3.3.1",
     "tailwindcss-animate": "^1.0.7",
     "tocbot": "^4.29.0",
     "vaul": "^0.9.1",
