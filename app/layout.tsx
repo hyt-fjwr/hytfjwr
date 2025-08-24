@@ -22,10 +22,10 @@ export const metadata: Metadata = {
     description:
       "My portfolio created with Nextjs, clerk, Supabase, Radix Primitives, shadcn/ui, Framer Motion, Tailwind",
     type: "website",
-    url: "https://hytfjwr.com",
+    url: "https://hytfjwr.vercel.app",
     images: [
       {
-        url: "https://hytfjwr.com/api/og?title=hytfjwr.com",
+        url: "https://hytfjwr.vercel.app/api/og?title=hytfjwr.vercel.app",
         alt: "hytfjwr.com",
       },
     ],

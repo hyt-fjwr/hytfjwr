@@ -1,2 +1,2 @@
 Disallow: /test/
-Sitemap: https://hytfjwr.com/sitemap.xml
+Sitemap: https://hytfjwr.vercel.app/sitemap.xml

@@ -8,7 +8,7 @@ const nextConfig = {
   images: {
     domains: [
       "tailwindui.com",
-      "hytfjwr.com",
+      "hytfjwr.vercel.app",
       "localhost",
       "img.clerk.com",
       "images.clerk.dev",
@@ -22,7 +22,7 @@ const nextConfig = {
         source: "/api/:path*",
         headers: [
           { key: "Access-Control-Allow-Credentials", value: "true" },
-          { key: "Access-Control-Allow-Origin", value: "https://hytfjwr.com" },
+          { key: "Access-Control-Allow-Origin", value: "https://hytfjwr.vercel.app" },
           {
             key: "Access-Control-Allow-Methods",
             value: "GET,OPTIONS,PATCH,DELETE,POST,PUT",
