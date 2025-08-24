@@ -1,10 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Modal from "react-modal";
 import Image from "next/image";
 import Loading from "../Loading";
 import "../../globals.css";
+
+// グローバルに一度だけ設定
+if (typeof window !== 'undefined') {
+  Modal.setAppElement('body');
+}
 
 interface ImageModalProps {
   imageUrl: any;
@@ -21,10 +26,6 @@ const ImageModal: React.FC<ImageModalProps> = ({
 }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    Modal.setAppElement('body');
-  }, []);
 
   const openModal = () => {
     setModalIsOpen(true);
