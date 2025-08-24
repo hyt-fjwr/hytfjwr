@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import Image from "next/image";
 import Loading from "../Loading";
@@ -21,6 +21,10 @@ const ImageModal: React.FC<ImageModalProps> = ({
 }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    Modal.setAppElement('body');
+  }, []);
 
   const openModal = () => {
     setModalIsOpen(true);

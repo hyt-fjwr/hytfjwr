@@ -1,13 +1,14 @@
 import { FileX2, User } from "lucide-react";
 import { Metadata } from "next";
 import Link from "next/link";
+import { ReactElement } from "react";
 
 export const metadata: Metadata = {
   title: "404",
   description: "Uh oh! This page does not exist",
 };
 
-const notFoundPage = (): JSX.Element => (
+const notFoundPage = (): ReactElement => (
   <>
     <div className="w-[21rem] flex flex-col md:w-[45rem]">
       <div className="mt-5">
