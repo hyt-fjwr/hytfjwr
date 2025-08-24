@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function IpDisplay() {
   const [location, setLocation] = useState<string>("Loading...");
@@ -53,7 +54,12 @@ export default function IpDisplay() {
 
   return (
     <>
-      <img src={`https://flagsapi.com/${location}/flat/64.png`} />
+      <Image 
+        src={`https://flagsapi.com/${location}/flat/64.png`} 
+        alt={`${location} flag`}
+        width={64}
+        height={64}
+      />
     </>
   );
 }

@@ -13,7 +13,7 @@ export default function ProjectList({
   return (
     <div>
       {props.map((post, index) => (
-        <Link href={`/project/${post.id}`}>
+        <Link key={post.id} href={`/project/${post.id}`}>
           <div
             className="flex flex-row border-t w-full pt-2 pb-4 md:pb-4 pr-2 group hover:bg-primary/5 duration-500 animate-in"
             style={{ "--index": cssIndex + index } as React.CSSProperties}

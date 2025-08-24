@@ -14,6 +14,7 @@ const nextConfig = {
       "images.clerk.dev",
       "www.gravatar.com",
       "m.media-amazon.com",
+      "flagsapi.com",
     ],
   },
   async headers() {
