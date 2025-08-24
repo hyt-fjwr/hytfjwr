@@ -8,7 +8,7 @@ const webhookSecret: string = process.env.NGROK_WEBHOOK_SECRET || "";
 export async function POST(req: NextRequest) {
   const payload = await req.json();
   const payloadString = JSON.stringify(payload);
-  const headerPayload = headers();
+  const headerPayload = await headers();
   const svixId = headerPayload.get("svix-id");
   const svixIdTimeStamp = headerPayload.get("svix-timestamp");
   const svixSignature = headerPayload.get("svix-signature");
@@ -63,7 +63,9 @@ export async function POST(req: NextRequest) {
 
     if (error) {
       console.error("Error inserting data:", error.message);
-      return;
+      return new Response("Error inserting data", {
+        status: 500,
+      });
     }
 
     return new Response("", {
@@ -103,7 +105,9 @@ export async function POST(req: NextRequest) {
 
     if (error) {
       console.error("Error updating data:", error.message);
-      return;
+      return new Response("Error updating data", {
+        status: 500,
+      });
     }
 
     return new Response("", {

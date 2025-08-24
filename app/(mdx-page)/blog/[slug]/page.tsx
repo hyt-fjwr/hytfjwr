@@ -10,17 +10,18 @@ import { Button } from "@/app/components/ui/button";
 import { Toc } from "@/app/components/blog/Toc";
 
 type Props = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
-  searchParams: { [key: string]: string | string[] | undefined };
+  }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 export async function generateMetadata(
   { params, searchParams }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const post = await getBlogPost(params.slug);
+  const { slug } = await params;
+  const post = await getBlogPost(slug);
   const { title, publishedAt: publishedTime, id } = post;
 
   const metadata: Metadata = {
@@ -44,10 +45,11 @@ export async function generateMetadata(
 }
 
 export default async function page({
-  params: { slug },
+  params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
+  const { slug } = await params;
   const post = await getBlogPost(slug);
 
   const user = await currentUser();

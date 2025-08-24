@@ -8,10 +8,11 @@ import { Button } from "@/app/components/ui/button";
 import { formatDate } from "@/app/util/formatDate";
 
 export default async function page({
-  params: { slug },
+  params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
+  const { slug } = await params;
   const posts = await getAllBlogPostsByTags(slug);
   //公開日順にソート
   const postsSorted = posts.sort(

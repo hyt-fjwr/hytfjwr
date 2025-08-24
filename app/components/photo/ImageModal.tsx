@@ -6,6 +6,11 @@ import Image from "next/image";
 import Loading from "../Loading";
 import "../../globals.css";
 
+// グローバルに一度だけ設定
+if (typeof window !== 'undefined') {
+  Modal.setAppElement('body');
+}
+
 interface ImageModalProps {
   imageUrl: any;
   flickrUrl: string;
