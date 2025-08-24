@@ -77,6 +77,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
           </div>
         )}
       </button>
+      {/* @ts-ignore */}
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
