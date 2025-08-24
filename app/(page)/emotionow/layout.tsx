@@ -14,10 +14,10 @@ export const metadata: Metadata = {
     title: "EMOTINOW",
     description: "Share your emotion with emoji ;)",
     type: "website",
-    url: "https://hytfjwr.com/emotionow",
+    url: "https://hytfjwr.vercel.app/emotionow",
     images: [
       {
-        url: "https://hytfjwr.com/api/og?title=EMOTINOW",
+        url: "https://hytfjwr.vercel.app/api/og?title=EMOTINOW",
         alt: "hytfjwr.com/emotinow",
       },
     ],

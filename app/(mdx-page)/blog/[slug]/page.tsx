@@ -24,7 +24,7 @@ export async function generateMetadata(
   const { title, publishedAt: publishedTime, id } = post;
 
   const metadata: Metadata = {
-    metadataBase: new URL("https://hytfjwr.com"),
+    metadataBase: new URL("https://hytfjwr.vercel.app"),
     title: `${title} | Hayato Fujiwara`,
     description: "BLOG PAGE",
     openGraph: {
@@ -32,9 +32,9 @@ export async function generateMetadata(
       description: "BLOG PAGE",
       type: "article",
       publishedTime,
-      url: `https://hytfjwr.com/blog/${id}`,
+      url: `https://hytfjwr.vercel.app/blog/${id}`,
       images: {
-        url: `https://hytfjwr.com/api/og?title=${title}`,
+        url: `https://hytfjwr.vercel.app/api/og?title=${title}`,
         alt: "hytfjwr.com",
       },
     },

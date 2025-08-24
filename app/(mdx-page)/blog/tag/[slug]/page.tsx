@@ -60,7 +60,7 @@ export default async function page({
                   <Image
                     width={1280}
                     height={720}
-                    src={`https://hytfjwr.com/api/og?title=${post.title}`}
+                    src={`https://hytfjwr.vercel.app/api/og?title=${post.title}`}
                     alt={post.title}
                     className="rounded-t-lg border-r border-t border-l border-b border-zinc-700"
                     quality={70}
